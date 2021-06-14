@@ -8,10 +8,10 @@ const HeroSection = () => {
             <Col xs={12} className="p-0">
                 <div className="p-relative">
                 <Card.Img variant="top" src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fjosephliu%2Ffiles%2F2019%2F06%2F1-office-1516329_1920-1200x299.jpg" />
-                <i class="fas fa-pen-square"></i>
+                <i className="fas fa-pen-square"></i>
                 <img className="profile-pic img-fluid" src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />{/* On the api, this will probably our profile .image */}
                 </div>
-                <i class="fas fa-pencil-alt pt-4 pr-4"></i>
+                <i className="fas fa-pencil-alt pt-4 pr-4"></i>
                 <Row>
                     <Col xs={8}>
                         <Card.Body className="pt-5">
