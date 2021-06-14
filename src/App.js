@@ -12,9 +12,7 @@ function App() {
     <div className="App">
       {/* Navbar here */}
       <Container className="pt-5">
-        <SectionCard>{/* hero comp */}</SectionCard>
-        <SectionCard>{/* about comp */}</SectionCard>
-        <SectionCard><HeroSection /></SectionCard>
+        <HeroSection />
         <SectionCard><DashboardSection /></SectionCard>
         <SectionCard><AboutSection /></SectionCard>
         {/* Footer is inside main container but underneath section columns */}

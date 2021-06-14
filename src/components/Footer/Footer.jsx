@@ -1,14 +1,15 @@
-import { Row, Col, Button, DropdownButton, Dropdown } from 'react-bootstrap'
-import "./Footer.css"
+import { Row, Col, Button, DropdownButton, Dropdown } from 'react-bootstrap';
+import "./Footer.css";
+import Logo from "../assets/LinkedIn-Logos/LI-Logo.png"
 
 const Footer = () => {
     return (
         <div>
-            <Row className="footer">
-                <Col sm={8} className="p-0">
-                    <Row className="pt-4 pb-2">Linked in logo to go here</Row>
+            <Row className="footer px-2">
+                <Col xs={8} className="p-0">
+                    <Row className="pt-4 pb-2"><img className="logo" src={Logo} alt="LinkedIn" /></Row>
                     <Row className="p-0">
-                        <Col sm={3} className="p-0">
+                        <Col xs={3} className="p-0">
                             <Button variant="link">About</Button>
                             <Button variant="link">Community Guidelines</Button>
                             <DropdownButton
@@ -23,29 +24,29 @@ const Footer = () => {
                             <Button variant="link">Sales Solutions</Button>
                             <Button variant="link">Safety Center</Button>
                         </Col>
-                        <Col sm={2} className="p-0">
+                        <Col xs={2} className="p-0">
                             <Button variant="link">Accessibility</Button>
                             <Button variant="link">Careers</Button>
                             <Button variant="link">Ad Choices</Button>
                             <Button variant="link">Mobile</Button>
                         </Col>
-                        <Col sm={3} className="p-0">
+                        <Col xs={3} className="p-0">
                             <Button variant="link">Talent Solutions</Button>
                             <Button variant="link">Marketing Solutions</Button>
                             <Button variant="link">Advertising</Button>
                             <Button variant="link">Small Business</Button>
                         </Col>
-                        <Col sm={4} className="p-0">
+                        <Col xs={4} className="p-0">
                             <Row className="pb-3">
-                                <Col sm={2} className="pr-0"><i class="fas fa-question-circle"></i></Col>
-                                <Col sm={10} className="p-0">
+                                <Col xs={2} className="pr-0"><i class="fas fa-question-circle"></i></Col>
+                                <Col xs={10} className="p-0">
                                     <Button variant="link">Questions?</Button>
                                     Visit our Help center.
                                 </Col>
                             </Row>
                             <Row>
-                                <Col sm={2} className="pr-0"><i class="fas fa-cog"></i></Col>
-                                <Col sm={10} className="p-0">
+                                <Col xs={2} className="pr-0"><i class="fas fa-cog"></i></Col>
+                                <Col xs={10} className="p-0">
                                     <Button variant="link">Manage your account and privacy</Button>
                                     Go to your Settings.
                                 </Col>
@@ -56,7 +57,7 @@ const Footer = () => {
                         <Button variant="link">LinkedIn Corporation © 2021</Button>
                     </Row>
                 </Col>
-                <Col sm={4} className="p-5 dropup-language">
+                <Col xs={4} className="p-5 dropup-language">
                     Select Language
                     <DropdownButton 
                     id="dropdown-item-button" 

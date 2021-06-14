@@ -3,6 +3,10 @@
     color: gray;
 }
 
+.footer .logo {
+    height: 20px;
+}
+
 .footer .btn {
     display: block;
     padding: 0;
