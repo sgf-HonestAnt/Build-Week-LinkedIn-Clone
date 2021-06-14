@@ -3,8 +3,8 @@ import "./Footer.css"
 
 const Footer = () => {
     return (
-        <div className="footer">
-            <Row>
+        <div>
+            <Row className="footer">
                 <Col sm={8} className="p-0">
                     <Row className="pt-4 pb-2">Linked in logo to go here</Row>
                     <Row className="p-0">
@@ -66,8 +66,7 @@ const Footer = () => {
                         <Dropdown.Item as="button">Dansk (Danish)</Dropdown.Item>
                         <Dropdown.Item as="button" active>English (English)</Dropdown.Item>
                     </DropdownButton>
-                </Col>
-                    
+                </Col>                    
             </Row>
         </div>
     )
