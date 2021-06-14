@@ -1,0 +1,14 @@
+.single-experience{
+    padding-top: 50px;
+}
+
+.job-years, .job-location {
+    color: grey;
+}
+
+.experience-page button{
+    border-style: none;
+    border: none;
+    background-color: #fff;
+    font-size: 20px
+}

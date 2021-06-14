@@ -1,0 +1,14 @@
+.single-education{
+    padding-top: 50px;
+}
+
+.year, .degree-name{
+    color: grey;
+}
+
+.profile-page button{
+    border-style: none;
+    border: none;
+    background-color: #fff;
+    font-size: 20px
+}
