@@ -9,7 +9,7 @@ const DashboardSection = () => {
             <Col sm={12}>
                 <h4 className="title">Your Dashboard</h4>
                 <div className="subtitle">Private to you</div>
-                <Row className="stats my-3 mx-5">
+                <Row className="stats my-3 mx-3">
                     <Col sm={4} className="stats-inner">
                         18
                         <span className="stats-details">Who viewed your profile</span>
@@ -25,7 +25,7 @@ const DashboardSection = () => {
                 </Row>
             </Col>
             <Col sm={12}>
-                <Row className="modes mx-5">
+                <Row className="modes mx-3">
                     <Col sm={2}>
                         <i class="fas fa-satellite-dish"></i>
                     </Col>
