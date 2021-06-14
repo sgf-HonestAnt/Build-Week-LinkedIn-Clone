@@ -42,13 +42,13 @@ function App() {
               <EducationRow />
             </div>
           </Col>
-          <Col className="d-none d-md-block my-3 px-1" xs={0} md={3}>
+          <Col className="d-none d-md-block my-3 px-1" md={3}>
             <div className="section-card p-3">
               <AlsoViewed />
             </div>
           </Col>
         </Row>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     </div>
   )

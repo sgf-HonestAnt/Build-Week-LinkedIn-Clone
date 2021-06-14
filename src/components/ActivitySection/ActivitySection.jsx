@@ -4,15 +4,15 @@ import "./ActivitySection.css"
 
 const ActivitySection = () => {
   return (
-    <div>
-      <h3>Activity</h3>
-      <section className="activity-section d-flex flex-wrap">
+    <section>
+      <h4>Activity</h4>
+      <div className="activity-section d-flex flex-wrap">
         <ActivityItem />
         <ActivityItem />
         <ActivityItem />
         <ActivityItem />
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }
 
