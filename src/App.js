@@ -13,11 +13,13 @@ function App() {
       {/* Navbar here */}
       <Container className="pt-5">
         <Row className="my-3">
-        <HeroSectionCard><HeroSection /></HeroSectionCard>
+          <HeroSectionCard><HeroSection /></HeroSectionCard>
         </Row>
-        {/* <SectionCard><DashboardSection /></SectionCard> */}
         <Row className="my-3">
-        <SectionCard><AboutSection /></SectionCard>
+          <SectionCard><DashboardSection /></SectionCard>
+        </Row>
+        <Row className="my-3">
+          <SectionCard><AboutSection /></SectionCard>
         </Row>
         <Footer />
       </Container>
