@@ -27,10 +27,11 @@ export default function FeaturedRow() {
         </div>
         </Col>
         </Row>
-        <Row>
+        <Row className = 'carousel'>
             <FeaturedCarousel image = 'https://via.placeholder.com/150'  title = 'Samuel-Github' description  = 'Hello hoekkajdj'/>
             <FeaturedCarousel image = 'https://via.placeholder.com/150' title = 'Samuel-Github' description  = 'Hello hoekkajdj'/>
             <FeaturedCarousel image = 'https://via.placeholder.com/150' title = 'Samuel-Github' description  = 'Hello hoekkajdj'/>
+            
         </Row>
     </Container>
     
