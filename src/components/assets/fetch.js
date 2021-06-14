@@ -14,3 +14,17 @@ export const getProfiles = async callback => {
     console.log(error)
   }
 }
+
+export const getMyProfile = async callback => {
+  try {
+    const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    callback(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
