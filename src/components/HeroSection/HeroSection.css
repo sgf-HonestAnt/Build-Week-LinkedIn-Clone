@@ -5,6 +5,7 @@
 }
 
 .hero .card-img, .hero .card-img-top {
+    min-height: 28vh;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -13,9 +14,17 @@
     position: relative;
 }
 
+.hero .p-relative .fas {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: xx-large;
+}
+
 .hero .profile-pic {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 3%;
     height: 175px;
     width: 175px;
@@ -43,6 +52,20 @@
     background-color: rgba(0,0,0,0);
     color: gray;
     border: 1px solid gray;
+}
+
+.hero .fas {
+    float: right;
+    padding: 0;
+    font-size: x-large;
+}
+
+.hero .work-history {
+    font-weight: 700;
+}
+
+.hero .work-history img {
+    max-width: 30px;
 }
 
   

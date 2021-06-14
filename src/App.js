@@ -1,7 +1,7 @@
 import "./App.css"
-
-import { Container } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import SectionCard from "./components/SectionCard/SectionCard"
+import HeroSectionCard from "./components/SectionCard/HeroSectionCard"
 import HeroSection from "./components/HeroSection/HeroSection"
 import DashboardSection from "./components/DashboardSection/DashboardSection"
 import AboutSection from "./components/AboutSection/AboutSection"
@@ -12,10 +12,13 @@ function App() {
     <div className="App">
       {/* Navbar here */}
       <Container className="pt-5">
-        <HeroSection />
-        <SectionCard><DashboardSection /></SectionCard>
+        <Row className="my-3">
+        <HeroSectionCard><HeroSection /></HeroSectionCard>
+        </Row>
+        {/* <SectionCard><DashboardSection /></SectionCard> */}
+        <Row className="my-3">
         <SectionCard><AboutSection /></SectionCard>
-        {/* Footer is inside main container but underneath section columns */}
+        </Row>
         <Footer />
       </Container>
     </div>
