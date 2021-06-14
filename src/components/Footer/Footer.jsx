@@ -1,11 +1,12 @@
 import { Container, Row, Col, Button, DropdownButton, Dropdown } from 'react-bootstrap';
-import "./Footer.css";
 import Logo from "../assets/LinkedIn-Logos/LI-Logo.png"
+
+import "./Footer.css";
 
 const Footer = () => {
     return (
         <Container>
-            <Row className="footer py-2 px-5">
+            <Row className="footer py-2 px-3 px-sm-1 px-lg-auto">
                 <Col xs={12} className="p-0">
                     <img className="logo" src={Logo} alt="LinkedIn" />
                 </Col>
