@@ -7,15 +7,11 @@ import "./Navbar.css"
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("")
   return (
-    <nav className="fixed-top top-navbar d-flex">
+    <nav className="fixed-top top-navbar d-flex border-bottom">
       <Container className="d-flex align-items-center">
         <Link to="/feed">
           <i className="fab fa-linkedin mr-2"></i>
         </Link>
-        {/* <div className="d-flex flex-column align-items-center d-md-none search-container-small">
-          <i className="fas fa-search mx-3"></i>
-          <span className="d-none d-sm-block">Search</span>
-        </div> */}
         <div className="p-1 d-flex align-items-center rounded search-container-big">
           <div>
             <i className="fas fa-search mx-3"></i>
@@ -60,7 +56,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/me">
-              <i class="fas fa-user-circle"></i>
+              <i className="fas fa-user-circle"></i>
               <span className="d-none d-sm-block">Me</span>
             </Link>
           </li>
