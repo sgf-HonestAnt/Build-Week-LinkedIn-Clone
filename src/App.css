@@ -2,3 +2,7 @@
   background-color: #f3f2ef;
   min-height: 100vh;
 }
+
+.main {
+  max-width: 992px;
+}

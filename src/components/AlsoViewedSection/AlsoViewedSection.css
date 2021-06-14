@@ -1,0 +1,20 @@
+.also-viewed-section {
+  flex-basis: 50%;
+}
+.also-viewed-section p {
+  font-size: 12px;
+}
+
+.also-viewed-section .font-grey {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 10px;
+}
+
+.also-viewed-section i {
+  font-size: 4px;
+  margin: 5px;
+}
+
+.also-viewed-section button {
+  font-size: 14px;
+}
