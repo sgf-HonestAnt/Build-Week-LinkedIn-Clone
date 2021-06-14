@@ -1,0 +1,22 @@
+.about .btn, .about .fas {
+    float: right;
+    margin: 10px;
+    padding: 0;
+}
+
+.about .btn {
+    font-size: 14px;
+}
+
+.about .fas {
+    font-size: x-large;
+}
+
+.about .btn-link {
+    font-weight: 600;
+    color: gray;
+}
+
+.about .btn-link:hover, .about .btn-link:focus {
+    color: #007bff;
+}
