@@ -1,4 +1,3 @@
-import { Row, Col } from "react-bootstrap"
 import ActivityItem from "./ActivityItem"
 
 import "./ActivitySection.css"

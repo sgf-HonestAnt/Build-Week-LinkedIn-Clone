@@ -1,11 +1,11 @@
-.featured-row button{
-    border-style: none;
-    border: none;
-    background-color: #fff;
-    font-size: 20px
-
+.featured-section button {
+  border-style: none;
+  border: none;
+  background-color: #fff;
+  font-size: 20px;
+  padding: 0 10px;
 }
-
-.carousel{
-    overflow-x: scroll;
+.featured-section .carousel {
+  overflow-x: scroll;
+  flex-wrap: nowrap;
 }
