@@ -4,7 +4,8 @@ import { Container } from "react-bootstrap"
 import { Route } from "react-router-dom"
 
 import Navbar from "./components/Navbar/Navbar"
-import HomePage from "./components/HomePage/HomePage"
+import MyProfile from "./components/MyProfile/MyProfile"
+// import GenericProfile from "./components/GenericProfile/GenericProfile"
 import Footer from "./components/Footer/Footer"
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <div className="App">
       <Navbar />
       <Container fluid className="pt-5 main">
-        <Route exact path="/" component={HomePage}></Route>
+        <Route exact path="/" component={MyProfile}></Route>
+        {/* <Route path="/profile/:userId" component={GenericProfile} /> */}
       </Container>
       <Footer />
     </div>

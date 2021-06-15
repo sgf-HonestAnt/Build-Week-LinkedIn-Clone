@@ -13,3 +13,9 @@
   border-radius: 10px;
   margin: 10px 0;
 }
+
+.fa-pencil-alt,
+.fa-plus {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+}
