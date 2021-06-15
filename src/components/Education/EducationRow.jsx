@@ -7,10 +7,9 @@ import Description from "./Description"
 export default function EducationRow() {
   return (
     <div className="profile-page">
-      <Container>
         <Row>
           <Col md={10}>
-            <h4 className="profile-title text-muted">Education</h4>
+            <h5 className="profile-title">Education</h5>
           </Col>
           <Col md={2} className="text-right">
             <button className="text-muted">
@@ -50,7 +49,6 @@ export default function EducationRow() {
             <hr className="mt-3"></hr>
           </Col>
         </Row>
-      </Container>
     </div>
   )
 }
