@@ -1,13 +1,19 @@
-import React from "react"
+import { useState } from "react"
+import ExperienceModal from "../MyProfile/ExperienceModal/ExperienceModal"
 
-const SingleExperience = ({ experienceData }) => {
+const SingleExperience = ({ experienceData, onUpdate }) => {
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
   return (
     <div className="single-experience d-flex my-2">
       <img src={experienceData.image || "https://via.placeholder.com/150"} alt="" height="56px" />
       <div className="d-flex flex-column ml-3 w-100">
         <div className="d-flex justify-content-between">
           <h6>{experienceData.role}</h6>
-          <button>
+          <button onClick={handleShow}>
             <i className="fas fa-pencil-alt"></i>
           </button>
         </div>
@@ -19,6 +25,7 @@ const SingleExperience = ({ experienceData }) => {
         <p>{experienceData.description}</p>
         <hr className="my-3" />
       </div>
+      <ExperienceModal show={show} onHide={handleClose} action="editing" onUpdate={onUpdate} experienceData={experienceData} />
     </div>
   )
 }

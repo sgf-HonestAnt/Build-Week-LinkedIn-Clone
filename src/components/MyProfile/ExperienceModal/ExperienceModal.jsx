@@ -1,6 +1,31 @@
+import { useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
+import { addExperience, editExperience, deleteExperience } from "../../assets/fetch"
 
-const ExperienceModal = ({ show, onHide, action }) => {
+const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => {
+  const [formData, setFormData] = useState({
+    role: experienceData ? experienceData.role : "",
+    company: experienceData ? experienceData.company : "",
+    startDate: experienceData ? experienceData.startDate : "",
+    endDate: experienceData ? experienceData.endDate : "",
+    description: experienceData ? experienceData.description : "",
+    area: experienceData ? experienceData.area : "",
+    image: experienceData ? experienceData.image : "",
+  })
+  const [isEndDate, setIsEndDate] = useState(true)
+
+  const getInputData = (property, e) => {
+    setFormData({ ...formData, [property]: e.currentTarget.value })
+  }
+
+  const handleSubmit = () => {
+    action === "adding" ? addExperience(formData) : editExperience(experienceData._id, formData)
+  }
+
+  const handleDelete = () => {
+    deleteExperience(experienceData._id)
+  }
+
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
@@ -10,48 +35,87 @@ const ExperienceModal = ({ show, onHide, action }) => {
         <Form>
           <Form.Group>
             <Form.Label>Title</Form.Label>
-            <Form.Control type="text" placeholder="Ex. Web Developer" />
+            <Form.Control
+              type="text"
+              placeholder="Ex. Web Developer"
+              required
+              value={formData.role}
+              onChange={e => getInputData("role", e)}
+            />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Company</Form.Label>
-            <Form.Control type="text" placeholder="Ex. Strive School" />
+            <Form.Control
+              type="text"
+              placeholder="Ex. Strive School"
+              required
+              value={formData.company}
+              onChange={e => getInputData("company", e)}
+            />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="Ex. Berlin" />
+            <Form.Control type="text" placeholder="Ex. Berlin" required value={formData.area} onChange={e => getInputData("area", e)} />
           </Form.Group>
 
           <Form.Group>
-            <Form.Check type="checkbox" label="I am currently working in this role" />
+            <Form.Check
+              type="checkbox"
+              label="I am currently working in this role"
+              onChange={e => {
+                e.currentTarget.checked ? setIsEndDate(false) : setIsEndDate(true)
+              }}
+            />
           </Form.Group>
 
-          <div className="d-flex justify-content-around">
+          <div className="d-flex">
             <Form.Group>
               <Form.Label>Start Date</Form.Label>
-              <Form.Control type="month" />
+              <Form.Control type="month" required value={formData.startDate} onChange={e => getInputData("startDate", e)} />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>End Date</Form.Label>
-              <Form.Control type="month" />
-            </Form.Group>
+            {isEndDate && (
+              <Form.Group>
+                <Form.Label>End Date</Form.Label>
+                <Form.Control type="month" value={formData.endDate} onChange={e => getInputData("endDate", e)} />
+              </Form.Group>
+            )}
           </div>
 
           <Form.Group>
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control as="textarea" rows={3} required value={formData.description} onChange={e => getInputData("description", e)} />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Image URL</Form.Label>
-            <Form.Control type="text" placeholder="https://myImage.png" />
+            <Form.Control type="text" placeholder="https://myImage.png" value={formData.image} onChange={e => getInputData("image", e)} />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" onClick={onHide}>
-          Save Changes
+        {action === "editing" && (
+          <Button
+            variant="danger"
+            onClick={() => {
+              handleDelete()
+              onUpdate()
+              onHide()
+            }}
+          >
+            Delete
+          </Button>
+        )}
+        <Button
+          variant="primary"
+          onClick={() => {
+            handleSubmit()
+            onUpdate()
+            onHide()
+          }}
+        >
+          Save
         </Button>
       </Modal.Footer>
     </Modal>
