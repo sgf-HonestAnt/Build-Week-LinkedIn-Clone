@@ -1,5 +1,5 @@
 import { Card, Button, Badge, Modal, Form, Col } from 'react-bootstrap';
-import { getMyProfile } from "../assets/fetch"
+import { getProfile } from "../assets/fetch"
 import { useEffect } from "react"
 import { useState } from "react"
 import Logo from "../assets/LinkedIn-Logos/LI-Logo.png";
@@ -9,6 +9,8 @@ import "./HeroSection.css";
 const HeroSection = () => {
 
     // This is to be moved to fetch.js
+    const TOKEN =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MGFkYzI5MTkzMDAwMTU2MGFiOTMiLCJpYXQiOjE2MjM2NTcxODAsImV4cCI6MTYyNDg2Njc4MH0.TYp6DjYVT2X0_VJ1teUGTfeILyeVVOWVkXjn42Vqj7o"
     const editMyProfile = async callback => {
         try {
           const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
@@ -25,8 +27,8 @@ const HeroSection = () => {
     }
     // This is to be moved to fetch.js
 
-    const [myProfile, setMyProfile] = useState([])      
-    useEffect(() => getMyProfile(setMyProfile), [])
+    const [profile, setProfile] = useState([])      
+    useEffect(() => getProfile(setProfile), [])
 
     const [editProfile, setEditProfile] = useState([])      
     useEffect(() => editMyProfile(setEditProfile), [])
@@ -39,24 +41,24 @@ const HeroSection = () => {
     const handleCloseContactMe = () => setShowContactMe(false);
     const handleShowContactMe = () => setShowContactMe(true);
 
-    console.log(myProfile.name)
+    console.log(profile.name)
 
     return (
         <div className="hero">
             <div className="hero-cover p-relative">
                 <Card.Img variant="top" src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fjosephliu%2Ffiles%2F2019%2F06%2F1-office-1516329_1920-1200x299.jpg" />
                 <i className="fas fa-pen-square"></i>
-                <img className="profile-pic img-fluid" src={myProfile.image} alt="..." />
+                <img className="profile-pic img-fluid" src={profile.image} alt="..." />
             </div>                
             <i className="fas fa-pencil-alt pt-4 pr-4" onClick={handleShow}></i>                
             <div className="hero-columns pt-5">
                 <div className="mr-5">
                     <Card.Body>
-                        <Card.Title className="mb-0 profile-name">{myProfile.name} {myProfile.surname}</Card.Title>
-                        <Card.Text>{myProfile.title}
-                        <br />{myProfile.area} • <Button variant="link" onClick={handleShowContactMe}>Contact info</Button>
+                        <Card.Title className="mb-0 profile-name">{profile.name} {profile.surname}</Card.Title>
+                        <Card.Text>{profile.title}
+                        <br />{profile.area} • <Button variant="link" onClick={handleShowContactMe}>Contact info</Button>
                         {/* Include a pop-up modal featuring the following information: 
-                        myProfile.email and "linkedin.com/in/sarah-guinevere-fisher-0073b316b"*/}
+                        profile.email and "linkedin.com/in/sarah-guinevere-fisher-0073b316b"*/}
                         <br /><Button variant="link">500+ connections</Button></Card.Text>
                         <Card.Text>
                             <Badge pill variant="primary">Open to</Badge>
@@ -68,14 +70,14 @@ const HeroSection = () => {
                     {/* Contact me modal */}
                     <Modal show={showContactMe} onHide={handleCloseContactMe}>
                         <Modal.Header closeButton>
-                        <Modal.Title>{myProfile.name} {myProfile.surname}</Modal.Title>
+                        <Modal.Title>{profile.name} {profile.surname}</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <h5>Contact info</h5>
                             <div><i class="fab fa-linkedin"></i>Your Profile
-                            <br />linkedin.com/in/sarah-guinevere-fisher-0073b316b</div>
+                            <br />linkedin.com/in/{profile.name}-{profile.surname}-{profile._id}</div>
                             <div><i class="far fa-envelope"></i>Email
-                            <br />{myProfile.email}</div>
+                            <br />{profile.email}</div>
                         </Modal.Body>
                     </Modal>
 
@@ -93,11 +95,11 @@ const HeroSection = () => {
                                     <Form.Row>
                                         <Col>
                                             <Form.Label>First name *</Form.Label>
-                                            <Form.Control as="textarea" rows={1} placeholder={myProfile.name}  />
+                                            <Form.Control as="textarea" rows={1} placeholder={profile.name}  />
                                         </Col>
                                         <Col>
                                             <Form.Label>Last name *</Form.Label>
-                                            <Form.Control as="textarea" rows={1} placeholder={myProfile.surname} />
+                                            <Form.Control as="textarea" rows={1} placeholder={profile.surname} />
                                         </Col>
                                     </Form.Row>
                                 </Form.Group>
@@ -115,13 +117,13 @@ const HeroSection = () => {
                                 </Form.Group>
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Headline *</Form.Label>
-                                    <Form.Control as="textarea" rows={2} placeholder={myProfile.title} />
+                                    <Form.Control as="textarea" rows={2} placeholder={profile.title} />
                                 </Form.Group>
                                 {/* Experience and Education would go here */}
                                 <Form.Group controlId="exampleForm.ControlSelect1">
                                     <Form.Row>
                                         <Form.Label>Country / Region *</Form.Label>
-                                        <Form.Control as="textarea" rows={1} placeholder={myProfile.area} />
+                                        <Form.Control as="textarea" rows={1} placeholder={profile.area} />
                                     </Form.Row>
                                     <Form.Row>
                                         <Col>
