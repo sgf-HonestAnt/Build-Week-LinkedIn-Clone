@@ -90,31 +90,25 @@ const HeroSection = () => {
                             {/* 
                             Industry 
                             */}
-                            <Form>
-                                <Form.Group controlId="exampleForm.ControlSelect1">
-                                    <Form.Row>
-                                        <Col>
-                                            <Form.Label>First name *</Form.Label>
-                                            <Form.Control as="textarea" rows={1} placeholder={profile.name}  />
-                                        </Col>
-                                        <Col>
-                                            <Form.Label>Last name *</Form.Label>
-                                            <Form.Control as="textarea" rows={1} placeholder={profile.surname} />
-                                        </Col>
-                                    </Form.Row>
+                            <Form>                                
+                                <Form.Group className="d-inline-block" controlId="exampleForm.ControlSelect1">
+                                    <Form.Label>First name *</Form.Label>
+                                    <Form.Control type="text" placeholder={profile.name}  />
                                 </Form.Group>
-                                <i class="fas fa-plus"></i> Record name pronunciation<br />
-                                Name pronunciation can only be added using our mobile app.
-                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                <Form.Group className="d-inline-block" controlId="exampleForm.ControlSelect1">
+                                    <Form.Label>Last name *</Form.Label>
+                                    <Form.Control type="text" placeholder={profile.surname} />
+                                </Form.Group>
+                                {/* <Form.Group controlId="exampleForm.ControlSelect1">
                                     <Form.Label>Pronouns</Form.Label>
                                     <Form.Control as="select" placeholder="Please select">
                                     <option>She/Her</option>
                                     <option>He/Him</option>
                                     <option>They/Them</option>
-                                    <option>Custom</option>{/* Custom should open new text area labelled 'Enter custom pronouns' */}
+                                    <option>Custom</option>
                                     </Form.Control>
                                     Let others know how to refer to you. Learn more
-                                </Form.Group>
+                                </Form.Group> */}
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>Headline *</Form.Label>
                                     <Form.Control as="textarea" rows={2} placeholder={profile.title} />
@@ -125,7 +119,7 @@ const HeroSection = () => {
                                         <Form.Label>Country / Region *</Form.Label>
                                         <Form.Control as="textarea" rows={1} placeholder={profile.area} />
                                     </Form.Row>
-                                    <Form.Row>
+                                    {/* <Form.Row>
                                         <Col>
                                             <Form.Label>Postal Code</Form.Label>
                                             <Form.Control as="textarea" rows={1} placeholder="..." />
@@ -133,9 +127,8 @@ const HeroSection = () => {
                                         <Col>
                                             <Form.Label>Locations within this area</Form.Label>
                                             <Form.Control as="textarea" rows={1} placeholder="..." />
-                                            {/* This is meant to be a dropdown dependent on postcode */}
                                         </Col>
-                                    </Form.Row>
+                                    </Form.Row> */}
                                 </Form.Group>
                                 {/* Industry would go here */}
                                 <Form.Group controlId="exampleForm.ControlTextarea1">
