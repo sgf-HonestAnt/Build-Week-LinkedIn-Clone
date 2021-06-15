@@ -13,7 +13,7 @@ const HomePage = () => {
   return (
     <Row className="align-items-start">
       <Col className="my-3 px-1" xs={12} md={9}>
-        <div className="section-card px-3">
+        <div className="section-card p-0">
           <HeroSection />
         </div>
         <div className="section-card p-3">

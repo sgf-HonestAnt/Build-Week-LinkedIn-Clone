@@ -32,10 +32,15 @@
     border: 4px solid white;
 }
 
+.hero .hero-columns {
+    display: flex;
+}
+
 .hero .btn-link {
     padding: 0;
     color: #007bff;
     font-weight: 700;
+    text-align: left;
 }
 
 .hero .btn-link:hover, .footer .btn-link:focus {
@@ -62,10 +67,10 @@
 
 .hero .work-history {
     font-weight: 700;
+    padding: 20px;
 }
 
 .hero .work-history img {
-    max-width: 30px;
+    max-width: 50px;
 }
-
   

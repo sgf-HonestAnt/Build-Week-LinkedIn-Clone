@@ -14,7 +14,7 @@ function App() {
       <Container fluid className="pt-5 main">
         <Route exact path="/" component={HomePage}></Route>
       </Container>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
