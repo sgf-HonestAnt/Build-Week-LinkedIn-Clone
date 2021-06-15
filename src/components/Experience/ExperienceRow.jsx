@@ -1,57 +1,27 @@
-import React from "react"
-import { Container, Row, Col } from "react-bootstrap"
+import { useState } from "react"
+import ExperienceModal from "../MyProfile/ExperienceModal/ExperienceModal"
 import "./experience.css"
-import Experience from "./Experience"
 import SingleExperience from "./SingleExperience"
-import JobDescription from "./JobDescription"
 
-export default function ExperienceRow() {
+const ExperienceRow = ({ experiencesData }) => {
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   return (
     <div className="experience-page">
-        <Row>
-          <Col md={10}>
-            <h5 className="experience-title">Experience</h5>
-          </Col>
-          <Col md={2} className="text-right">
-            <button className="text-muted">
-              <i className="fas fa-plus"></i>
-            </button>
-          </Col>
-        </Row>
-
-        <Row className="experience-row">
-          <Col md={2}>
-            <SingleExperience image="https://via.placeholder.com/150" />
-          </Col>
-          <Col md={8} className="pt-5">
-            <Experience jobTitle="Project Manager " jobPlace="Strive Inc." years="Feb 2018- May 2021" location="Berlin" />
-            <JobDescription activities="Some activities you took" />
-            <JobDescription activities="Some activities you took" />
-            <JobDescription activities="Some activities you took" />
-            <JobDescription activities="Some activities you took" />
-            <hr className="mt-3 pl-5"></hr>
-          </Col>
-          <Col md={2} className="mt-5 text-right">
-            <button className="text-muted pencil">
-              <i className="fas fa-pencil-alt"></i>
-            </button>
-          </Col>
-        </Row>
-
-        <Row className="experience-row">
-          <Col md={2}>
-            <SingleExperience image="https://via.placeholder.com/150" />
-          </Col>
-          <Col md={8} className="pt-5">
-            <Experience jobTitle="Project Manager " jobPlace="Strive Inc." years="Feb 2018- May 2021" location="Berlin" />
-            <JobDescription activities="Some activities you took" />
-            <JobDescription activities="Some activities you took" />
-            <JobDescription activities="Some activities you took" />
-            <JobDescription activities="Some activities you took" />
-            <hr className="mt-3 pl-5"></hr>
-          </Col>
-        </Row>
-
+      <div className="d-flex justify-content-between">
+        <h5 className="experience-title">Experience</h5>
+        <button className="text-muted p-0" onClick={handleShow}>
+          <i className="fas fa-plus"></i>
+        </button>
+      </div>
+      {experiencesData.map(experience => (
+        <SingleExperience key={experience._id} experienceData={experience} />
+      ))}
+      <ExperienceModal show={show} onHide={handleClose} action="adding" />
     </div>
   )
 }
+
+export default ExperienceRow
