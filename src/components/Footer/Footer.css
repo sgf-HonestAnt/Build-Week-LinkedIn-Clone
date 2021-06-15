@@ -3,6 +3,10 @@
     color: gray;
 }
 
+.footer-col {
+    vertical-align: left;
+}
+
 .footer .logo {
     height: 20px;
 }
@@ -11,6 +15,7 @@
     display: block;
     padding: 0;
     font-size: 14px;
+    text-align: left;
 }
 
 .footer .btn-link {
@@ -25,7 +30,7 @@
 .footer .dropup-language .btn {
     border: 1px solid gray;
     padding: 1px 10px 1px 10px;
-    width: 100%;
+    width: 60%;
     text-align: left;
 }
 

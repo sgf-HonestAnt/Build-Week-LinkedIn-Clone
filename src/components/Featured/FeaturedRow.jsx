@@ -10,19 +10,19 @@ export default function FeaturedRow() {
         <h5 className="">Featured</h5>
         <div className="d-flex">
           <button className="text-muted">
-            <i class="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-left"></i>
           </button>
 
           <button className="text-muted">
-            <i class="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right"></i>
           </button>
 
           <button className="text-muted">
-            <i class="fas fa-plus"></i>
+            <i className="fas fa-plus"></i>
           </button>
 
           <button className="text-muted">
-            <i class="fas fa-pencil-alt"></i>
+            <i className="fas fa-pencil-alt"></i>
           </button>
         </div>
       </div>

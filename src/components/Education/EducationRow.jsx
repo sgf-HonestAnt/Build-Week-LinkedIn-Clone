@@ -13,7 +13,7 @@ export default function EducationRow() {
           </Col>
           <Col md={2} className="text-right">
             <button className="text-muted">
-              <i class="fas fa-plus"></i>
+              <i className="fas fa-plus"></i>
             </button>
           </Col>
         </Row>
@@ -32,7 +32,7 @@ export default function EducationRow() {
           </Col>
           <Col md={2} className="mt-5 text-right">
             <button className="text-muted">
-              <i class="fas fa-pencil-alt"></i>
+              <i className="fas fa-pencil-alt"></i>
             </button>
           </Col>
         </Row>
