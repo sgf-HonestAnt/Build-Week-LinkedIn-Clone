@@ -86,78 +86,66 @@ const HeroSection = ({ profileData }) => {
               {/* 
                             Industry 
                             */}
-              <Form>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                  <Form.Row>
-                    <Col>
-                      <Form.Label>First name *</Form.Label>
-                      <Form.Control as="textarea" rows={1} placeholder={profileData.name} />
-                    </Col>
-                    <Col>
-                      <Form.Label>Last name *</Form.Label>
-                      <Form.Control as="textarea" rows={1} placeholder={profileData.surname} />
-                    </Col>
-                  </Form.Row>
-                </Form.Group>
-                <i class="fas fa-plus"></i> Record name pronunciation
-                <br />
-                Name pronunciation can only be added using our mobile app.
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                  <Form.Label>Pronouns</Form.Label>
-                  <Form.Control as="select" placeholder="Please select">
-                    <option>She/Her</option>
-                    <option>He/Him</option>
-                    <option>They/Them</option>
-                    <option>Custom</option>
-                    {/* Custom should open new text area labelled 'Enter custom pronouns' */}
-                  </Form.Control>
-                  Let others know how to refer to you. Learn more
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>Headline *</Form.Label>
-                  <Form.Control as="textarea" rows={2} placeholder={profileData.title} />
-                </Form.Group>
-                {/* Experience and Education would go here */}
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                  <Form.Row>
-                    <Form.Label>Country / Region *</Form.Label>
-                    <Form.Control as="textarea" rows={1} placeholder={profileData.area} />
-                  </Form.Row>
-                  <Form.Row>
-                    <Col>
-                      <Form.Label>Postal Code</Form.Label>
-                      <Form.Control as="textarea" rows={1} placeholder="..." />
-                    </Col>
-                    <Col>
-                      <Form.Label>Locations within this area</Form.Label>
-                      <Form.Control as="textarea" rows={1} placeholder="..." />
-                      {/* This is meant to be a dropdown dependent on postcode */}
-                    </Col>
-                  </Form.Row>
-                </Form.Group>
-                {/* Industry would go here */}
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>Contact info</Form.Label>
-                  <Form.Control as="textarea" rows={1} placeholder="Profile URL, Email, WeChat ID" />
-                  {/* This should be border-bottom only, with a pencil icon */}
-                </Form.Group>
-              </Form>
-              <Badge pill variant="primary">
-                Save
-              </Badge>
-              {/* This will have an onclick of edit my profile with some of the former details */}
-            </Modal.Body>
-          </Modal>
-        </div>
-        <div className="work-history">
-          <div className="mb-2">
-            <img src={Logo} alt="..." />
-            Lorem
-          </div>
-          <div className="mb-2">
-            <img src={Logo} alt="..." />
-            Lorem
-          </div>
+                            <Form>                                
+                                <Form.Group className="d-inline-block" controlId="exampleForm.ControlSelect1">
+                                    <Form.Label>First name *</Form.Label>
+                                    <Form.Control type="text" placeholder={profile.name}  />
+                                </Form.Group>
+                                <Form.Group className="d-inline-block" controlId="exampleForm.ControlSelect1">
+                                    <Form.Label>Last name *</Form.Label>
+                                    <Form.Control type="text" placeholder={profile.surname} />
+                                </Form.Group>
+                                {/* <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Label>Pronouns</Form.Label>
+                                    <Form.Control as="select" placeholder="Please select">
+                                    <option>She/Her</option>
+                                    <option>He/Him</option>
+                                    <option>They/Them</option>
+                                    <option>Custom</option>
+                                    </Form.Control>
+                                    Let others know how to refer to you. Learn more
+                                </Form.Group> */}
+                                <Form.Group controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label>Headline *</Form.Label>
+                                    <Form.Control as="textarea" rows={2} placeholder={profile.title} />
+                                </Form.Group>
+                                {/* Experience and Education would go here */}
+                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Row>
+                                        <Form.Label>Country / Region *</Form.Label>
+                                        <Form.Control as="textarea" rows={1} placeholder={profile.area} />
+                                    </Form.Row>
+                                    {/* <Form.Row>
+                                        <Col>
+                                            <Form.Label>Postal Code</Form.Label>
+                                            <Form.Control as="textarea" rows={1} placeholder="..." />
+                                        </Col>
+                                        <Col>
+                                            <Form.Label>Locations within this area</Form.Label>
+                                            <Form.Control as="textarea" rows={1} placeholder="..." />
+                                        </Col>
+                                    </Form.Row> */}
+                                </Form.Group>
+                                {/* Industry would go here */}
+                                <Form.Group controlId="exampleForm.ControlTextarea1">
+                                    <Form.Label>Contact info</Form.Label>
+                                    <Form.Control as="textarea" rows={1} placeholder="Profile URL, Email, WeChat ID" />
+                                    {/* This should be border-bottom only, with a pencil icon */}
+                                </Form.Group>
+                            </Form>
+                            <Badge pill variant="primary">Save</Badge>
+                            {/* This will have an onclick of edit my profile with some of the former details */}
+                        </Modal.Body>
+                    </Modal>
+
+
+                </div>
+                <div className="work-history">
+                    <div className="mb-2"><img src={Logo} alt="..." />Lorem</div>
+                    <div className="mb-2"><img src={Logo} alt="..." />Lorem</div>
+                </div>
+            </div>
+ develop -- Current Change
         </div>
       </div>
     </div>
