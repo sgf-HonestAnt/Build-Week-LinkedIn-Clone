@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap"
 import ActivitySection from "../ActivitySection/ActivitySection"
 import AlsoViewed from "../AlsoViewedSection/AlsoViewedSection"
 import HeroSection from "../HeroSection/HeroSection"
-import DashboardSection from "../DashboardSection/DashboardSection"
+// import DashboardSection from "../DashboardSection/DashboardSection"
 import AboutSection from "../AboutSection/AboutSection"
 import FeaturedRow from "../Featured/FeaturedRow"
 import EducationRow from "../Education/EducationRow"
@@ -25,7 +25,7 @@ const MyProfile = props => {
     <Row className="align-items-start">
       <Col className="my-3 px-1" xs={12} md={9}>
         <div className="section-card p-0">
-          <HeroSection />
+          <HeroSection profileData={profileData} />
         </div>
         <div className="section-card p-3">
           <AboutSection />
@@ -37,7 +37,7 @@ const MyProfile = props => {
           <ActivitySection />
         </div>
         <div className="section-card p-3">
-          <ExperienceRow />
+          <ExperienceRow experiencesData={experiences} />
         </div>
         <div className="section-card p-3">
           <EducationRow />
