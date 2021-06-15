@@ -6,8 +6,8 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
   const [formData, setFormData] = useState({
     role: experienceData ? experienceData.role : "",
     company: experienceData ? experienceData.company : "",
-    startDate: experienceData ? experienceData.startDate : "",
-    endDate: experienceData ? experienceData.endDate : "",
+    startDate: experienceData ? experienceData.startDate.slice(0, 7) : "",
+    endDate: experienceData?.endDate ? experienceData.endDate.slice(0, 7) : "",
     description: experienceData ? experienceData.description : "",
     area: experienceData ? experienceData.area : "",
     image: experienceData ? experienceData.image : "",
@@ -32,7 +32,15 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
         <Modal.Title>{action === "adding" ? "Add experience" : "Edit experience"}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form
+          id="experience-form"
+          onSubmit={e => {
+            e.preventDefault()
+            handleSubmit()
+            onUpdate()
+            onHide()
+          }}
+        >
           <Form.Group>
             <Form.Label>Title</Form.Label>
             <Form.Control
@@ -107,14 +115,7 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
             Delete
           </Button>
         )}
-        <Button
-          variant="primary"
-          onClick={() => {
-            handleSubmit()
-            onUpdate()
-            onHide()
-          }}
-        >
+        <Button variant="primary" type="submit" form="experience-form">
           Save
         </Button>
       </Modal.Footer>
