@@ -14,6 +14,22 @@
   margin: 10px 0;
 }
 
+/* -------------------Start of edit section icon styling------------------- */
+
+/* Place following code inside a "d-flex" div.
+  <button className="editBtn">
+    <i className="fas fa-pencil-alt"></i>
+  </button>
+*/
+
+.editBtn {
+  border-style: none;
+  border: none;
+  background-color: #fff;
+  font-size: 20px;
+  padding: 0 10px;
+}
+
 .fa-pencil-alt,
 .fa-plus {
   padding: 5px;
@@ -27,3 +43,5 @@
 .fa-plus:hover {
   background-color: rgba(0,0,0,0.1);
 }
+
+/* --------------------End of edit section icon styling-------------------- */

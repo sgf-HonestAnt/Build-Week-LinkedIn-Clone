@@ -34,7 +34,7 @@ const HeroSection = ({ profileData, onUpdate }) => {
   }
 
   return (
-    <div className="hero">
+    <div className="hero-section">
       <div className="hero-cover p-relative">
         <Card.Img
           variant="top"
@@ -43,8 +43,12 @@ const HeroSection = ({ profileData, onUpdate }) => {
         <i className="fas fa-pen-square"></i>
         <div className="profile-img-container" style={{backgroundImage: `url("${profileData.image}")`}}></div>
       </div>
-      <i className="fas fa-pencil-alt mt-4 mr-4" onClick={handleShow}></i>
-      <div className="hero-columns pt-5">
+      <div className="d-flex p-3" style={{flexDirection: "row-reverse"}}>
+        <button className="editBtn"  onClick={handleShow}>
+            <i className="fas fa-pencil-alt"></i>
+        </button>
+      </div>
+      <div className="hero-section-columns">
         <div className="mr-5">
           <Card.Body>
             <Card.Title className="mb-0 profile-name">
@@ -74,9 +78,8 @@ const HeroSection = ({ profileData, onUpdate }) => {
           </Card.Body>
         </div>
 
-        {/* This div requires a fetch of OUR experiences and should return most recent two. */}
-        <div className="mr-5">
-          <div className="work-history">
+        <div>{/* This div requires a fetch of OUR experiences and should return most recent two. */}
+          <div className="card-body work-history">
             <div className="mb-2">
               <img src={Logo} alt="..." />
               Company 1

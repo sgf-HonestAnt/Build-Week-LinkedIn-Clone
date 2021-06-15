@@ -1,6 +1,5 @@
-.about-section .btn, {
+.about-section .see-more-btn, {
   font-size: 14px;
-  float: right;
 }
 
 .about-section .btn-link {
@@ -12,3 +11,4 @@
 .about-section .btn-link:focus {
   color: #007bff;
 }
+
