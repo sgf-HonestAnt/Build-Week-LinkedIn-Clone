@@ -15,11 +15,17 @@ import { getExperiencesById, getProfileById } from "../assets/fetch"
 const MyProfile = props => {
   const [profileData, setProfileData] = useState({})
   const [experiences, setExperiences] = useState([])
+  const [isRefreshed, setIsRefreshed] = useState(false)
 
   useEffect(() => {
     getProfileById("me", setProfileData)
     getExperiencesById("60c70adc291930001560ab93", setExperiences)
-  }, [])
+    setIsRefreshed(false)
+  }, [isRefreshed])
+
+  const refresh = () => {
+    setIsRefreshed(true)
+  }
 
   return (
     <Row className="align-items-start">
@@ -37,7 +43,7 @@ const MyProfile = props => {
           <ActivitySection />
         </div>
         <div className="section-card p-3">
-          <ExperienceRow experiencesData={experiences} />
+          <ExperienceRow experiencesData={experiences} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
           <EducationRow />
