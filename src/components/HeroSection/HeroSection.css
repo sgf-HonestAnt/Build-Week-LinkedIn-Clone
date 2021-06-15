@@ -15,7 +15,8 @@
   position: relative;
 }
 
-.hero .p-relative .fas {
+.hero .p-relative .fa-pen-square {
+  /* edit cover photo */
   position: absolute;
   top: 20px;
   right: 20px;
@@ -23,15 +24,19 @@
   font-size: xx-large;
 }
 
-.hero .profile-pic {
+.hero .profile-img-container {
+  background-position: center center;
+  background-size: cover;
   position: absolute;
   top: 35%;
   left: 3%;
   height: 175px;
   width: 175px;
+  overflow: hidden;
   border-radius: 50%;
   border: 4px solid white;
 }
+
 
 .hero .hero-columns {
   display: flex;
@@ -63,7 +68,6 @@
 
 .hero .fas {
   float: right;
-  padding: 0;
 }
 
 .hero .work-history {
