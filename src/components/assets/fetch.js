@@ -15,9 +15,23 @@ export const getProfiles = async callback => {
   }
 }
 
-export const getMyProfile = async callback => {
+export const getProfileById = async (id, callback) => {
   try {
-    const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}`, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    callback(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getExperiencesById = async (id, callback) => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`, {
       headers: {
         Authorization: `Bearer ${TOKEN}`,
       },
