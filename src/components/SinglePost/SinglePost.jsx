@@ -21,11 +21,11 @@ const SinglePost = ({ postInfo }) => {
             <p>{postInfo.username}</p>
             <span className="text">
               <p>12k followers</p>
-              <p>{`${timestamp}m`}</p>
               <div className="d-flex justify-content-start">
-                <p>Edited </p>
+                <p className="pr-1">{`${timestamp}m`}</p>
+                <p className="pr-1">Edited </p>
                 <p>
-                  <i className="fas fa-circle"></i>
+                  <i className="fas fa-circle pr-1"></i>
                 </p>
                 <p>
                   <i className="fas fa-globe-europe"></i>
@@ -36,20 +36,34 @@ const SinglePost = ({ postInfo }) => {
         </div>
         <div className="ml-3 post">
           <p>
-            {readMore ? postInfo.text: postInfo.text.substring(0,200)}
-            <button
-              className="read-more"
-              onClick={() => setReadMore(!readMore)}
-            >
-              {readMore ? "read more" : "  show less"}
-            </button>
+            {readMore ? postInfo.text : `${postInfo.text.substring(0, 200)}...`}
+            <div className="read-more-div">
+              <button
+                className="read-more"
+                onClick={() => setReadMore(!readMore)}
+              >
+                {readMore ? "show less" : "  read more"}
+              </button>
+            </div>
           </p>
           {postInfo.image && (
-            <img
-              src={postInfo.image}
-              alt="post"
-            />
+            <img className="w-100" src={postInfo.image} alt="post" />
           )}
+          <hr />
+          <div className="mt-3 d-flex">
+            <div className='reactions'>
+              <i className="far fa-thumbs-up"> Like</i>
+            </div>
+            <div className='reactions'>
+              <i className="far fa-comments pl-3 pr-3"> Comment</i>
+            </div>
+            <div className='reactions'>
+              <i className="fas fa-share pl-3 pr-3"> Share</i>
+            </div>
+            <div className='reactions'>
+              <i class="fas fa-paper-plane pl-3 pr-3"> Send</i>
+            </div>
+          </div>
         </div>
       </div>
     </>
