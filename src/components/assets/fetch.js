@@ -114,3 +114,19 @@ export const deleteExperience = async experienceId => {
     console.log(error)
   }
 }
+
+// Fetching Posts
+
+export const getPosts = async callback => {
+  try {
+    const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    callback(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
