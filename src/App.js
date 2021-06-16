@@ -5,18 +5,26 @@ import { Route } from "react-router-dom"
 
 import Navbar from "./components/Navbar/Navbar"
 import MyProfile from "./components/MyProfile/MyProfile"
-// import GenericProfile from "./components/GenericProfile/GenericProfile"
+import GenericProfile from "./components/GenericProfile/GenericProfile"
 import Footer from "./components/Footer/Footer"
+import FeedPage from "./components/FeedPage/FeedPage"
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Container fluid className="pt-5 main">
-        <Route exact path="/" component={MyProfile}></Route>
-        {/* <Route path="/profile/:userId" component={GenericProfile} /> */}
+        <Route exact path="/" component={FeedPage} />
+        <Route exact path="/me">
+          <MyProfile />
+          <Footer />
+        </Route>
+
+        <Route path="/profile/:userId">
+          <GenericProfile />
+          <Footer />
+        </Route>
       </Container>
-      <Footer />
     </div>
   )
 }
