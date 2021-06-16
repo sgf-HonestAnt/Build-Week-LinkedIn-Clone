@@ -60,7 +60,25 @@ export const addExperience = async payload => {
   }
 }
 
+export const addPost = async payload => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify(payload),
+    })
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const editProfile = async payload => {
+
   try {
     await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
       method: "PUT",

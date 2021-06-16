@@ -1,0 +1,43 @@
+.add-to-feed {
+    font-size: 0.8em;
+}
+
+.add-to-feed strong {
+    font-size: 1em;
+}
+
+.add-to-feed .profile-img-container {
+    background-position: center center;
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.add-to-feed .follow-btn {
+    color: inherit;
+    width: 100px;
+    border: 1px solid rgba(0,0,0,0.8);
+    border-radius: 25px;
+}
+
+.add-to-feed .follow-btn:hover {
+    background-color: rgba(0,0,0,0.1);
+    color: inherit;
+    text-decoration: none;
+}
+
+.add-to-feed .fa-plus {
+    background: rgba(0,0,0,0);
+}
+
+.add-to-feed .fa-linkedin {
+    color: blue;
+}
+
+.add-to-feed .view-recc {
+    font-weight: 700;
+    color: rgba(0,0,0,0.5);
+    font-size: 1.1em;
+}
