@@ -148,3 +148,17 @@ export const getPosts = async callback => {
     console.log(error)
   }
 }
+
+export const getPostById = async (postId, callback) => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    callback(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
