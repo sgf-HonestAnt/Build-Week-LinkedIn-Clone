@@ -8,8 +8,8 @@ const SingleExperience = ({ experienceData, onUpdate }) => {
   const handleShow = () => setShow(true)
 
   return (
-    <div className="single-experience d-flex my-2">
-      <img src={experienceData.image || "https://via.placeholder.com/150"} alt="" height="56px" />
+    <div className="single-experience d-flex align-items-start my-2">
+      <img src={experienceData.image || "https://via.placeholder.com/150"} alt="" width="56px" />
       <div className="d-flex flex-column ml-3 mr-1 w-100">
         <div className="d-flex justify-content-between">
           <h6>{experienceData.role}</h6>
