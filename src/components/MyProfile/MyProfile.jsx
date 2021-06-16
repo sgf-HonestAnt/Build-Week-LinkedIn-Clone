@@ -31,7 +31,7 @@ const MyProfile = props => {
     <Row className="align-items-start">
       <Col className="my-3 px-1" xs={12} md={9}>
         <div className="section-card p-0">
-          <HeroSection profileData={profileData} />
+          <HeroSection profileData={profileData} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
           <AboutSection />

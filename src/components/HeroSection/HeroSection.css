@@ -77,3 +77,11 @@
 .hero-section .work-history img {
   max-width: 50px;
 }
+
+.contact-modal .fa-linkedin, .contact-modal .fa-envelope {
+  font-size: 25px;
+}
+
+.contact-modal a {
+  display: block;
+}
