@@ -60,9 +60,9 @@ export const addExperience = async payload => {
   }
 }
 
-export const editProfile = async (payload) => {
+export const editProfile = async payload => {
   try {
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
+    await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
