@@ -77,9 +77,10 @@ export const addPost = async payload => {
   }
 }
 
-export const editProfile = async (payload) => {
+export const editProfile = async payload => {
+
   try {
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
+    await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -127,6 +128,22 @@ export const deleteExperience = async experienceId => {
     )
     const data = await response.json()
     console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Fetching Posts
+
+export const getPosts = async callback => {
+  try {
+    const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    callback(data)
   } catch (error) {
     console.log(error)
   }

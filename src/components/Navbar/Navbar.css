@@ -1,6 +1,7 @@
 .top-navbar * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .top-navbar {
@@ -19,7 +20,7 @@
   background-color: #eef3f7;
   font-size: 12px;
   outline: none;
-  width: 60px;
+  width: 100px;
 }
 .top-navbar li {
   list-style: none;
@@ -28,6 +29,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.top-navbar li.active {
+  border-bottom: 2px solid black;
+}
+.top-navbar li.active a > * {
+  color: black;
 }
 .top-navbar ul li:hover a > *,
 .top-navbar .search-container-small:hover * {
@@ -42,7 +49,9 @@
   justify-content: center;
   color: rgb(102, 102, 102);
 }
-
+.top-navbar a:hover {
+  text-decoration: none;
+}
 .top-navbar i,
 .top-navbar span {
   color: rgb(102, 102, 102);

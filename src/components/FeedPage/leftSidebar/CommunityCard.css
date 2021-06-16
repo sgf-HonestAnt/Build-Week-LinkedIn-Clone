@@ -1,0 +1,18 @@
+.community-card * {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.community-card h5 {
+  color: rgb(10, 102, 194);
+}
+
+.community-card p {
+  color: rgba(0, 0, 0, 0.6);
+  margin: 10px 5px;
+}
+
+.community-card i {
+  margin-right: 5px;
+}
