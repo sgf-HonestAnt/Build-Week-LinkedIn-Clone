@@ -1,13 +1,26 @@
 import React from "react"
-import { Row, Col } from "react-bootstrap"
-import SingleEducation from "./SingleEducation"
+import { useState } from "react"
+ import SingleEducation from "./SingleEducation"
+ import EducationModal from '../MyProfile/EducationModal/EducationModal'
 import "./education.css"
-import Education from "./Education"
-import Description from "./Description"
-export default function EducationRow() {
+
+const  EducationRow = ()=> {
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
   return (
-    <div className="profile-page">
-      <Row>
+    <div className="education-page">
+      <div className="d-flex justify-content-between">
+        <h5 className="education-title">Education</h5>
+        <button className="text-muted p-0" onClick={handleShow}>
+          <i className="fas fa-plus"></i>
+        </button>
+      </div>
+      <SingleEducation  />
+      <EducationModal show={show} onHide={handleClose} />
+      </div>
+      /* <Row>
         <Col md={10}>
           <h5 className="profile-title">Education</h5>
         </Col>
@@ -49,6 +62,7 @@ export default function EducationRow() {
           <hr className="mt-3"></hr>
         </Col>
       </Row>
-    </div>
+    </div> */
   )
 }
+export default EducationRow
