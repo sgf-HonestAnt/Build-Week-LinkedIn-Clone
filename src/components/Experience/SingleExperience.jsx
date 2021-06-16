@@ -1,7 +1,7 @@
 import { useState } from "react"
-import ExperienceModal from "../MyProfile/ExperienceModal/ExperienceModal"
+import ExperienceModal from "../ProfilePage/ExperienceModal/ExperienceModal"
 
-const SingleExperience = ({ experienceData, onUpdate }) => {
+const SingleExperience = ({ experienceData, onUpdate, isMe }) => {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -13,9 +13,11 @@ const SingleExperience = ({ experienceData, onUpdate }) => {
       <div className="d-flex flex-column ml-3 mr-1 w-100">
         <div className="d-flex justify-content-between">
           <h6>{experienceData.role}</h6>
-          <button className="editBtn mr-1" onClick={handleShow}>
-            <i className="fas fa-pencil-alt"></i>
-          </button>
+          {isMe && (
+            <button className="editBtn mr-1" onClick={handleShow}>
+              <i className="fas fa-pencil-alt"></i>
+            </button>
+          )}
         </div>
         <p>{experienceData.company}</p>
         <p className="font-grey">{`${new Date(experienceData.startDate).toLocaleDateString()} - ${

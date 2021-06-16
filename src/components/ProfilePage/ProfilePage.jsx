@@ -8,22 +8,26 @@ import AboutSection from "../AboutSection/AboutSection"
 import FeaturedRow from "../Featured/FeaturedRow"
 import EducationRow from "../Education/EducationRow"
 import ExperienceRow from "../Experience/ExperienceRow"
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
+import { withRouter } from "react-router-dom"
 import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch"
 
-const MyProfile = props => {
+const ProfilePage = props => {
+  const currentUserId = props.match.params.userId
+  const isMe = currentUserId === "me"
+
+  console.log(currentUserId)
   const [profileData, setProfileData] = useState({})
   const [experiences, setExperiences] = useState([])
   const [posts, setPosts] = useState(null)
   const [isRefreshed, setIsRefreshed] = useState(false)
 
   useEffect(() => {
-    getProfileById("me", setProfileData)
-    getExperiencesById("60c70adc291930001560ab93", setExperiences)
+    getProfileById(currentUserId, setProfileData)
+    getExperiencesById(currentUserId, setExperiences)
     getPosts(setPosts)
     setIsRefreshed(false)
-  }, [isRefreshed])
+  }, [isRefreshed, currentUserId])
 
   const refresh = () => {
     setIsRefreshed(true)
@@ -33,22 +37,22 @@ const MyProfile = props => {
     <Row className="align-items-start">
       <Col className="my-3 px-1" xs={12} md={9}>
         <div className="section-card p-0">
-          <HeroSection profileData={profileData} onUpdate={refresh} />
+          <HeroSection profileData={profileData} isMe={isMe} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
-          <AboutSection profileData={profileData} />
+          <AboutSection profileData={profileData} isMe={isMe} />
         </div>
         <div className="section-card p-3">
-          <FeaturedRow />
+          <FeaturedRow isMe={isMe} />
         </div>
         <div className="section-card p-3">
-          <ActivitySection userPosts={posts} />
+          <ActivitySection userPosts={posts} currentUserId={currentUserId} />
         </div>
         <div className="section-card p-3">
-          <ExperienceRow experiencesData={experiences} onUpdate={refresh} />
+          <ExperienceRow experiencesData={experiences} onUpdate={refresh} isMe={isMe} />
         </div>
         <div className="section-card p-3">
-          <EducationRow />
+          <EducationRow isMe={isMe} />
         </div>
       </Col>
       <Col className="d-none d-md-block my-3 px-1" md={3}>
@@ -60,4 +64,4 @@ const MyProfile = props => {
   )
 }
 
-export default MyProfile
+export default withRouter(ProfilePage)

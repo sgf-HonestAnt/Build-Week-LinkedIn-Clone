@@ -2,9 +2,10 @@ import ActivityItem from "./ActivityItem"
 
 import "./ActivitySection.css"
 
-const ActivitySection = ({ userPosts }) => {
+const ActivitySection = ({ userPosts, currentUserId }) => {
   const filterArray = () => {
-    const filteredArr = userPosts?.filter(post => post?.user?._id === "60c70adc291930001560ab93")
+    const userId = currentUserId === "me" ? "60c70adc291930001560ab93" : currentUserId
+    const filteredArr = userPosts?.filter(post => post?.user?._id === userId)
     return filteredArr.map(post => <ActivityItem key={post._id} post={post} />)
   }
 

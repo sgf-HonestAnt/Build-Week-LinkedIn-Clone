@@ -55,8 +55,8 @@ const Navbar = ({ location }) => {
               <span className="d-none d-sm-block pl-1">Notifications</span>
             </Link>
           </li>
-          <li className={currentPath === "/me" ? "active" : ""}>
-            <Link to="/me">
+          <li className={currentPath === "/profile/me" ? "active" : ""}>
+            <Link to="/profile/me">
               <i className="fas fa-user-circle"></i>
               <span className="d-none d-sm-block">Me</span>
             </Link>
