@@ -1,10 +1,10 @@
 import React from "react"
 import { useState } from "react"
- import SingleEducation from "./SingleEducation"
- import EducationModal from '../MyProfile/EducationModal/EducationModal'
+import SingleEducation from "./SingleEducation"
+import EducationModal from "../ProfilePage/EducationModal/EducationModal"
 import "./education.css"
 
-const  EducationRow = ()=> {
+const EducationRow = ({ isMe }) => {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -13,14 +13,16 @@ const  EducationRow = ()=> {
     <div className="education-page">
       <div className="d-flex justify-content-between">
         <h5 className="education-title">Education</h5>
-        <button className="text-muted p-0" onClick={handleShow}>
-          <i className="fas fa-plus"></i>
-        </button>
+        {isMe && (
+          <button className="text-muted p-0" onClick={handleShow}>
+            <i className="fas fa-plus"></i>
+          </button>
+        )}
       </div>
-      <SingleEducation  />
+      <SingleEducation isMe={isMe} />
       <EducationModal show={show} onHide={handleClose} />
-      </div>
-      /* <Row>
+    </div>
+    /* <Row>
         <Col md={10}>
           <h5 className="profile-title">Education</h5>
         </Col>

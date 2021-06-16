@@ -5,12 +5,12 @@ import { editProfile } from "../assets/fetch"
 
 import "./HeroSection.css"
 
-const HeroSection = ({ profileData, onUpdate }) => {
+const HeroSection = ({ profileData, onUpdate, isMe }) => {
   const [profileSection, setProfileSection] = useState({})
 
   useEffect(() => {
     setProfileSection({
-      ...profileData
+      ...profileData,
     })
   }, [profileData])
 
@@ -37,14 +37,17 @@ const HeroSection = ({ profileData, onUpdate }) => {
           variant="top"
           src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fjosephliu%2Ffiles%2F2019%2F06%2F1-office-1516329_1920-1200x299.jpg"
         />
-        <i className="fas fa-pen-square"></i>
+        {/* <i className="fas fa-pen-square"></i> */}
         <div className="profile-img-container" style={{ backgroundImage: `url("${profileData.image}")` }}></div>
       </div>
-      <div className="d-flex p-3" style={{ flexDirection: "row-reverse" }}>
-        <button className="editBtn" onClick={handleShow}>
-          <i className="fas fa-pencil-alt"></i>
-        </button>
-      </div>
+
+      {isMe && (
+        <div className="d-flex p-3" style={{ flexDirection: "row-reverse" }}>
+          <button className="editBtn" onClick={handleShow}>
+            <i className="fas fa-pencil-alt"></i>
+          </button>
+        </div>
+      )}
       <div className="hero-section-columns">
         <div className="mr-5">
           <Card.Body>
@@ -133,30 +136,17 @@ const HeroSection = ({ profileData, onUpdate }) => {
               >
                 <Form.Group className="d-inline-block col-6 pl-0">
                   <Form.Label>First name *</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={profileSection.name}
-                    onChange={e => getProfileSectionData("name", e)}
-                  />
+                  <Form.Control type="text" value={profileSection.name} onChange={e => getProfileSectionData("name", e)} />
                 </Form.Group>
 
                 <Form.Group className="d-inline-block col-6 p-0">
                   <Form.Label>Last name *</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={profileSection.surname}
-                    onChange={e => getProfileSectionData("surname", e)}
-                  />
+                  <Form.Control type="text" value={profileSection.surname} onChange={e => getProfileSectionData("surname", e)} />
                 </Form.Group>
 
                 <Form.Group>
                   <Form.Label>Headline *</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={2}
-                    value={profileSection.title}
-                    onChange={e => getProfileSectionData("title", e)}
-                  />
+                  <Form.Control as="textarea" rows={2} value={profileSection.title} onChange={e => getProfileSectionData("title", e)} />
                 </Form.Group>
 
                 {/* Experience and Education might go here */}
@@ -164,31 +154,19 @@ const HeroSection = ({ profileData, onUpdate }) => {
                 <Form.Group>
                   <Form.Row>
                     <Form.Label>Country / Region *</Form.Label>
-                    <Form.Control
-                      type="text"
-                      value={profileSection.area}
-                      onChange={e => getProfileSectionData("area", e)}
-                    />
+                    <Form.Control type="text" value={profileSection.area} onChange={e => getProfileSectionData("area", e)} />
                   </Form.Row>
                 </Form.Group>
 
                 <Form.Group>
                   <Form.Label>Profile image</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={profileSection.image}
-                    onChange={e => getProfileSectionData("image", e)}
-                  />
+                  <Form.Control type="text" value={profileSection.image} onChange={e => getProfileSectionData("image", e)} />
                   {/* This should be border-bottom only, with a pencil icon */}
                 </Form.Group>
 
                 <Form.Group>
                   <Form.Label>Contact info</Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={profileSection.email}
-                    onChange={e => getProfileSectionData("email", e)}
-                  />
+                  <Form.Control type="text" value={profileSection.email} onChange={e => getProfileSectionData("email", e)} />
                   {/* This should be border-bottom only, with a pencil icon */}
                 </Form.Group>
               </Form>

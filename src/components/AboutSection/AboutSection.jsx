@@ -2,19 +2,23 @@ import { Button } from "react-bootstrap"
 
 import "./AboutSection.css"
 
-const AboutSection = ({profileData}) => {
+const AboutSection = ({ profileData, isMe }) => {
   return (
     <section className="about-section">
       <div className="d-flex justify-content-between">
         <h5>About</h5>
-        <button className="editBtn">
+        {isMe && (
+          <button className="editBtn">
             <i className="fas fa-pencil-alt"></i>
-        </button>
+          </button>
+        )}
       </div>
       <div>
         <p>
           {profileData.bio}
-          <Button variant="link" className="see-more-btn">...see more</Button>
+          <Button variant="link" className="see-more-btn">
+            ...see more
+          </Button>
         </p>
       </div>
     </section>
