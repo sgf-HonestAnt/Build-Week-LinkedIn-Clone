@@ -5,13 +5,17 @@
 .feedpost-section .profile-img-container {
     background-position: center center;
     background-size: cover;
-    width: 40px; /* Must match height of post-form */
+    width: 50px;
     overflow: hidden;
     border-radius: 50%;
 }
 
 .feedpost-section .post-form, .feedpost-section .profile-img-container {      
-    height: 40px;
+    height: 45px;
+}
+
+.feedpost-section .fas, .feedpost-section .fab {
+    font-size: 20px;
 }
 
 .feedpost-section .fa-image {

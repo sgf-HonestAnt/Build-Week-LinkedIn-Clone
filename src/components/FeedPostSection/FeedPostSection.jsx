@@ -1,10 +1,17 @@
-import { addPost } from "../assets/fetch"
-import { useState } from "react"
-import { Form, Button } from 'react-bootstrap'
+import { getProfileById, addPost } from "../assets/fetch"
+
+import { useEffect, useState } from "react"
+import { Form } from 'react-bootstrap'
 
 import "./FeedPostSection.css"
 
 const FeedPostSection = ({ onUpdate }) => {
+    const [myProfile, setMyProfile] = useState({})
+
+    useEffect(() => {
+        getProfileById("me", setMyProfile)
+    }, [])
+
     const [data, setData] = useState({
         text: ''
     })
@@ -18,8 +25,11 @@ const FeedPostSection = ({ onUpdate }) => {
     return (
         <section className="feedpost-section">
         <div className="d-flex justify-content-between">
-            <div className="profile-img-container mr-2" style={{backgroundImage: `url("https://i1.sndcdn.com/avatars-000583246488-dhm5la-t500x500.jpg")`}}></div>
-            {/* ${profileData.image} */}
+            <div 
+                className="profile-img-container mr-2" 
+                style={{backgroundImage: `url(${myProfile.image})`}}
+            ></div>
+            {/* "https://i1.sndcdn.com/avatars-000583246488-dhm5la-t500x500.jpg" */}
             <Form
                 className="w-100" 
                 onSubmit={e => {
@@ -36,13 +46,13 @@ const FeedPostSection = ({ onUpdate }) => {
                         value={data.text}
                         onChange={e => getData(e)}
                     />
-                    <Button variant="primary" type="submit">
+                    {/* <Button variant="primary" type="submit">
                         Save
-                    </Button>
+                    </Button> */}
                 </Form.Group>
             </Form>
         </div>
-            <div className="d-flex justify-content-around feedpost-icons">
+            <div className="d-flex justify-content-between feedpost-icons">
                 <div><i className="fas fa-image mr-2"></i>Photo</div>
                 <div><i className="fab fa-youtube mr-2"></i>Video</div>
                 <div><i className="fas fa-calendar-alt mr-2"></i>Event</div>

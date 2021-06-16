@@ -8,9 +8,20 @@ const MostViewedCourses = () => {
             <i class="fas fa-info-circle"></i>
         </div>
         <div>
-            <div className="d-flex justify-content-around">
-
-            </div>
+            <ol className="ordered-list">
+              <li><strong>The Six Morning Habits of High Performance</strong>
+                <br />Pete Mockaitis | How To Be Awesome At Your...
+              </li>
+              <li><strong>Unconscious Bias</strong>
+                <br />Stacey Gordon
+              </li>
+              <li><strong>What is Graphic Design?</strong>
+                <br />Sean Adams
+              </li>
+            </ol>
+        </div>
+        <div>
+            <div className="view-recc">View all recommendations <i class="fas fa-arrow-right"></i></div>
         </div>        
     </section>
   )
