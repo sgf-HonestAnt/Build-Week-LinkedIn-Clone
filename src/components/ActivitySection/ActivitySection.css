@@ -1,5 +1,9 @@
-.activity-section .activity-item {
+.activity-section a {
   flex-basis: 50%;
+}
+.activity-section a,
+.activity-section a:hover {
+  color: currentColor;
 }
 .activity-section p {
   font-size: 12px;

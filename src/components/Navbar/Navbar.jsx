@@ -25,43 +25,43 @@ const Navbar = ({ location }) => {
           ></input>
         </div>
         <ul className="d-flex justify-content-end align-items-center w-100 h-100">
-          <li className={currentPath === "/" && "active"}>
+          <li className={currentPath === "/" ? "active" : ""}>
             <Link to="/">
               <i className="fas fa-home"></i>
               <span className="d-none d-sm-block">Home</span>
             </Link>
           </li>
-          <li className={currentPath === "/mynetwork" && "active"}>
+          <li className={currentPath === "/mynetwork" ? "active" : ""}>
             <Link to="/mynetwork">
               <i className="fas fa-user-friends"></i>
               <span className="d-none d-sm-block">Network</span>
             </Link>
           </li>
-          <li className={currentPath === "/jobs" && "active"}>
+          <li className={currentPath === "/jobs" ? "active" : ""}>
             <Link to="/jobs">
               <i className="fas fa-briefcase"></i>
               <span className="d-none d-sm-block">Jobs</span>
             </Link>
           </li>
-          <li className={currentPath === "/messaging" && "active"}>
+          <li className={currentPath === "/messaging" ? "active" : ""}>
             <Link to="/messaging">
               <i className="fas fa-comment-dots"></i>
               <span className="d-none d-sm-block pr-1">Messaging</span>
             </Link>
           </li>
-          <li className={currentPath === "/notifications" && "active"}>
+          <li className={currentPath === "/notifications" ? "active" : ""}>
             <Link to="/notifications">
               <i className="fas fa-bell"></i>
               <span className="d-none d-sm-block pl-1">Notifications</span>
             </Link>
           </li>
-          <li className={currentPath === "/me" && "active"}>
+          <li className={currentPath === "/me" ? "active" : ""}>
             <Link to="/me">
               <i className="fas fa-user-circle"></i>
               <span className="d-none d-sm-block">Me</span>
             </Link>
           </li>
-          <li className={"border-left d-none d-sm-flex" + currentPath === "/work" && " active"}>
+          <li className={"border-left d-none d-sm-flex" + currentPath === "/work" ? " active" : ""}>
             <Link to="/work">
               <i className="fas fa-th"></i>
               <span className="d-none d-sm-block">Work</span>

@@ -8,6 +8,7 @@ import MyProfile from "./components/MyProfile/MyProfile"
 import GenericProfile from "./components/GenericProfile/GenericProfile"
 import Footer from "./components/Footer/Footer"
 import FeedPage from "./components/FeedPage/FeedPage"
+import PostPage from "./components/PostPage/PostPage"
 
 function App() {
   return (
@@ -17,6 +18,11 @@ function App() {
         <Route exact path="/" component={FeedPage} />
         <Route exact path="/me">
           <MyProfile />
+          <Footer />
+        </Route>
+
+        <Route path="/post/:postId">
+          <PostPage />
           <Footer />
         </Route>
 

@@ -10,16 +10,18 @@ import EducationRow from "../Education/EducationRow"
 import ExperienceRow from "../Experience/ExperienceRow"
 import { useState } from "react"
 import { useEffect } from "react"
-import { getExperiencesById, getProfileById } from "../assets/fetch"
+import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch"
 
 const MyProfile = props => {
   const [profileData, setProfileData] = useState({})
   const [experiences, setExperiences] = useState([])
+  const [posts, setPosts] = useState(null)
   const [isRefreshed, setIsRefreshed] = useState(false)
 
   useEffect(() => {
     getProfileById("me", setProfileData)
     getExperiencesById("60c70adc291930001560ab93", setExperiences)
+    getPosts(setPosts)
     setIsRefreshed(false)
   }, [isRefreshed])
 
@@ -40,7 +42,7 @@ const MyProfile = props => {
           <FeaturedRow />
         </div>
         <div className="section-card p-3">
-          <ActivitySection />
+          <ActivitySection userPosts={posts} />
         </div>
         <div className="section-card p-3">
           <ExperienceRow experiencesData={experiences} onUpdate={refresh} />
