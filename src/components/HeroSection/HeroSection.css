@@ -1,21 +1,22 @@
-.hero {
+.hero-section {
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 10px;
 }
 
-.hero .card-img,
-.hero .card-img-top {
+.hero-section .card-img,
+.hero-section .card-img-top {
   min-height: 28vh;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-.hero .p-relative {
+.hero-section .p-relative {
   position: relative;
 }
 
-.hero .p-relative .fas {
+.hero-section .p-relative .fa-pen-square {
+  /* edit cover photo */
   position: absolute;
   top: 20px;
   right: 20px;
@@ -23,54 +24,56 @@
   font-size: xx-large;
 }
 
-.hero .profile-pic {
+.hero-section .profile-img-container {
+  background-position: center center;
+  background-size: cover;
   position: absolute;
   top: 35%;
   left: 3%;
   height: 175px;
   width: 175px;
+  overflow: hidden;
   border-radius: 50%;
   border: 4px solid white;
 }
 
-.hero .hero-columns {
+.hero-section .hero-section-columns {
   display: flex;
 }
 
-.hero .btn-link {
+.hero-section .btn-link {
   padding: 0;
   color: #007bff;
   font-weight: 700;
   text-align: left;
 }
 
-.hero .btn-link:hover,
+.hero-section .btn-link:hover,
 .footer .btn-link:focus {
   color: #007bff;
 }
 
-.hero .badge {
+.hero-section .badge {
   padding: 7px 15px;
   margin: 3px 7px 3px 0;
   font-size: medium;
 }
 
-.hero .badge-light {
+.hero-section .badge-light {
   background-color: rgba(0, 0, 0, 0);
   color: gray;
   border: 1px solid gray;
 }
 
-.hero .fas {
+.hero-section .fas {
   float: right;
-  padding: 0;
 }
 
-.hero .work-history {
+.hero-section .work-history {
   font-weight: 700;
-  padding: 20px;
+  transform: translateX(50%);
 }
 
-.hero .work-history img {
+.hero-section .work-history img {
   max-width: 50px;
 }

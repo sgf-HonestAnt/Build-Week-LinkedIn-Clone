@@ -1,20 +1,14 @@
-.about .btn,
-.about .fas {
-  float: right;
-  margin: 10px;
-  padding: 0;
-}
-
-.about .btn {
+.about-section .see-more-btn, {
   font-size: 14px;
 }
 
-.about .btn-link {
+.about-section .btn-link {
   font-weight: 600;
-  color: gray;
+  color: rgba(0,0,0,0.6);
 }
 
-.about .btn-link:hover,
-.about .btn-link:focus {
+.about-section .btn-link:hover,
+.about-section .btn-link:focus {
   color: #007bff;
 }
+

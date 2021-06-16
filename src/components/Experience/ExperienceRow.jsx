@@ -12,7 +12,7 @@ const ExperienceRow = ({ experiencesData, onUpdate }) => {
     <div className="experience-page">
       <div className="d-flex justify-content-between">
         <h5 className="experience-title">Experience</h5>
-        <button className="text-muted p-0" onClick={handleShow}>
+        <button className="editBtn" onClick={handleShow}>
           <i className="fas fa-plus"></i>
         </button>
       </div>

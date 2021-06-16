@@ -60,6 +60,23 @@ export const addExperience = async payload => {
   }
 }
 
+export const editProfile = async (payload) => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify(payload),
+    })
+    // const data = await response.json()
+    // console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const editExperience = async (experienceId, payload) => {
   try {
     const response = await fetch(
