@@ -36,7 +36,7 @@ const MyProfile = props => {
           <HeroSection profileData={profileData} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
-          <AboutSection />
+          <AboutSection profileData={profileData} />
         </div>
         <div className="section-card p-3">
           <FeaturedRow />
