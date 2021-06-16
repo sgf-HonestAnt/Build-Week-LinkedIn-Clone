@@ -9,8 +9,10 @@ const HeroSection = ({ profileData, onUpdate }) => {
   const [profileSection, setProfileSection] = useState({})
 
   useEffect(() => {
-    console.log("rendered")
-  }, [])
+    setProfileSection({
+      ...profileData
+    })
+  }, [profileData])
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -133,7 +135,6 @@ const HeroSection = ({ profileData, onUpdate }) => {
                   <Form.Label>First name *</Form.Label>
                   <Form.Control
                     type="text"
-                    // placeholder="Ex. Doc Brown"
                     value={profileSection.name}
                     onChange={e => getProfileSectionData("name", e)}
                   />
@@ -143,7 +144,6 @@ const HeroSection = ({ profileData, onUpdate }) => {
                   <Form.Label>Last name *</Form.Label>
                   <Form.Control
                     type="text"
-                    // placeholder={profileData.surname}
                     value={profileSection.surname}
                     onChange={e => getProfileSectionData("surname", e)}
                   />
@@ -154,7 +154,6 @@ const HeroSection = ({ profileData, onUpdate }) => {
                   <Form.Control
                     as="textarea"
                     rows={2}
-                    // placeholder={profileData.title}
                     value={profileSection.title}
                     onChange={e => getProfileSectionData("title", e)}
                   />
@@ -167,7 +166,6 @@ const HeroSection = ({ profileData, onUpdate }) => {
                     <Form.Label>Country / Region *</Form.Label>
                     <Form.Control
                       type="text"
-                      // placeholder={profileData.area}
                       value={profileSection.area}
                       onChange={e => getProfileSectionData("area", e)}
                     />
@@ -178,7 +176,6 @@ const HeroSection = ({ profileData, onUpdate }) => {
                   <Form.Label>Profile image</Form.Label>
                   <Form.Control
                     type="text"
-                    // placeholder={profileData.image ? profileData.image : "Ex. myprofile.jpg"}
                     value={profileSection.image}
                     onChange={e => getProfileSectionData("image", e)}
                   />
@@ -189,7 +186,6 @@ const HeroSection = ({ profileData, onUpdate }) => {
                   <Form.Label>Contact info</Form.Label>
                   <Form.Control
                     type="text"
-                    // placeholder={profileData.email ? profileData.email : "Profile URL, Email, WeChat ID"}
                     value={profileSection.email}
                     onChange={e => getProfileSectionData("email", e)}
                   />
