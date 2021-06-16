@@ -1,28 +1,21 @@
-import React from 'react'
+import React from "react"
 import { getPosts } from "../assets/fetch"
 import { useEffect } from "react"
 import { useState } from "react"
-import SinglePost from './SinglePost'
-import "./singlepost.css";
+import SinglePost from "./SinglePost"
+import "./singlepost.css"
 
+const UserPostSection = () => {
+  const [posts, setPosts] = useState([])
+  useEffect(() => getPosts(setPosts), [])
 
-const UserPostSection=()=> {
-
-    const [posts, setPosts] = useState([])
-    useEffect(() => getPosts(setPosts), [])
-    console.log(posts)
-    return (
-      
-     <section className="user-posts-section">
-      {posts.slice(posts.length-20).map(post => {
-      console.log(post)
-      
+  return (
+    <section className="user-posts-section">
+      {posts.slice(posts.length - 20).map(post => {
         return <SinglePost key={post._id} postInfo={post} />
-
-})}
+      })}
     </section>
-  
-    )
+  )
 }
 
 export default UserPostSection

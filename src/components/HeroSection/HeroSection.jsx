@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react"
 import { Card, Button, Badge, Modal, Form } from "react-bootstrap"
 import Logo from "../assets/LinkedIn-Logos/LI-Logo.png"
-import { editProfile, getExperiencesById } from "../assets/fetch"
+import { editProfile } from "../assets/fetch"
 
 import "./HeroSection.css"
 
 const HeroSection = ({ profileData, onUpdate }) => {
-
   const [profileSection, setProfileSection] = useState({})
 
   useEffect(() => {
@@ -34,14 +33,14 @@ const HeroSection = ({ profileData, onUpdate }) => {
       <div className="hero-cover p-relative">
         <Card.Img
           variant="top"
-          src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fjosephliu%2Ffiles%2F2019%2F06%2F1-office-1516329_1920-1200x299.jpg"       
+          src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fjosephliu%2Ffiles%2F2019%2F06%2F1-office-1516329_1920-1200x299.jpg"
         />
         <i className="fas fa-pen-square"></i>
-        <div className="profile-img-container" style={{backgroundImage: `url("${profileData.image}")`}}></div>
+        <div className="profile-img-container" style={{ backgroundImage: `url("${profileData.image}")` }}></div>
       </div>
-      <div className="d-flex p-3" style={{flexDirection: "row-reverse"}}>
-        <button className="editBtn"  onClick={handleShow}>
-            <i className="fas fa-pencil-alt"></i>
+      <div className="d-flex p-3" style={{ flexDirection: "row-reverse" }}>
+        <button className="editBtn" onClick={handleShow}>
+          <i className="fas fa-pencil-alt"></i>
         </button>
       </div>
       <div className="hero-section-columns">
@@ -53,7 +52,7 @@ const HeroSection = ({ profileData, onUpdate }) => {
             <Card.Text>
               {profileData.title}
               <br />
-              {profileData.area} • {" "}
+              {profileData.area} •{" "}
               <Button variant="link" onClick={handleShowContactMe}>
                 Contact info
               </Button>
@@ -74,7 +73,8 @@ const HeroSection = ({ profileData, onUpdate }) => {
           </Card.Body>
         </div>
 
-        <div>{/* This div requires a fetch of OUR experiences and should return most recent two. */}
+        <div>
+          {/* This div requires a fetch of OUR experiences and should return most recent two. */}
           <div className="card-body work-history">
             <div className="mb-2">
               <img src={Logo} alt="..." />
@@ -97,14 +97,18 @@ const HeroSection = ({ profileData, onUpdate }) => {
               <h5>Contact info</h5>
               <div className="d-flex justify-content-start">
                 <i className="fab fa-linkedin mr-3 p-1"></i>
-                <div>Your Profile
-                <a href="#">linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}</a>
+                <div>
+                  Your Profile
+                  <a href="google.com">
+                    linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
+                  </a>
                 </div>
               </div>
               <div className="d-flex justify-content-start">
                 <i className="far fa-envelope mr-3 p-1"></i>
-                <div>Email
-                <a href="#">{profileData.email}</a>
+                <div>
+                  Email
+                  <a href="google.com">{profileData.email}</a>
                 </div>
               </div>
             </Modal.Body>
@@ -117,29 +121,29 @@ const HeroSection = ({ profileData, onUpdate }) => {
             </Modal.Header>
             <Modal.Body>
               <Form
-              id="profile-form"
-              onSubmit={e => {
-                e.preventDefault()
-                handleSubmit()
-                onUpdate()
-                handleClose()
-              }}
+                id="profile-form"
+                onSubmit={e => {
+                  e.preventDefault()
+                  handleSubmit()
+                  onUpdate()
+                  handleClose()
+                }}
               >
                 <Form.Group className="d-inline-block col-6 pl-0">
                   <Form.Label>First name *</Form.Label>
-                  <Form.Control 
-                    type="text" 
+                  <Form.Control
+                    type="text"
                     // placeholder="Ex. Doc Brown"
-                    value={profileSection.name} 
+                    value={profileSection.name}
                     onChange={e => getProfileSectionData("name", e)}
                   />
                 </Form.Group>
 
                 <Form.Group className="d-inline-block col-6 p-0">
                   <Form.Label>Last name *</Form.Label>
-                  <Form.Control 
-                    type="text" 
-                    // placeholder={profileData.surname} 
+                  <Form.Control
+                    type="text"
+                    // placeholder={profileData.surname}
                     value={profileSection.surname}
                     onChange={e => getProfileSectionData("surname", e)}
                   />
@@ -147,11 +151,11 @@ const HeroSection = ({ profileData, onUpdate }) => {
 
                 <Form.Group>
                   <Form.Label>Headline *</Form.Label>
-                  <Form.Control 
-                    as="textarea" 
-                    rows={2} 
-                    // placeholder={profileData.title} 
-                    value={profileSection.title} 
+                  <Form.Control
+                    as="textarea"
+                    rows={2}
+                    // placeholder={profileData.title}
+                    value={profileSection.title}
                     onChange={e => getProfileSectionData("title", e)}
                   />
                 </Form.Group>
@@ -161,10 +165,10 @@ const HeroSection = ({ profileData, onUpdate }) => {
                 <Form.Group>
                   <Form.Row>
                     <Form.Label>Country / Region *</Form.Label>
-                    <Form.Control 
-                      type="text" 
-                      // placeholder={profileData.area} 
-                      value={profileSection.area} 
+                    <Form.Control
+                      type="text"
+                      // placeholder={profileData.area}
+                      value={profileSection.area}
                       onChange={e => getProfileSectionData("area", e)}
                     />
                   </Form.Row>
@@ -172,10 +176,10 @@ const HeroSection = ({ profileData, onUpdate }) => {
 
                 <Form.Group>
                   <Form.Label>Profile image</Form.Label>
-                  <Form.Control 
-                    type="text" 
-                    // placeholder={profileData.image ? profileData.image : "Ex. myprofile.jpg"} 
-                    value={profileSection.image}  
+                  <Form.Control
+                    type="text"
+                    // placeholder={profileData.image ? profileData.image : "Ex. myprofile.jpg"}
+                    value={profileSection.image}
                     onChange={e => getProfileSectionData("image", e)}
                   />
                   {/* This should be border-bottom only, with a pencil icon */}
@@ -183,10 +187,10 @@ const HeroSection = ({ profileData, onUpdate }) => {
 
                 <Form.Group>
                   <Form.Label>Contact info</Form.Label>
-                  <Form.Control 
-                    type="text" 
-                    // placeholder={profileData.email ? profileData.email : "Profile URL, Email, WeChat ID"} 
-                    value={profileSection.email}  
+                  <Form.Control
+                    type="text"
+                    // placeholder={profileData.email ? profileData.email : "Profile URL, Email, WeChat ID"}
+                    value={profileSection.email}
                     onChange={e => getProfileSectionData("email", e)}
                   />
                   {/* This should be border-bottom only, with a pencil icon */}
