@@ -1,0 +1,23 @@
+.most-viewed-courses {
+    font-size: 0.8em;
+}
+
+.most-viewed-courses strong {
+    font-size: 1em;
+}
+
+.most-viewed-courses ol.ordered-list {
+    padding-inline-start: 20px;
+}
+
+.most-viewed-courses li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.most-viewed-courses .view-recc {
+    font-weight: 700;
+    color: rgba(0,0,0,0.5);
+    font-size: 1.1em;
+}
