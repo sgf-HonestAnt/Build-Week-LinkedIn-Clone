@@ -1,6 +1,7 @@
 const TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MGFkYzI5MTkzMDAwMTU2MGFiOTMiLCJpYXQiOjE2MjM2NTcxODAsImV4cCI6MTYyNDg2Njc4MH0.TYp6DjYVT2X0_VJ1teUGTfeILyeVVOWVkXjn42Vqj7o"
 
+// Profiles functions
 export const getProfiles = async callback => {
   try {
     const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
@@ -29,20 +30,24 @@ export const getProfileById = async (id, callback) => {
   }
 }
 
-export const getExperiencesById = async (id, callback) => {
+export const editProfile = async payload => {
   try {
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`, {
+    await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
+      method: "PUT",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${TOKEN}`,
       },
+      body: JSON.stringify(payload),
     })
-    const data = await response.json()
-    callback(data)
+    // const data = await response.json()
+    // console.log(data)
   } catch (error) {
     console.log(error)
   }
 }
 
+// Experiences functions
 export const addExperience = async payload => {
   try {
     const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/60c70adc291930001560ab93/experiences`, {
@@ -55,41 +60,6 @@ export const addExperience = async payload => {
     })
     const data = await response.json()
     console.log(data)
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-export const addPost = async payload => {
-  try {
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify(payload),
-    })
-    const data = await response.json()
-    console.log(data)
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-export const editProfile = async payload => {
-
-  try {
-    await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify(payload),
-    })
-    // const data = await response.json()
-    // console.log(data)
   } catch (error) {
     console.log(error)
   }
@@ -115,6 +85,20 @@ export const editExperience = async (experienceId, payload) => {
   }
 }
 
+export const getExperiencesById = async (id, callback) => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    })
+    const data = await response.json()
+    callback(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const deleteExperience = async experienceId => {
   try {
     const response = await fetch(
@@ -133,7 +117,23 @@ export const deleteExperience = async experienceId => {
   }
 }
 
-// Fetching Posts
+// Posts functions
+export const addPost = async payload => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify(payload),
+    })
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const getPosts = async callback => {
   try {
