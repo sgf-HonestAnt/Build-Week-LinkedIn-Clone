@@ -7,11 +7,12 @@ import "./HeroSection.css"
 
 const HeroSection = ({ profileData, onUpdate }) => {
 
+  console.log(profileData)
+
   const [profileSection, setProfileSection] = useState({
     name: profileData.name,
     surname: profileData.surname,
     email: profileData.email,
-    bio: profileData.bio,
     title: profileData.title,
     area: profileData.area,
     image: profileData.image,
