@@ -8,14 +8,20 @@ import "./HeroSection.css"
 
 const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
   const [profileSection, setProfileSection] = useState({})
-  // const [experiencesOnHero, setExperiencesOnHero] = useState({})
+  const [myExp, setMyExp] = useState({})
 
   useEffect(() => {
     setProfileSection({
       ...profileData,
     })
-    // setExperiencesOnHero(experiences)
-  }, [profileData])
+    setMyExp ({
+      experiences
+    })
+  }, [profileData, experiences])
+
+  console.log(experiences.length)
+  console.log(experiences[3])
+  console.log(myExp)
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -51,7 +57,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
           </button>
         </div>
       )}
-      <div className="hero-section-columns pt-4">
+      <div className="hero-section-columns mt-3">
         <div className="mr-5">
           <Card.Body>
             <Card.Title className="mb-0 profile-name">
@@ -82,16 +88,10 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
         </div>
 
         <div>
-          {/* This div requires a fetch of OUR experiences and should return most recent two. */}
-          <div className="card-body work-history">
-            <div className="mb-2">
-              <img src={Logo} alt="..." />
-              Company 1
-            </div>
-            <div className="mb-2">
-              <img src={Logo} alt="..." />
-              Company 2
-            </div>
+          <div className="card-body work-history">            
+              {myExp 
+              ? experiences.slice(-2).map(x => <div className="mb-2"><img src={x.image} alt="..." /> {x.company}</div>)
+              : <></> }
           </div>
 
           {/* Contact me modal */}
@@ -107,9 +107,8 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                 <i className="fab fa-linkedin mr-3 p-1"></i>
                 <div>
                   Your Profile
-                  <Link to="/profile/:id">
+                  <Link to={`/profile/${profileData._id}`}>
                     {" "}
-                    {/* <--- FIX */}
                     linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
                   </Link>
                 </div>
@@ -118,7 +117,9 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                 <i className="far fa-envelope mr-3 p-1"></i>
                 <div>
                   Email
-                  <a href="google.com">{profileData.email}</a>
+                  <Link to={`/profile/${profileData._id}`}>
+                    {profileData.email}
+                  </Link>
                 </div>
               </div>
             </Modal.Body>
