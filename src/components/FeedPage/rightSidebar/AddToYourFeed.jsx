@@ -1,11 +1,9 @@
-import { Button } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import { getProfiles } from "../../assets/fetch";
-import SingleAdd from "../rightSidebar/SingleAdd";
-import "./AddToYourFeed.css";
+import { useState, useEffect } from "react"
+import { getProfiles } from "../../assets/fetch"
+import SingleAdd from "../rightSidebar/SingleAdd"
+import "./AddToYourFeed.css"
 
 const AddToYourFeed = () => {
-
   const [peopleToFollow, setpeopleToFollow] = useState([])
   useEffect(() => getProfiles(setpeopleToFollow), [])
 
@@ -22,9 +20,9 @@ const AddToYourFeed = () => {
         ))}
       </div>
       <div className="view-recc">
-          View all recommendations <i className="fas fa-arrow-right"></i>
+        View all recommendations <i className="fas fa-arrow-right"></i>
       </div>
-    </section>  
+    </section>
   )
 }
 

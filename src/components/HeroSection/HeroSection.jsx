@@ -13,8 +13,8 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
     setProfileSection({
       ...profileData,
     })
-    setMyExp ({
-      experiences
+    setMyExp({
+      experiences,
     })
   }, [profileData, experiences])
 
@@ -83,10 +83,16 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
         </div>
 
         <div>
-          <div className="card-body work-history">            
-              {myExp 
-              ? experiences.slice(-2).map(x => <div className="mb-2"><img src={x.image} alt="..." /> {x.company}</div>)
-              : <></> }
+          <div className="card-body work-history">
+            {myExp ? (
+              experiences.slice(-2).map(x => (
+                <div key={x._id} className="mb-2">
+                  <img src={x.image} alt="..." /> {x.company}
+                </div>
+              ))
+            ) : (
+              <></>
+            )}
           </div>
 
           {/* Contact me modal */}
@@ -112,9 +118,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                 <i className="far fa-envelope mr-3 p-1"></i>
                 <div>
                   Email
-                  <Link to={`/profile/${profileData._id}`}>
-                    {profileData.email}
-                  </Link>
+                  <Link to={`/profile/${profileData._id}`}>{profileData.email}</Link>
                 </div>
               </div>
             </Modal.Body>
