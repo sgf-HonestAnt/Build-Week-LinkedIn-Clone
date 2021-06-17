@@ -6,7 +6,7 @@
 
 .hero-section .card-img,
 .hero-section .card-img-top {
-  min-height: 28vh;
+  height: 28vh;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
