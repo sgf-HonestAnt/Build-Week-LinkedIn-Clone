@@ -2,3 +2,46 @@
   background-color: #f3f2ef;
   min-height: 100vh;
 }
+
+.main {
+  max-width: 992px;
+}
+
+.section-card {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+/* -------------------Start of edit section icon styling------------------- */
+
+/* Place following code inside a "d-flex" div.
+  <button className="editBtn">
+    <i className="fas fa-pencil-alt"></i>
+  </button>
+*/
+
+.editBtn {
+  border-style: none;
+  border: none;
+  background-color: #fff;
+  font-size: 20px;
+  padding: 0 10px;
+}
+
+.fa-pencil-alt,
+.fa-plus {
+  padding: 5px;
+  margin: -5px;
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+}
+
+.fa-pencil-alt:hover,
+.fa-plus:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+/* --------------------End of edit section icon styling-------------------- */

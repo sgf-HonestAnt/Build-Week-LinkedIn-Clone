@@ -1,0 +1,15 @@
+.single-education * {
+    margin: 0;
+    padding: 0;
+  }
+
+.single-education p {
+    font-size: 14px;
+  }
+
+.education-page button{
+    border-style: none;
+    border: none;
+    background-color: #fff;
+    font-size: 20px
+}

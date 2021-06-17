@@ -1,0 +1,13 @@
+.about-section .edit-btn {
+  font-size: 14px;
+}
+
+.about-section .btn-link {
+  font-weight: 600;
+  color: rgba(0,0,0,0.6);
+}
+
+.about-section .btn-link:hover,
+.about-section .btn-link:focus {
+  color: #007bff;
+}

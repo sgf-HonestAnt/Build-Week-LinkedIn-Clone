@@ -1,0 +1,45 @@
+.footer {
+    font-size: 12px;
+    color: gray;
+}
+
+.footer-col {
+    vertical-align: left;
+}
+
+.footer .logo {
+    height: 20px;
+}
+
+.footer .btn {
+    display: block;
+    padding: 0;
+    font-size: 14px;
+    text-align: left;
+}
+
+.footer .btn-link {
+    font-weight: 600;
+    color: gray;
+}
+
+.footer .btn-link:hover, .footer .btn-link:focus {
+    color: #007bff;
+}
+
+.footer .dropup-language .btn {
+    border: 1px solid gray;
+    padding: 1px 10px 1px 10px;
+    width: 60%;
+    text-align: left;
+}
+
+.footer .fas {
+    font-size: x-large;
+    padding: 0 5px 0 0;
+}
+
+.footer .copyright .btn-link {
+    font-weight: 400;
+    color: rgba(128, 128, 128, 0.8);
+}

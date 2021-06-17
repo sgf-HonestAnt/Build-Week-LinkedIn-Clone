@@ -1,0 +1,43 @@
+.dashboard .title {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.dashboard .subtitle {
+    margin-top: 0;
+    font-style: italic;
+}
+
+.dashboard .stats, .dashboard .modes {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
+
+.dashboard .stats {
+    color: #007bff;
+    font-size: 25px;
+}
+
+.dashboard .stats-inner {
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dashboard .mode-inner {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dashboard .mode-inner .fas, .dashboard .mode-inner .far, .dashboard .mode-inner-last .fas {
+    margin: 15px 10px 15px 0;
+}
+
+.dashboard .mode-inner-last {
+    padding: 10px;
+}
+
+.dashboard .stats-details {
+    font-size: 16px;
+    color: gray;
+    display: block;
+}

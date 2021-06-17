@@ -1,0 +1,41 @@
+.feedpost-section .post-form {
+    border-radius: 50px;
+}
+
+.feedpost-section .profile-img-container {
+    background-position: center center;
+    background-size: cover;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.feedpost-section .post-form, .feedpost-section .profile-img-container {      
+    height: 45px;
+}
+
+.feedpost-section .fas, .feedpost-section .fab {
+    font-size: 20px;
+}
+
+.feedpost-section .fa-image {
+    color: blue;
+}
+
+.feedpost-section .fa-youtube {
+    color: green;
+}
+
+.feedpost-section .fa-calendar-alt {
+    color: orange;
+}
+
+.feedpost-section .fa-elementor {
+    color: pink;
+}
+
+.feedpost-section .feedpost-icons {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: rgba(0,0,0,0.5);
+}
