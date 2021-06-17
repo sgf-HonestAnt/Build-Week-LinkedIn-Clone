@@ -6,6 +6,8 @@ import { editProfile } from "../assets/fetch"
 import "./HeroSection.css"
 
 const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
+  // const [selectedFile, setSelectedFile] = useState(null)
+
   const [profileSection, setProfileSection] = useState({})
   const [myExp, setMyExp] = useState({})
 
@@ -163,10 +165,21 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                   </Form.Row>
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group >
                   <Form.Label>Profile image</Form.Label>
                   <Form.Control type="text" value={profileSection.image} onChange={e => getProfileSectionData("image", e)} />
                   {/* This should be border-bottom only, with a pencil icon */}
+                  {/* <div class="hero-section-input-form-container">
+                    <form
+                      className="mb-1"
+                      onSubmit={e => {
+                        submitImage(e)
+                      }}
+                    >
+                      <input type="file" className="hero-section-input-form" onChange={e => setSelectedFile(e.target.files[0])} />
+                      <Button type="submit" variant="success" className="hero-section-input-button py-0 text-center">submit</Button>
+                    </form>
+                  </div> */}
                 </Form.Group>
 
                 <Form.Group>
@@ -178,7 +191,6 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
               <Button variant="primary" type="submit" form="profile-form">
                 Save
               </Button>
-              {/* This will have an onclick of edit my profile with some of the former details */}
             </Modal.Body>
           </Modal>
         </div>
