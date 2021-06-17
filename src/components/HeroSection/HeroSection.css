@@ -84,3 +84,17 @@
 .contact-modal a {
   display: block;
 }
+
+.hero-section-input-form-container {
+  color: green;
+}
+
+.hero-section-input-form {
+  border: 0;
+  font-size: 14px;
+}
+
+.hero-section-input-button {
+  margin: 0 10px;
+  padding: 0 10px;
+}
