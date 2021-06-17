@@ -16,6 +16,7 @@ const FeedPage = () => {
 
   const refreshFeed = () => {
     setIsFeedRefreshed(true)
+  
   }
 
   return (
@@ -34,7 +35,7 @@ const FeedPage = () => {
           <FeedPostSection onUpdate={refreshFeed} />
         </div>
 
-        <UserPostSection />
+        <UserPostSection onUpdate={refreshFeed} />
       </Col>
       <Col className="d-none d-md-block" md={4}>
         <div className="section-card p-3">

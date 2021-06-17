@@ -5,14 +5,14 @@ import { useState } from "react"
 import SinglePost from "./SinglePost"
 import "./singlepost.css"
 
-const UserPostSection = () => {
+const UserPostSection = ({onUpdate}) => {
   const [posts, setPosts] = useState([])
-  useEffect(() => getPosts(setPosts), [])
+  useEffect(() => getPosts(setPosts), [onUpdate])
 
   return (
     <section className="user-posts-section">
-      {posts.slice(posts.length - 20).map(post => {
-        return <SinglePost key={post._id} postInfo={post} />
+      {posts.slice(posts.length - 20).reverse().map(post => {
+        return <SinglePost key={post._id} postInfo={post} onUpdate={onUpdate}/>
       })}
     </section>
   )
