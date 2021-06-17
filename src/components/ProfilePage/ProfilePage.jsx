@@ -16,7 +16,6 @@ const ProfilePage = props => {
   const currentUserId = props.match.params.userId
   const isMe = currentUserId === "me"
 
-  console.log(currentUserId)
   const [profileData, setProfileData] = useState({})
   const [experiences, setExperiences] = useState([])
   const [posts, setPosts] = useState(null)

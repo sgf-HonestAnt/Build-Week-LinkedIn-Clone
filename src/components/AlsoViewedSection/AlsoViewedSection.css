@@ -17,3 +17,8 @@
 .also-viewed-section button {
   font-size: 14px;
 }
+
+.also-viewed-section a,
+.also-viewed-section a:hover {
+  color: currentColor;
+}
