@@ -1,14 +1,20 @@
-import { useEffect } from "react"
-import { useState } from "react"
-import { getProfileById } from "../../assets/fetch"
+import { useEffect, useState } from "react"
+import { getProfileById, uploadProfilePic } from "../../assets/fetch"
 
 import "./MyProfileCard.css"
 
-const MyProfileCard = ({id}) => {
-
+const MyProfileCard = ({ id }) => {
   const [profile, setProfile] = useState(null)
+  const [selectedFile, setSelectedFile] = useState(null)
 
   useEffect(() => getProfileById(id, setProfile), [id])
+
+  const submitImage = async e => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append("profile", selectedFile)
+    uploadProfilePic(formData)
+  }
 
   return (
     profile && (
@@ -33,6 +39,15 @@ const MyProfileCard = ({id}) => {
           <i className="fas fa-bookmark mr-2"></i>
           My Items
         </p>
+
+        <form
+          onSubmit={e => {
+            submitImage(e)
+          }}
+        >
+          <input type="file" onChange={e => setSelectedFile(e.target.files[0])} />
+          <button type="submit">submit</button>
+        </form>
       </section>
     )
   )
