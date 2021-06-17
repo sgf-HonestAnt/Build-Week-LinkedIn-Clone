@@ -8,6 +8,7 @@ import ProfilePage from "./components/ProfilePage/ProfilePage"
 import Footer from "./components/Footer/Footer"
 import FeedPage from "./components/FeedPage/FeedPage"
 import PostPage from "./components/PostPage/PostPage"
+import Notifications from "./components/Notifications/Notifications"
 
 function App() {
   return (
@@ -32,6 +33,15 @@ function App() {
             <>
               <ProfilePage {...routeProps} />
               <Footer />
+            </>
+          )}
+        ></Route>
+
+        <Route
+          path="/notifications"
+          render={routeProps => (
+            <>
+              <Notifications {...routeProps} />
             </>
           )}
         ></Route>

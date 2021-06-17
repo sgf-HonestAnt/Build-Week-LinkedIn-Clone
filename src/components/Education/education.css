@@ -13,3 +13,14 @@
     background-color: #fff;
     font-size: 20px
 }
+.education-pencil-icon {
+  border-style: none;
+  border: none;
+  background-color: #fff;
+  font-size: 20px;
+  padding: 10px;
+  margin: -9px;
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+}
