@@ -10,12 +10,6 @@
     padding-inline-start: 20px;
 }
 
-.most-viewed-courses li {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 .most-viewed-courses .view-recc {
     font-weight: 700;
     color: rgba(0,0,0,0.5);

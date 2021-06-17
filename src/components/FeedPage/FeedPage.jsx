@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import FeedPostSection from "../FeedPostSection/FeedPostSection"
 import AddToYourFeed from "./rightSidebar/AddToYourFeed"
 import MostViewedCourses from "./rightSidebar/MostViewedCourses"
+import FeedPageFooter from "./rightSidebar/FeedPageFooter"
 import UserPostSection from "../SinglePost/UserPostSection"
 import MyProfileCard from "./leftSidebar/MyProfileCard"
 import CommunityCard from "./leftSidebar/CommunityCard"
@@ -23,7 +24,7 @@ const FeedPage = () => {
     <Row>
       <Col xs={4} md={3}>
         <div className="section-card p-0">
-          <MyProfileCard />
+          <MyProfileCard id="me" />
         </div>
         <div className="section-card p-3">
           <CommunityCard />
@@ -36,6 +37,7 @@ const FeedPage = () => {
         </div>
 
         <UserPostSection onUpdate={refreshFeed} />
+
       </Col>
       <Col className="d-none d-md-block" md={4}>
         <div className="section-card p-3">
@@ -43,6 +45,9 @@ const FeedPage = () => {
         </div>
         <div className="section-card p-3">
           <MostViewedCourses />
+        </div>
+        <div>
+          <FeedPageFooter />
         </div>
       </Col>
     </Row>
