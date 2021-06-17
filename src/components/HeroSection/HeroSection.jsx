@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Card, Button, Badge, Modal, Form } from "react-bootstrap"
-import Logo from "../assets/LinkedIn-Logos/LI-Logo.png"
 import { editProfile } from "../assets/fetch"
 
 import "./HeroSection.css"
