@@ -1,5 +1,4 @@
 import { Row, Col } from "react-bootstrap"
-import { withRouter } from "react-router-dom"
 import AddToYourFeed from "../FeedPage/rightSidebar/AddToYourFeed"
 import MostViewedCourses from "../FeedPage/rightSidebar/MostViewedCourses"
 import SinglePost from "../SinglePost/SinglePost"
@@ -12,11 +11,18 @@ import FeedPageFooter from "../FeedPage/rightSidebar/FeedPageFooter"
 const PostPage = props => {
   const postId = props.match.params.postId
   const [post, setPost] = useState(null)
+  
+  const [wasUpdated, setWasUpdated] = useState(false)
   const id = post ? post.user : "me"
 
   useEffect(() => {
     getPostById(postId, setPost)
-  }, [postId])
+    setWasUpdated(false)
+  }, [postId, wasUpdated])
+
+  const handleUpdate = () => {
+    setWasUpdated(true)
+  }
 
   return (
     <Row>
@@ -26,7 +32,7 @@ const PostPage = props => {
         </div>
       </Col>
       <Col xs={8} md={5}>
-        {post && <SinglePost postInfo={post} />}
+        {post && <SinglePost postInfo={post} onUpdate={handleUpdate} />}
       </Col>
       <Col className="d-none d-md-block" md={4}>
         <div className="section-card p-3">
@@ -40,4 +46,4 @@ const PostPage = props => {
   )
 }
 
-export default withRouter(PostPage)
+export default PostPage

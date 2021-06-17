@@ -8,7 +8,6 @@ import FeaturedRow from "../Featured/FeaturedRow"
 import EducationRow from "../Education/EducationRow"
 import ExperienceRow from "../Experience/ExperienceRow"
 import { useState, useEffect } from "react"
-import { withRouter } from "react-router-dom"
 import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch"
 
 const ProfilePage = props => {
@@ -61,4 +60,4 @@ const ProfilePage = props => {
   )
 }
 
-export default withRouter(ProfilePage)
+export default ProfilePage
