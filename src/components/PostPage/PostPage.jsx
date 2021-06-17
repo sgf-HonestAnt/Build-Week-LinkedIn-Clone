@@ -1,8 +1,8 @@
 import { Row, Col } from "react-bootstrap"
 import { withRouter } from "react-router-dom"
 
-import AddToYourFeed from "../AddToYourFeed/AddToYourFeed"
-import MostViewedCourses from "../MostViewedCourses/MostViewedCourses"
+import AddToYourFeed from "../FeedPage/rightSidebar/AddToYourFeed"
+import MostViewedCourses from "../FeedPage/rightSidebar/MostViewedCourses"
 
 import SinglePost from "../SinglePost/SinglePost"
 

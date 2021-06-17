@@ -16,7 +16,7 @@
 }
 
 .hero-section .p-relative .fa-pen-square {
-  /* edit cover photo */
+  /* is edit cover photo ever going to be implemented? */
   position: absolute;
   top: 20px;
   right: 20px;
@@ -28,7 +28,7 @@
   background-position: center center;
   background-size: cover;
   position: absolute;
-  top: 35%;
+  top: 10vh;
   left: 3%;
   height: 175px;
   width: 175px;
@@ -71,7 +71,6 @@
 
 .hero-section .work-history {
   font-weight: 700;
-  transform: translateX(50%);
 }
 
 .hero-section .work-history img {
