@@ -40,7 +40,7 @@ const ProfilePage = props => {
           <HeroSection profileData={profileData} isMe={isMe} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
-          <AboutSection profileData={profileData} isMe={isMe} />
+          <AboutSection profileData={profileData} isMe={isMe} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
           <FeaturedRow isMe={isMe} />

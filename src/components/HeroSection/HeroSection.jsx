@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { Card, Button, Badge, Modal, Form } from "react-bootstrap"
 import Logo from "../assets/LinkedIn-Logos/LI-Logo.png"
 import { editProfile } from "../assets/fetch"
@@ -104,9 +105,14 @@ const HeroSection = ({ profileData, onUpdate, isMe }) => {
                 <i className="fab fa-linkedin mr-3 p-1"></i>
                 <div>
                   Your Profile
-                  <a href="google.com">
+                  {isMe ? <Link to="/profile/me">
                     linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
-                  </a>
+                  </Link> : <Link to="`/profile/${profileData._id}`"> {/* <--- Check this works?? */}
+                    linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
+                  </Link>}
+                  <Link to="/profile/me">
+                    linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
+                  </Link>
                 </div>
               </div>
               <div className="d-flex justify-content-start">

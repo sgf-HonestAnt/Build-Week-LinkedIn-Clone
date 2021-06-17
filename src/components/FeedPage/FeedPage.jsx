@@ -1,11 +1,9 @@
 import { Row, Col } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import FeedPostSection from "../FeedPostSection/FeedPostSection"
-import AddToYourFeed from "../AddToYourFeed/AddToYourFeed"
-import MostViewedCourses from "../MostViewedCourses/MostViewedCourses"
-
+import AddToYourFeed from "./rightSidebar/AddToYourFeed"
+import MostViewedCourses from "./rightSidebar/MostViewedCourses"
 import UserPostSection from "../SinglePost/UserPostSection"
-
 import MyProfileCard from "./leftSidebar/MyProfileCard"
 import CommunityCard from "./leftSidebar/CommunityCard"
 
