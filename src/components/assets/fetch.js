@@ -158,3 +158,33 @@ export const getPostById = async (postId, callback) => {
     console.log(error)
   }
 }
+
+export const editPost = async (postId, payload) => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify(payload),
+    })
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const deletePost = async postId => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    })
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}

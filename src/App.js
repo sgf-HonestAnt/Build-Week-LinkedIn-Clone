@@ -16,15 +16,25 @@ function App() {
       <Container fluid className="pt-5 main">
         <Route exact path="/" component={FeedPage} />
 
-        <Route path="/post/:postId">
-          <PostPage />
-          <Footer />
-        </Route>
+        <Route
+          path="/post/:postId"
+          render={routeProps => (
+            <>
+              <PostPage {...routeProps} />
+              <Footer />
+            </>
+          )}
+        ></Route>
 
-        <Route path="/profile/:userId">
-          <ProfilePage />
-          <Footer />
-        </Route>
+        <Route
+          path="/profile/:userId"
+          render={routeProps => (
+            <>
+              <ProfilePage {...routeProps} />
+              <Footer />
+            </>
+          )}
+        ></Route>
       </Container>
     </div>
   )
