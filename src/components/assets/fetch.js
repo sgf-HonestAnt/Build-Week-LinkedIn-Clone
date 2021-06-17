@@ -114,18 +114,32 @@ export const deleteExperience = async experienceId => {
 }
 
 // Posts functions
-export const addPost = async payload => {
+export const addPost = async (textPayload, imgPayload = null) => {
   try {
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
+    const textResponse = await fetch(`https://striveschool-api.herokuapp.com/api/posts/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${TOKEN}`,
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(textPayload),
     })
-    const data = await response.json()
+    const data = await textResponse.json()
     console.log(data)
+    if (imgPayload) {
+      try {
+        const imgResponse = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${data._id}`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${TOKEN}`,
+          },
+          body: imgPayload,
+        })
+        console.log(imgResponse)
+      } catch (error) {
+        console.log(error)
+      }
+    }
   } catch (error) {
     console.log(error)
   }
