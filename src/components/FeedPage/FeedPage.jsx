@@ -17,6 +17,7 @@ const FeedPage = () => {
 
   const refreshFeed = () => {
     setIsFeedRefreshed(true)
+  
   }
 
   return (
@@ -34,7 +35,9 @@ const FeedPage = () => {
           {/* We will need to get our profile data here and pass down to MostViewedCourses for the profile image */}
           <FeedPostSection onUpdate={refreshFeed} />
         </div>
-        <UserPostSection />
+
+        <UserPostSection onUpdate={refreshFeed} />
+
       </Col>
       <Col className="d-none d-md-block" md={4}>
         <div className="section-card p-3">

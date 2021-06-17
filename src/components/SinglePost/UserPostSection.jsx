@@ -20,7 +20,7 @@ const UserPostSection = () => {
 
   return (
     <section className="user-posts-section">
-      {posts.slice(posts.length - 20).map(post => {
+      {posts.slice(posts.length - 20).reverse().map(post => {
         return <SinglePost key={post._id} postInfo={post} onUpdate={handleUpdate} />
       })}
     </section>
