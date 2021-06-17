@@ -10,9 +10,9 @@ const MostViewedCourses = () => {
       <div>
         <ol className="ordered-list">
           <li>
-            <strong>The Six Morning Habits of High Performance</strong>
+            <strong>The Six Morning Habits of...</strong>
             <br />
-            Pete Mockaitis | How To Be Awesome At Your...
+            Pete Mockaitis | How To Be Awesome At...
           </li>
           <li>
             <strong>Unconscious Bias</strong>

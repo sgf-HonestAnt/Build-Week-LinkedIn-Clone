@@ -21,6 +21,9 @@ const AddToYourFeed = () => {
           <SingleAdd key={person._id} person={person} />
         ))}
       </div>
+      <div className="view-recc">
+          View all recommendations <i className="fas fa-arrow-right"></i>
+      </div>
     </section>  
   )
 }
