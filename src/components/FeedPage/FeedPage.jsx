@@ -20,7 +20,7 @@ const FeedPage = () => {
 
   return (
     <Row>
-      <Col xs={4} md={3}>
+      <Col xs={4} md={3} className="mt-2 px-1">
         <div className="section-card p-0">
           <MyProfileCard id="me" />
         </div>
@@ -28,7 +28,7 @@ const FeedPage = () => {
           <CommunityCard />
         </div>
       </Col>
-      <Col xs={8} md={5}>
+      <Col xs={8} md={5} className="mt-2">
         <div className="section-card p-3">
           {/* We will need to get our profile data here and pass down to MostViewedCourses for the profile image */}
           <FeedPostSection onUpdate={() => setWasUpdated(true)} />
@@ -36,7 +36,7 @@ const FeedPage = () => {
 
         <UserPostSection posts={posts} onUpdate={() => setWasUpdated(true)} />
       </Col>
-      <Col className="d-none d-md-block" md={4}>
+      <Col className="d-none d-md-block mt-2 px-1" md={4}>
         <div className="section-card p-3">
           <AddToYourFeed />
         </div>

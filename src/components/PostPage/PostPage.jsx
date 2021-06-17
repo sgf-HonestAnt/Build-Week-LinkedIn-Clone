@@ -25,15 +25,15 @@ const PostPage = props => {
 
   return (
     <Row>
-      <Col xs={4} md={3}>
+      <Col xs={4} md={3} className="mt-2 px-1">
         <div className="section-card p-0">
           <MyProfileCard id={id} />
         </div>
       </Col>
-      <Col xs={8} md={5}>
+      <Col xs={8} md={5} className="mt-2">
         {post && <SinglePost postInfo={post} onUpdate={handleUpdate} />}
       </Col>
-      <Col className="d-none d-md-block" md={4}>
+      <Col className="d-none d-md-block mt-2 px-1" md={4}>
         <div className="section-card p-3">
           <AddToYourFeed />
         </div>
