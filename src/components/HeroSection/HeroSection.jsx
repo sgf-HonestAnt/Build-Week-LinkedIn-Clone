@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 import { Card, Button, Badge, Modal, Form } from "react-bootstrap"
 import Logo from "../assets/LinkedIn-Logos/LI-Logo.png"
 import { editProfile } from "../assets/fetch"
@@ -7,17 +7,15 @@ import { editProfile } from "../assets/fetch"
 import "./HeroSection.css"
 
 const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
-
   const [profileSection, setProfileSection] = useState({})
-  const [experiencesOnHero, setExperiencesOnHero] = useState({})
+  // const [experiencesOnHero, setExperiencesOnHero] = useState({})
 
   useEffect(() => {
     setProfileSection({
       ...profileData,
     })
-    setExperiencesOnHero(experiences)
-    console.log(experiencesOnHero)
-  }, [experiences, profileData])
+    // setExperiencesOnHero(experiences)
+  }, [profileData])
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -109,9 +107,11 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                 <i className="fab fa-linkedin mr-3 p-1"></i>
                 <div>
                   Your Profile
-                  <Link to="/profile/:id"> {/* <--- FIX */}
+                  <Link to="/profile/:id">
+                    {" "}
+                    {/* <--- FIX */}
                     linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
-                  </Link> 
+                  </Link>
                 </div>
               </div>
               <div className="d-flex justify-content-start">

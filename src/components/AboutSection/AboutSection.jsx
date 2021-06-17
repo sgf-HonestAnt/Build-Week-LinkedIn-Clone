@@ -24,14 +24,14 @@ const AboutSection = ({ profileData, onUpdate, isMe }) => {
     editProfile(aboutSection)
   }
 
-  const [seeMore, setSeeMore] = useState(false)
+  // const [seeMore, setSeeMore] = useState(false)
 
   return (
     <section className="about-section">
       <div className="d-flex justify-content-between">
         <h5>About</h5>
         {isMe && (
-          <button className="editBtn"  onClick={handleShowAbout}>
+          <button className="editBtn" onClick={handleShowAbout}>
             <i className="fas fa-pencil-alt"></i>
           </button>
         )}
@@ -47,35 +47,30 @@ const AboutSection = ({ profileData, onUpdate, isMe }) => {
       </div>
 
       <Modal show={showAbout} onHide={handleCloseAbout}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit about</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit about</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <Form
             id="about-form"
-              onSubmit={e => {
-                e.preventDefault()
-                handleSubmitAbout()
-                onUpdate()
-                handleCloseAbout()
-              }}
-            >
-              <Form.Group className="d-inline-block w-100">
-                <Form.Label>Summary</Form.Label>
-                <Form.Control 
-                as="textarea" 
-                rows={5} 
-                value={aboutSection.bio} 
-                onChange={e => getAboutSectionData("bio", e)} 
-                />
-              </Form.Group>
-              <div className="d-flex justify-content-end">
-                <Button variant="primary" type="submit" form="about-form" className="save-btn">
-                  Save
-                </Button>
-              </div>
-            </Form>
-          </Modal.Body>            
+            onSubmit={e => {
+              e.preventDefault()
+              handleSubmitAbout()
+              onUpdate()
+              handleCloseAbout()
+            }}
+          >
+            <Form.Group className="d-inline-block w-100">
+              <Form.Label>Summary</Form.Label>
+              <Form.Control as="textarea" rows={5} value={aboutSection.bio} onChange={e => getAboutSectionData("bio", e)} />
+            </Form.Group>
+            <div className="d-flex justify-content-end">
+              <Button variant="primary" type="submit" form="about-form" className="save-btn">
+                Save
+              </Button>
+            </div>
+          </Form>
+        </Modal.Body>
       </Modal>
     </section>
   )
