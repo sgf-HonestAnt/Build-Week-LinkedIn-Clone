@@ -6,12 +6,11 @@ import MyProfileCard from "../FeedPage/leftSidebar/MyProfileCard"
 import { useState } from "react"
 import { useEffect } from "react"
 import { getPostById } from "../assets/fetch"
-import FeedPageFooter from "../FeedPage/rightSidebar/FeedPageFooter"
 
 const PostPage = props => {
   const postId = props.match.params.postId
   const [post, setPost] = useState(null)
-  
+
   const [wasUpdated, setWasUpdated] = useState(false)
   const id = post ? post.user : "me"
 

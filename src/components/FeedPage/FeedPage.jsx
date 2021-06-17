@@ -1,5 +1,6 @@
 import { Row, Col } from "react-bootstrap"
 import { useState, useEffect } from "react"
+import { getPosts } from "../assets/fetch"
 import FeedPostSection from "../FeedPostSection/FeedPostSection"
 import AddToYourFeed from "./rightSidebar/AddToYourFeed"
 import MostViewedCourses from "./rightSidebar/MostViewedCourses"
@@ -9,16 +10,13 @@ import MyProfileCard from "./leftSidebar/MyProfileCard"
 import CommunityCard from "./leftSidebar/CommunityCard"
 
 const FeedPage = () => {
-  const [isFeedRefreshed, setIsFeedRefreshed] = useState(false)
+  const [posts, setPosts] = useState([])
+  const [wasUpdated, setWasUpdated] = useState(false)
 
   useEffect(() => {
-    setIsFeedRefreshed(false)
-  }, [isFeedRefreshed])
-
-  const refreshFeed = () => {
-    setIsFeedRefreshed(true)
-  
-  }
+    getPosts(setPosts)
+    setWasUpdated(false)
+  }, [wasUpdated])
 
   return (
     <Row>
@@ -33,11 +31,10 @@ const FeedPage = () => {
       <Col xs={8} md={5}>
         <div className="section-card p-3">
           {/* We will need to get our profile data here and pass down to MostViewedCourses for the profile image */}
-          <FeedPostSection onUpdate={refreshFeed} />
+          <FeedPostSection onUpdate={() => setWasUpdated(true)} />
         </div>
 
-        <UserPostSection onUpdate={refreshFeed} />
-
+        <UserPostSection posts={posts} onUpdate={() => setWasUpdated(true)} />
       </Col>
       <Col className="d-none d-md-block" md={4}>
         <div className="section-card p-3">
