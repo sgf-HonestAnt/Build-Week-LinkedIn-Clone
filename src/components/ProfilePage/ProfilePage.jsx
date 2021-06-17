@@ -37,7 +37,7 @@ const ProfilePage = props => {
     <Row className="align-items-start">
       <Col className="my-3 px-1" xs={12} md={9}>
         <div className="section-card p-0">
-          <HeroSection profileData={profileData} isMe={isMe} onUpdate={refresh} />
+          <HeroSection profileData={profileData} experiences={experiences} userId={currentUserId} isMe={isMe} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
           <AboutSection profileData={profileData} isMe={isMe} onUpdate={refresh} />

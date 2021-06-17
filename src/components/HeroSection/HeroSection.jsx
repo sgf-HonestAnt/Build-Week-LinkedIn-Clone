@@ -6,14 +6,18 @@ import { editProfile } from "../assets/fetch"
 
 import "./HeroSection.css"
 
-const HeroSection = ({ profileData, onUpdate, isMe }) => {
+const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
+
   const [profileSection, setProfileSection] = useState({})
+  const [experiencesOnHero, setExperiencesOnHero] = useState({})
 
   useEffect(() => {
     setProfileSection({
       ...profileData,
     })
-  }, [profileData])
+    setExperiencesOnHero(experiences)
+    console.log(experiencesOnHero)
+  }, [experiences, profileData])
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -49,7 +53,7 @@ const HeroSection = ({ profileData, onUpdate, isMe }) => {
           </button>
         </div>
       )}
-      <div className="hero-section-columns">
+      <div className="hero-section-columns pt-4">
         <div className="mr-5">
           <Card.Body>
             <Card.Title className="mb-0 profile-name">
@@ -105,14 +109,9 @@ const HeroSection = ({ profileData, onUpdate, isMe }) => {
                 <i className="fab fa-linkedin mr-3 p-1"></i>
                 <div>
                   Your Profile
-                  {isMe ? <Link to="/profile/me">
+                  <Link to="/profile/:id"> {/* <--- FIX */}
                     linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
-                  </Link> : <Link to="`/profile/${profileData._id}`"> {/* <--- Check this works?? */}
-                    linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
-                  </Link>}
-                  <Link to="/profile/me">
-                    linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
-                  </Link>
+                  </Link> 
                 </div>
               </div>
               <div className="d-flex justify-content-start">
