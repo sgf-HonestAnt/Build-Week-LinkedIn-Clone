@@ -18,10 +18,6 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
     })
   }, [profileData, experiences])
 
-  console.log(experiences.length)
-  console.log(experiences[3])
-  console.log(myExp)
-
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
