@@ -1,5 +1,4 @@
 import { Row, Col } from "react-bootstrap"
-
 import ActivitySection from "../ActivitySection/ActivitySection"
 import AlsoViewed from "../AlsoViewedSection/AlsoViewedSection"
 import HeroSection from "../HeroSection/HeroSection"
@@ -14,7 +13,6 @@ import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch"
 const ProfilePage = props => {
   const currentUserId = props.match.params.userId
   const isMe = currentUserId === "me"
-
   const [profileData, setProfileData] = useState({})
   const [experiences, setExperiences] = useState([])
   const [posts, setPosts] = useState(null)

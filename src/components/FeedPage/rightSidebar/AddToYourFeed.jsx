@@ -1,8 +1,14 @@
-import { Button } from "react-bootstrap"
-
-import "./AddToYourFeed.css"
+import { Button } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { getProfiles } from "../../assets/fetch";
+import SingleAdd from "../rightSidebar/SingleAdd";
+import "./AddToYourFeed.css";
 
 const AddToYourFeed = () => {
+
+  const [peopleToFollow, setpeopleToFollow] = useState([])
+  useEffect(() => getProfiles(setpeopleToFollow), [])
+
   return (
     <section className="add-to-feed">
       <div className="d-flex justify-content-between mb-2">
@@ -10,62 +16,15 @@ const AddToYourFeed = () => {
         <i className="fas fa-info-circle"></i>
       </div>
       <div>
-        <div className="d-flex justify-content-around">
-          <div
-            className="profile-img-container mr-2"
-            style={{ backgroundImage: `url("https://i1.sndcdn.com/avatars-000583246488-dhm5la-t500x500.jpg")` }}
-          ></div>
-          <p>
-            <strong>Simon Sinek</strong> <i className="fab fa-linkedin"></i>
-            <br />
-            Optimist and Author at Simon Sinek Inc.
-            <br />
-            <Button variant="link" className="follow-btn p-1 mt-1">
-              <i className="fas fa-plus pr-3"></i>Follow
-            </Button>
-          </p>
-        </div>
+        <p className="font-weight-bold">People also viewed</p>
+        {peopleToFollow.slice(0, 4).map(person => (
+          <SingleAdd key={person._id} person={person} />
+        ))}
       </div>
-      <div>
-        <div className="d-flex justify-content-around">
-          <div
-            className="profile-img-container mr-2"
-            style={{ backgroundImage: `url("https://i1.sndcdn.com/avatars-000583246488-dhm5la-t500x500.jpg")` }}
-          ></div>
-          <p>
-            <strong>Simon Sinek</strong> <i className="fab fa-linkedin"></i>
-            <br />
-            Optimist and Author at Simon Sinek Inc.
-            <br />
-            <Button variant="link" className="follow-btn p-1 mt-1">
-              <i className="fas fa-plus pr-3"></i>Follow
-            </Button>
-          </p>
-        </div>
-      </div>
-      <div>
-        <div className="d-flex justify-content-around">
-          <div
-            className="profile-img-container mr-2"
-            style={{ backgroundImage: `url("https://i1.sndcdn.com/avatars-000583246488-dhm5la-t500x500.jpg")` }}
-          ></div>
-          <p>
-            <strong>Simon Sinek</strong> <i className="fab fa-linkedin"></i>
-            <br />
-            Optimist and Author at Simon Sinek Inc.
-            <br />
-            <Button variant="link" className="follow-btn p-1 mt-1">
-              <i className="fas fa-plus pr-3"></i>Follow
-            </Button>
-          </p>
-        </div>
-      </div>
-      <div>
-        <div className="view-recc">
+      <div className="view-recc">
           View all recommendations <i className="fas fa-arrow-right"></i>
-        </div>
       </div>
-    </section>
+    </section>  
   )
 }
 
