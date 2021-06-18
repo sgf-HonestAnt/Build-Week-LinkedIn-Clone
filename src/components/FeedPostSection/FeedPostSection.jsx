@@ -1,7 +1,6 @@
-import { getProfileById, addPost } from "../assets/fetch"
-import PostModal from '../PostModal/PostModal'
+import { getProfileById } from "../assets/fetch"
+import PostModal from "../PostModal/PostModal"
 import { useEffect, useState } from "react"
-import { Form,Modal } from "react-bootstrap"
 
 import "./FeedPostSection.css"
 
@@ -16,20 +15,18 @@ const FeedPostSection = ({ onUpdate }) => {
     getProfileById("me", setMyProfile)
   }, [])
 
- 
-
   return (
     <section className="feedpost-section">
       <div className="d-flex">
         <div className="profile-img-container mr-2" style={{ backgroundImage: `url(${myProfile.image})` }}></div>
         {/* "https://i1.sndcdn.com/avatars-000583246488-dhm5la-t500x500.jpg" */}
-       
-            <div className="feedpost-section">
-              <button onClick={handleShow} className = 'post-form'>Start a post</button>
-            </div>
-            <PostModal show={show} onHide={handleClose} onUpdate={onUpdate} />
-          
-        
+
+        <div className="feedpost-section">
+          <button onClick={handleShow} className="post-form">
+            Start a post
+          </button>
+        </div>
+        <PostModal show={show} onHide={handleClose} onUpdate={onUpdate} />
       </div>
       <div className="d-flex justify-content-between feedpost-icons">
         <div>

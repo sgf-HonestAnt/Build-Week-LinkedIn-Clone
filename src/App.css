@@ -18,6 +18,7 @@
 
 .upload-image-label {
   font-weight: 400;
+  cursor: pointer;
 }
 
 .upload-image-icon {
@@ -38,7 +39,6 @@
   border: 0;
   font-size: 14px;
   margin: 0 10px;
-
 }
 
 .awesome-input-button {
@@ -73,7 +73,7 @@
 
 .fa-pencil-alt:hover,
 .fa-plus:hover {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* --------------------End of edit section icon styling-------------------- */
