@@ -59,12 +59,14 @@ const SinglePost = ({ postInfo, onUpdate }) => {
         </div>
         <div className="post">
           <div>
-            {readMore ? postInfo.text : `${postInfo.text.substring(0, 200)}...`}
-            <div className="read-more-div">
-              <button className="read-more" onClick={() => setReadMore(!readMore)}>
-                {readMore ? "show less" : "  read more"}
-              </button>
-            </div>
+            {!readMore && postInfo.text.length > 200 ? `${postInfo.text.substring(0, 200)}...` : postInfo.text}
+            {postInfo.text.length > 200 && (
+              <div className="read-more-div">
+                <button className="read-more" onClick={() => setReadMore(!readMore)}>
+                  {readMore ? "show less" : "  read more"}
+                </button>
+              </div>
+            )}
           </div>
           {postInfo.image && <img className="w-100" src={postInfo.image} alt="post" />}
           <hr />
