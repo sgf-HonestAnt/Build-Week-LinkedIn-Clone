@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
-import { withRouter } from "react-router-dom"
-import { Modal, Button, Form } from "react-bootstrap"
-import { editPost, deletePost } from "../assets/fetch"
+import { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
+import { Modal, Button, Form } from "react-bootstrap";
+import { editPost, deletePost } from "../assets/fetch";
+import UploadImage from "../assets/UploadImage";
 
 const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete, location, history }) => {
   const [postDetails, setPostDetails] = useState(null)
@@ -36,8 +37,9 @@ const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete, location, h
           </Form.Group>
           {postDetails?.image && <img src={postDetails.image} alt="post" className="img-fluid" />}
           <Form.Group>
-            <Form.Label>Add/change Image</Form.Label>
-            <Form.Control type="file" onChange={e => setPictureFile(e.target.files[0])} />
+            {/* Change next line to a component! */}
+            <UploadImage image={postDetails?.image} />
+            <Form.Control id="file-input" type="file" onChange={e => setPictureFile(e.target.files[0])} className="d-none" />
           </Form.Group>
         </Form>
       </Modal.Body>
