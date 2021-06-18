@@ -15,9 +15,6 @@ const PostPage = props => {
   const [wasUpdated, setWasUpdated] = useState(false)
   const id = post ? post.user : "me"
 
-  const [wasUpdated, setWasUpdated] = useState(false)
-  const id = post ? post.user : "me"
-
   useEffect(() => {
     getPostById(postId, setPost)
     setWasUpdated(false)
@@ -33,7 +30,6 @@ const PostPage = props => {
   return (
     <Row>
       <Col xs={4} md={3} className="mt-2 px-1">
-
         <div className="section-card p-0">{id && <MyProfileCard id={id} />}</div>
       </Col>
       <Col xs={8} md={5} className="mt-2">

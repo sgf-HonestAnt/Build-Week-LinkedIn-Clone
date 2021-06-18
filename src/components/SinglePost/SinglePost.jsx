@@ -19,8 +19,8 @@ const SinglePost = ({ postInfo, onUpdate, userData }) => {
 
   if (wasDeleted)
     return (
-      <Alert variant="danger" className="my-3">
-        Post deleted
+      <Alert variant="info" className="my-3">
+        Deleting... Stay with me...
       </Alert>
     )
 
