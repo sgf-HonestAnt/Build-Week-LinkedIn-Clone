@@ -18,6 +18,16 @@
     border-radius: 0 0 10px 10px;
 }
 
+.notifications-left .white-bg {
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.notifications-left .white-bg {
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+}
+
 .notifications-right, .notifications-right a {
     color: rgba(0, 0, 0, 0.6);
 }
@@ -28,9 +38,15 @@
 }
 
 .notifications-section-card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.notifications-right-section-card {
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px;
     margin: 10px 0;
 }
 
@@ -42,7 +58,6 @@
 }
 
 .notifications-center {
-    border-top-left-radius: 50px;
     font-size: 14px;
     color: rgba(0,0,0,0.6);
 }
