@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-import { getProfileById, uploadProfilePic } from "../../assets/fetch"
-import { Button } from "react-bootstrap"
+import { getProfileById } from "../../assets/fetch"
 
 import "./MyProfileCard.css"
 
