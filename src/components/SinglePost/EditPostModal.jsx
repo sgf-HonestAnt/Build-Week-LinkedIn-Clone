@@ -37,8 +37,7 @@ const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete, location, h
           </Form.Group>
           {postDetails?.image && <img src={postDetails.image} alt="post" className="img-fluid" />}
           <Form.Group>
-            {/* Change next line to a component! */}
-            <UploadImage image={postDetails?.image} />
+            <UploadImage image={postDetails?.image} />{/* replaces Form.Label */}
             <Form.Control id="file-input" type="file" onChange={e => setPictureFile(e.target.files[0])} className="d-none" />
           </Form.Group>
         </Form>

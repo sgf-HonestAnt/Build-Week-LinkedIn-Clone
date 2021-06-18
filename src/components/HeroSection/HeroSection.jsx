@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Card, Button, Badge, Modal, Form } from "react-bootstrap"
 import { editProfile } from "../assets/fetch"
-
+import UploadImage from "../assets/UploadImage"
 import "./HeroSection.css"
 
 const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
@@ -174,21 +174,11 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                   </Form.Row>
                 </Form.Group>
 
+                {profileSection?.image && <img src={profileSection.image} alt="post" className="img-fluid" />}
+
                 <Form.Group>
-                  <Form.Label>Profile image</Form.Label>
-                  <Form.Control type="file" onChange={e => setPictureFile(e.target.files[0])} />
-                  {/* This should be border-bottom only, with a pencil icon */}
-                  {/* <div className="hero-section-input-form-container">
-                    <form
-                      className="mb-1"
-                      onSubmit={e => {
-                        submitImage(e)
-                      }}
-                    >
-                      <input type="file" className="hero-section-input-form" onChange={e => setSelectedFile(e.target.files[0])} />
-                      <Button type="submit" variant="success" className="hero-section-input-button py-0 text-center">submit</Button>
-                    </form>
-                  </div> */}
+                  <UploadImage image={profileSection.image} />
+                  <Form.Control id="file-input" type="file" onChange={e => setPictureFile(e.target.files[0])} className="d-none" />
                 </Form.Group>
 
                 <Form.Group>
