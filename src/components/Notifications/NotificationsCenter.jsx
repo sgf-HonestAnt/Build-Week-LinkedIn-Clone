@@ -57,7 +57,7 @@ const NotificationsCenter = () => {
                 1d<br /><i className="fas fa-ellipsis-h"></i>
               </div>
             </div>
-            <div className="d-flex justify-content-between align-items-center p-3">
+            <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
               <div className="space"></div>
               <img 
               src="https://events.recode.net/wp-content/uploads/2016/05/elon-musk-square.jpg?quality=80&strip=info" 
@@ -84,7 +84,7 @@ const NotificationsCenter = () => {
                 3h<br /><i className="fas fa-ellipsis-h"></i>
               </div>
             </div>
-            <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
+            <div className="d-flex justify-content-between align-items-center p-3">
               <div className="space"></div>
               <img 
               src="https://media-exp3.licdn.com/dms/image/C5603AQHh2atWcDenzg/profile-displayphoto-shrink_800_800/0/1589832390186?e=1629331200&v=beta&t=uknxJ7URBDQvlbP_Egyl3EijjeXFKSXgDHPBBeJFauU" 
