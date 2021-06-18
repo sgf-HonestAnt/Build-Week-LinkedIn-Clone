@@ -1,9 +1,9 @@
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { withRouter } from "react-router-dom"
 import { Modal, Button, Form } from "react-bootstrap"
 import { editPost, deletePost } from "../assets/fetch"
 
-const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete }) => {
+const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete, location, history }) => {
   const [postDetails, setPostDetails] = useState(null)
   useEffect(() => setPostDetails({ text: postInfo.text, image: postInfo.image }), [postInfo])
 
@@ -37,6 +37,13 @@ const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete }) => {
             submitForm("delete")
             onDelete()
             onHide()
+            setTimeout(() => {
+              if (location.pathname.includes("post")) {
+                history.goBack()
+              } else {
+                onUpdate()
+              }
+            }, 2000)
           }}
         >
           Delete
@@ -56,4 +63,4 @@ const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete }) => {
   )
 }
 
-export default EditPostModal
+export default withRouter(EditPostModal)
