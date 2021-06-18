@@ -60,6 +60,7 @@ const PostModal = ({ show, onHide, onUpdate }) => {
               placeholder="What do you want to talk about"
               value={data.text}
               onChange={e => getData(e)}
+              required
             />
           </Form.Group>
           <Form.Group>
