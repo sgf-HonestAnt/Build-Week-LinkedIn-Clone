@@ -184,7 +184,6 @@ export const getPostById = async (postId, callback) => {
     console.log(error)
   }
 }
-
 export const editPost = async (postId, payload, imgFile = null) => {
   try {
     await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
@@ -222,19 +221,3 @@ export const deletePost = async postId => {
     console.log(error)
   }
 }
-
-// File upload functions
-// export const uploadProfilePic = async payload => {
-//   try {
-//     const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${MY_ID}/picture`, {
-//       method: "POST",
-//       headers: {
-//         Authorization: `Bearer ${TOKEN}`,
-//       },
-//       body: payload,
-//     })
-//     console.log(response)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }

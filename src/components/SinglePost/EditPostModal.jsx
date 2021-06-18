@@ -74,5 +74,4 @@ const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete, location, h
     </Modal>
   )
 }
-
 export default withRouter(EditPostModal)
