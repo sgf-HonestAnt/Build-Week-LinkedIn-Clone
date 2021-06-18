@@ -33,7 +33,6 @@ const FeedPage = () => {
           {/* We will need to get our profile data here and pass down to MostViewedCourses for the profile image */}
           <FeedPostSection onUpdate={() => setWasUpdated(true)} />
         </div>
-
         <UserPostSection posts={posts} onUpdate={() => setWasUpdated(true)} />
       </Col>
       <Col className="d-none d-md-block mt-2 px-1" md={4}>
