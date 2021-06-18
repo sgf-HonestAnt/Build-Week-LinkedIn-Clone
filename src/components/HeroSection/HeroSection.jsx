@@ -71,15 +71,18 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
               <Button variant="link">500+ connections</Button>
             </Card.Text>
             <Card.Text>
-              <Badge pill variant="primary">
-                Open to
-              </Badge>
-              <Badge pill variant="light">
-                Add section
-              </Badge>
-              <Badge pill variant="light">
-                More
-              </Badge>
+              {isMe? (
+              <><Badge pill variant="primary">Open to</Badge>
+              <Badge pill variant="light">Add section</Badge>
+              <Badge pill variant="light">More</Badge>
+              </>)
+              : (
+              <><Badge pill variant="primary">Connect</Badge>
+              <Badge pill variant="light"><i class="fas fa-lock"></i> Message</Badge>
+              <Badge pill variant="light">More</Badge>
+              </>)
+              }             
+              
             </Card.Text>
           </Card.Body>
         </div>
