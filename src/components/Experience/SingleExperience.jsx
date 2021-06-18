@@ -14,8 +14,8 @@ const SingleExperience = ({ experienceData, onUpdate, isMe }) => {
         <div className="d-flex justify-content-between">
           <h6>{experienceData.role}</h6>
           {isMe && (
-            <button className="editBtn mr-1" onClick={handleShow}>
-              <i className="fas fa-pencil-alt"></i>
+            <button className="editBtn mr-2" onClick={handleShow}>
+              <i className="fas fa-pencil-alt experience-pencil-icon"></i>
             </button>
           )}
         </div>

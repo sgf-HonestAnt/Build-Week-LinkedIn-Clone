@@ -9,12 +9,16 @@
   font-size: 12px;
 }
 .activity-section .title {
+  line-height: 14px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.9);
   max-width: 400px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .activity-section .font-grey {
   color: rgba(0, 0, 0, 0.6);
   font-size: 10px;

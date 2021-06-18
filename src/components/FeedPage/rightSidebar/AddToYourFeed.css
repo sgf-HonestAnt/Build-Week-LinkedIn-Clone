@@ -4,15 +4,17 @@
 
 .add-to-feed strong {
     font-size: 1em;
+    color: rgba(0,0,0,0.9);
 }
 
-.add-to-feed .profile-img-container {
-    background-position: center center;
-    background-size: cover;
+.add-to-feed .title {
+    color: rgba(0,0,0,0.9);
+}
+
+.add-to-feed .people {
     height: 50px;
     width: 50px;
-    overflow: hidden;
-    border-radius: 50%;
+    border-radius: 50px;
 }
 
 .add-to-feed .follow-btn {

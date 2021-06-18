@@ -1,5 +1,4 @@
 import { Row, Col } from "react-bootstrap"
-
 import ActivitySection from "../ActivitySection/ActivitySection"
 import AlsoViewed from "../AlsoViewedSection/AlsoViewedSection"
 import HeroSection from "../HeroSection/HeroSection"
@@ -9,13 +8,11 @@ import FeaturedRow from "../Featured/FeaturedRow"
 import EducationRow from "../Education/EducationRow"
 import ExperienceRow from "../Experience/ExperienceRow"
 import { useState, useEffect } from "react"
-import { withRouter } from "react-router-dom"
 import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch"
 
 const ProfilePage = props => {
   const currentUserId = props.match.params.userId
   const isMe = currentUserId === "me"
-
   const [profileData, setProfileData] = useState({})
   const [experiences, setExperiences] = useState([])
   const [posts, setPosts] = useState(null)
@@ -34,8 +31,8 @@ const ProfilePage = props => {
 
   return (
     <Row className="align-items-start">
-      <Col className="my-3 px-1" xs={12} md={9}>
-        <div className="section-card p-0">
+      <Col className="mb-3 pb-1 mt-2" xs={12} md={9}>
+        <div className="section-card">
           <HeroSection profileData={profileData} experiences={experiences} userId={currentUserId} isMe={isMe} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
@@ -54,7 +51,7 @@ const ProfilePage = props => {
           <EducationRow isMe={isMe} />
         </div>
       </Col>
-      <Col className="d-none d-md-block my-3 px-1" md={3}>
+      <Col className="d-none d-md-block my-2 px-1" md={3}>
         <div className="section-card p-3">
           <AlsoViewed />
         </div>
@@ -63,4 +60,4 @@ const ProfilePage = props => {
   )
 }
 
-export default withRouter(ProfilePage)
+export default ProfilePage

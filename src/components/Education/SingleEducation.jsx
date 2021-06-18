@@ -9,14 +9,14 @@ export default function SingleEducation({ isMe }) {
   const handleShow = () => setShow(true)
 
   return (
-    <div className="single-education d-flex my-2">
+    <div className="single-education d-flex align-items-start my-2 px-1">
       <img src="https://via.placeholder.com/150" alt="" height="56px" />
       <div className="d-flex flex-column ml-3 w-100">
         <div className="d-flex justify-content-between">
           <h6>Some data</h6>
           {isMe && (
             <button onClick={handleShow}>
-              <i className="fas fa-pencil-alt"></i>
+              <i className="fas fa-pencil-alt education-pencil-icon"></i>
             </button>
           )}
         </div>
