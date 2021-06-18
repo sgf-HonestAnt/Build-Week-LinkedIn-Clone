@@ -15,12 +15,14 @@ const Notifications = () => {
         </div>
       </Col>
       <Col xs={8} md={5} className="mt-2">
+
         <div className="section-card">
           <NotificationsCenter />
         </div>
       </Col>
       <Col className="d-none d-md-block mt-2 px-1" md={4}>
       <div className="notifications-right-section-card p-3 mt-2">
+
           <NotificationsRight />
         </div>
         <div>

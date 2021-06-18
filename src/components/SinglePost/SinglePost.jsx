@@ -15,7 +15,6 @@ const SinglePost = ({ postInfo, onUpdate, userData }) => {
 
   const currentDate = new Date()
   const timestamp = currentDate.getMinutes()
-
   const handleDelete = () => setWasDeleted(true)
 
   if (wasDeleted)

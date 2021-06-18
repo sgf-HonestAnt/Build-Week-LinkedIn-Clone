@@ -80,7 +80,9 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
               </>)
               : (
               <><Badge pill variant="primary">Connect</Badge>
+
               <Badge pill variant="light"><i className="fas fa-lock"></i> Message</Badge>
+
               <Badge pill variant="light">More</Badge>
               </>)
               }             
@@ -179,6 +181,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                   <Form.Control type="file" onChange={e => setPictureFile(e.target.files[0])} />
                   {/* This should be border-bottom only, with a pencil icon */}
                   {/* <div className="hero-section-input-form-container">
+
                     <form
                       className="mb-1"
                       onSubmit={e => {
