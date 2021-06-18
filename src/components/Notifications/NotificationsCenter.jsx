@@ -25,10 +25,8 @@ const NotificationsCenter = () => {
           <i className="fas fa-ellipsis-h"></i>
         </div>
       </div>
-      <div className="d-flex justify-content-between align-items-center p-3 border-bottom new-notifications">
-        <div className="space">
-          <i className="fas fa-circle"></i>
-        </div>
+      <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
+        <div className="space"></div>
         <img
           src="https://media-exp3.licdn.com/dms/image/C4D03AQHxDAmpuVueCg/profile-displayphoto-shrink_800_800/0/1568286276266?e=1629331200&v=beta&t=DNNU9I5ROSXiZGTlsYSohonWskhyWXvF3lBlg99M_DM"
           alt="..."
