@@ -185,7 +185,7 @@ export const getPostById = async (postId, callback) => {
   }
 }
 
-export const editPost = async (postId, payload) => {
+export const editPost = async (postId, payload, imgFile = null) => {
   try {
     await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
       method: "PUT",
@@ -195,6 +195,16 @@ export const editPost = async (postId, payload) => {
       },
       body: JSON.stringify(payload),
     })
+    if (imgFile) {
+      const imgResponse = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+        body: imgFile,
+      })
+      console.log(imgResponse)
+    }
   } catch (error) {
     console.log(error)
   }
@@ -214,17 +224,17 @@ export const deletePost = async postId => {
 }
 
 // File upload functions
-export const uploadProfilePic = async payload => {
-  try {
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${MY_ID}/picture`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${TOKEN}`,
-      },
-      body: payload,
-    })
-    console.log(response)
-  } catch (error) {
-    console.log(error)
-  }
-}
+// export const uploadProfilePic = async payload => {
+//   try {
+//     const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${MY_ID}/picture`, {
+//       method: "POST",
+//       headers: {
+//         Authorization: `Bearer ${TOKEN}`,
+//       },
+//       body: payload,
+//     })
+//     console.log(response)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
