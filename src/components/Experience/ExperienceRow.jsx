@@ -21,7 +21,7 @@ const ExperienceRow = ({ experiencesData, onUpdate, isMe }) => {
       {experiencesData.map(experience => (
         <SingleExperience key={experience._id} isMe={isMe} experienceData={experience} onUpdate={onUpdate} />
       ))}
-      <ExperienceModal show={show} onHide={handleClose} action="adding" onUpdate={onUpdate} />
+      <ExperienceModal show={show} onHide={handleClose} action="adding" onUpdate={onUpdate} experienceData={null} />
     </div>
   )
 }

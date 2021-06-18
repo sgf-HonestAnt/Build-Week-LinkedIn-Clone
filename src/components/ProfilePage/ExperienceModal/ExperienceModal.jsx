@@ -1,30 +1,48 @@
+import { useEffect } from "react"
 import { useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
-import { addExperience, editExperience, deleteExperience } from "../../assets/fetch"
+import { addEditExperience, deleteExperience } from "../../assets/fetch"
 
 const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => {
-  const [formData, setFormData] = useState({
-    role: experienceData ? experienceData.role : "",
-    company: experienceData ? experienceData.company : "",
-    startDate: experienceData ? experienceData.startDate.slice(0, 7) : "",
-    endDate: experienceData?.endDate ? experienceData.endDate.slice(0, 7) : "",
-    description: experienceData ? experienceData.description : "",
-    area: experienceData ? experienceData.area : "",
-    image: experienceData ? experienceData.image : "",
-  })
+  const [formInput, setFormInput] = useState({})
   const [isEndDate, setIsEndDate] = useState(true)
+  const [pictureFile, setPictureFile] = useState(null)
 
   const getInputData = (property, e) => {
-    setFormData({ ...formData, [property]: e.currentTarget.value })
+    setFormInput({ ...formInput, [property]: e.currentTarget.value })
   }
 
   const handleSubmit = () => {
-    action === "adding" ? addExperience(formData) : editExperience(experienceData._id, formData)
+    let formData = null
+    if (pictureFile) {
+      formData = new FormData()
+      formData.append("experience", pictureFile)
+    }
+    addEditExperience(experienceData ? experienceData._id : "", formInput, formData)
+    setFormInput({
+      role: "",
+      company: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+      area: "",
+    })
   }
 
   const handleDelete = () => {
     deleteExperience(experienceData._id)
   }
+
+  useEffect(() => {
+    setFormInput({
+      role: experienceData ? experienceData.role : "",
+      company: experienceData ? experienceData.company : "",
+      startDate: experienceData ? experienceData.startDate.slice(0, 7) : "",
+      endDate: experienceData?.endDate ? experienceData.endDate.slice(0, 7) : "",
+      description: experienceData ? experienceData.description : "",
+      area: experienceData ? experienceData.area : "",
+    })
+  }, [experienceData])
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -37,7 +55,7 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
           onSubmit={e => {
             e.preventDefault()
             handleSubmit()
-            onUpdate()
+            setTimeout(() => onUpdate(), 2000)
             onHide()
           }}
         >
@@ -47,7 +65,7 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
               type="text"
               placeholder="Ex. Web Developer"
               required
-              value={formData.role}
+              value={formInput.role}
               onChange={e => getInputData("role", e)}
             />
           </Form.Group>
@@ -58,14 +76,14 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
               type="text"
               placeholder="Ex. Strive School"
               required
-              value={formData.company}
+              value={formInput.company}
               onChange={e => getInputData("company", e)}
             />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="Ex. Berlin" required value={formData.area} onChange={e => getInputData("area", e)} />
+            <Form.Control type="text" placeholder="Ex. Berlin" required value={formInput.area} onChange={e => getInputData("area", e)} />
           </Form.Group>
 
           <Form.Group>
@@ -81,24 +99,24 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
           <div className="d-flex">
             <Form.Group>
               <Form.Label>Start Date</Form.Label>
-              <Form.Control type="month" required value={formData.startDate} onChange={e => getInputData("startDate", e)} />
+              <Form.Control type="month" required value={formInput.startDate} onChange={e => getInputData("startDate", e)} />
             </Form.Group>
             {isEndDate && (
               <Form.Group>
                 <Form.Label>End Date</Form.Label>
-                <Form.Control type="month" value={formData.endDate} onChange={e => getInputData("endDate", e)} />
+                <Form.Control type="month" value={formInput.endDate} onChange={e => getInputData("endDate", e)} />
               </Form.Group>
             )}
           </div>
 
           <Form.Group>
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} required value={formData.description} onChange={e => getInputData("description", e)} />
+            <Form.Control as="textarea" rows={3} required value={formInput.description} onChange={e => getInputData("description", e)} />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Image URL</Form.Label>
-            <Form.Control type="text" placeholder="https://myImage.png" value={formData.image} onChange={e => getInputData("image", e)} />
+            <Form.Control type="file" onChange={e => setPictureFile(e.target.files[0])} />
           </Form.Group>
         </Form>
       </Modal.Body>

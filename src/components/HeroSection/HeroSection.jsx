@@ -6,7 +6,7 @@ import { editProfile } from "../assets/fetch"
 import "./HeroSection.css"
 
 const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
-  // const [selectedFile, setSelectedFile] = useState(null)
+  const [pictureFile, setPictureFile] = useState(null)
 
   const [profileSection, setProfileSection] = useState({})
   const [myExp, setMyExp] = useState({})
@@ -33,7 +33,9 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
   }
 
   const handleSubmit = () => {
-    editProfile(profileSection)
+    const formData = new FormData()
+    formData.append("profile", pictureFile)
+    editProfile(profileSection, formData)
   }
 
   return (
@@ -137,7 +139,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                 onSubmit={e => {
                   e.preventDefault()
                   handleSubmit()
-                  onUpdate()
+                  setTimeout(() => onUpdate(), 1000)
                   handleClose()
                 }}
               >
@@ -165,9 +167,9 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                   </Form.Row>
                 </Form.Group>
 
-                <Form.Group >
+                <Form.Group>
                   <Form.Label>Profile image</Form.Label>
-                  <Form.Control type="text" value={profileSection.image} onChange={e => getProfileSectionData("image", e)} />
+                  <Form.Control type="file" onChange={e => setPictureFile(e.target.files[0])} />
                   {/* This should be border-bottom only, with a pencil icon */}
                   {/* <div class="hero-section-input-form-container">
                     <form

@@ -31,7 +31,7 @@ export const getProfileById = async (id, callback) => {
   }
 }
 
-export const editProfile = async payload => {
+export const editProfile = async (payload, pictureFile = null) => {
   try {
     await fetch(`https://striveschool-api.herokuapp.com/api/profile/`, {
       method: "PUT",
@@ -41,8 +41,16 @@ export const editProfile = async payload => {
       },
       body: JSON.stringify(payload),
     })
-    // const data = await response.json()
-    // console.log(data)
+    if (pictureFile) {
+      const imgResponse = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${MY_ID}/picture`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+        body: pictureFile,
+      })
+      console.log(imgResponse)
+    }
   } catch (error) {
     console.log(error)
   }
@@ -66,10 +74,10 @@ export const addExperience = async payload => {
   }
 }
 
-export const editExperience = async (experienceId, payload) => {
+export const addEditExperience = async (experienceId = "", payload, pictureFile = null) => {
   try {
     const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${MY_ID}/experiences/${experienceId}`, {
-      method: "PUT",
+      method: experienceId ? "PUT" : "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${TOKEN}`,
@@ -77,7 +85,17 @@ export const editExperience = async (experienceId, payload) => {
       body: JSON.stringify(payload),
     })
     const data = await response.json()
-    console.log(data)
+
+    if (pictureFile) {
+      const imgResponse = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${MY_ID}/experiences/${data._id}/picture`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+        body: pictureFile,
+      })
+      console.log(imgResponse)
+    }
   } catch (error) {
     console.log(error)
   }
@@ -100,14 +118,12 @@ export const getExperiencesById = async (id, callback) => {
 
 export const deleteExperience = async experienceId => {
   try {
-    const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${MY_ID}/experiences/${experienceId}`, {
+    await fetch(`https://striveschool-api.herokuapp.com/api/profile/${MY_ID}/experiences/${experienceId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TOKEN}`,
       },
     })
-    const data = await response.json()
-    console.log(data)
   } catch (error) {
     console.log(error)
   }
@@ -127,18 +143,14 @@ export const addPost = async (textPayload, imgPayload = null) => {
     const data = await textResponse.json()
     console.log(data)
     if (imgPayload) {
-      try {
-        const imgResponse = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${data._id}`, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${TOKEN}`,
-          },
-          body: imgPayload,
-        })
-        console.log(imgResponse)
-      } catch (error) {
-        console.log(error)
-      }
+      const imgResponse = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${data._id}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+        body: imgPayload,
+      })
+      console.log(imgResponse)
     }
   } catch (error) {
     console.log(error)
