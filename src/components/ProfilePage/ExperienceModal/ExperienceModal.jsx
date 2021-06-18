@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
 import { addEditExperience, deleteExperience } from "../../assets/fetch"
+import UploadImage from "../../assets/UploadImage"
 
 const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => {
   const [formInput, setFormInput] = useState({})
@@ -26,6 +27,7 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
       endDate: "",
       description: "",
       area: "",
+      image: "",
     })
   }
 
@@ -41,6 +43,7 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
       endDate: experienceData?.endDate ? experienceData.endDate.slice(0, 7) : "",
       description: experienceData ? experienceData.description : "",
       area: experienceData ? experienceData.area : "",
+      image: experienceData ? experienceData.image : "",
     })
   }, [experienceData])
 
@@ -114,9 +117,11 @@ const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => 
             <Form.Control as="textarea" rows={3} required value={formInput.description} onChange={e => getInputData("description", e)} />
           </Form.Group>
 
+          {formInput?.image && <img src={formInput.image} alt="post" className="img-fluid" />}
+
           <Form.Group>
-            <Form.Label>Image URL</Form.Label>
-            <Form.Control type="file" onChange={e => setPictureFile(e.target.files[0])} />
+          <UploadImage image={formInput.image} />{/* replaces Form.Label */}
+            <Form.Control id="file-input" type="file" onChange={e => setPictureFile(e.target.files[0])} className="d-none" />
           </Form.Group>
         </Form>
       </Modal.Body>
