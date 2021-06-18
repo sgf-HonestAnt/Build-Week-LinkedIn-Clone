@@ -41,7 +41,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
   return (
     <div className="hero-section">
       <div className="hero-cover p-relative">
-        <Card.Img
+        <Card.Img 
           variant="top"
           src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fjosephliu%2Ffiles%2F2019%2F06%2F1-office-1516329_1920-1200x299.jpg"
         />
@@ -49,39 +49,42 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
         <div className="profile-img-container" style={{ backgroundImage: `url("${profileData.image}")` }}></div>
       </div>
 
-      {isMe && (
-        <div className="d-flex p-3" style={{ flexDirection: "row-reverse" }}>
+      {isMe ? (
+        <div className="d-flex px-3 spacer-on-me" style={{ flexDirection: "row-reverse" }}>
           <button className="editBtn" onClick={handleShow}>
             <i className="fas fa-pencil-alt"></i>
           </button>
         </div>
-      )}
-      <div className="hero-section-columns mt-3">
+      ) : <div className="spacer">{ }</div>}
+      <div className="hero-section-columns">
         <div className="mr-5">
-          <Card.Body>
-            <Card.Title className="mb-0 profile-name">
+          <Card.Body className="pt-0 pb-2 px-3">
+            <Card.Title className="profile-name">
               {profileData.name} {profileData.surname}
             </Card.Title>
             <Card.Text>
               {profileData.title}
               <br />
-              {profileData.area} •{" "}
-              <Button variant="link" onClick={handleShowContactMe}>
+              <span className="area">{profileData.area} •{" "}</span>
+              <Button className="p-0" variant="link" onClick={handleShowContactMe}>
                 Contact info
               </Button>
               <br />
               <Button variant="link">500+ connections</Button>
             </Card.Text>
             <Card.Text>
-              <Badge pill variant="primary">
-                Open to
-              </Badge>
-              <Badge pill variant="light">
-                Add section
-              </Badge>
-              <Badge pill variant="light">
-                More
-              </Badge>
+              {isMe? (
+              <><Badge pill variant="primary">Open to</Badge>
+              <Badge pill variant="light">Add section</Badge>
+              <Badge pill variant="light">More</Badge>
+              </>)
+              : (
+              <><Badge pill variant="primary">Connect</Badge>
+              <Badge pill variant="light"><i class="fas fa-lock"></i> Message</Badge>
+              <Badge pill variant="light">More</Badge>
+              </>)
+              }             
+              
             </Card.Text>
           </Card.Body>
         </div>
@@ -112,10 +115,14 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                 <i className="fab fa-linkedin mr-3 p-1"></i>
                 <div>
                   Your Profile
-                  <Link to={`/profile/${profileData._id}`}>
+                  {isMe ? (<Link to={`/profile/me`}>
                     {" "}
                     linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
-                  </Link>
+                  </Link>) :
+                  (<Link to={`/profile/${profileData._id}`}>
+                    {" "}
+                    linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
+                  </Link>)}
                 </div>
               </div>
               <div className="d-flex justify-content-start">
@@ -131,7 +138,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
           {/* Edit intro modal */}
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Edit intro</Modal.Title>
+              <Modal.Title className="modal-title">Edit intro</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form
@@ -186,11 +193,11 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
 
                 <Form.Group>
                   <Form.Label>Contact info</Form.Label>
-                  <Form.Control type="text" value={profileSection.email} onChange={e => getProfileSectionData("email", e)} />
+                  <Form.Control id="contact-info" type="text" value={profileSection.email} onChange={e => getProfileSectionData("email", e)} />
                   {/* This should be border-bottom only, with a pencil icon */}
                 </Form.Group>
               </Form>
-              <Button variant="primary" type="submit" form="profile-form">
+              <Button variant="primary" type="submit" id="hero-submit"form="profile-form">
                 Save
               </Button>
             </Modal.Body>
@@ -202,3 +209,4 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
 }
 
 export default HeroSection
+

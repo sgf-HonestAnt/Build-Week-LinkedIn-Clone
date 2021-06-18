@@ -31,8 +31,8 @@ const ProfilePage = props => {
 
   return (
     <Row className="align-items-start">
-      <Col className="my-3 px-1" xs={12} md={9}>
-        <div className="section-card p-0">
+      <Col className="mb-3 pb-1 mt-2" xs={12} md={9}>
+        <div className="section-card">
           <HeroSection profileData={profileData} experiences={experiences} userId={currentUserId} isMe={isMe} onUpdate={refresh} />
         </div>
         <div className="section-card p-3">
@@ -51,7 +51,7 @@ const ProfilePage = props => {
           <EducationRow isMe={isMe} />
         </div>
       </Col>
-      <Col className="d-none d-md-block my-3 px-1" md={3}>
+      <Col className="d-none d-md-block my-2 px-1" md={3}>
         <div className="section-card p-3">
           <AlsoViewed />
         </div>

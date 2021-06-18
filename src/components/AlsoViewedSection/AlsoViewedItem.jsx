@@ -17,7 +17,7 @@ const AlsoViewedItem = ({ profileInfo }) => {
           </div>
         </div>
       </Link>
-      <Button variant="outline-secondary" className="rounded-pill py-1 mt-1">
+      <Button variant="outline-secondary" className="rounded-pill py-1">
         Connect
       </Button>
     </div>

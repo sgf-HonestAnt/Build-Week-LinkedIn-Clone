@@ -10,7 +10,7 @@ const EducationRow = ({ isMe }) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   return (
-    <div className="education-page">
+    <div className="education-page px-1">
       <div className="d-flex justify-content-between">
         <h5 className="education-title">Education</h5>
         {isMe && (
