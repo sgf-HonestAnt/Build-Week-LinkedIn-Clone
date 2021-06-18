@@ -94,7 +94,7 @@
 
 .hero-section .badge-light:hover {
   background-color: rgba(0, 0, 0, 0.1);
-  border: 2px solid gray;
+  border: 1px solid gray;
 }
 
 .hero-section .fas-fa-pencil {

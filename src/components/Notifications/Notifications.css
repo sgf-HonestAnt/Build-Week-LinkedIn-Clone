@@ -1,0 +1,101 @@
+.notifications-left .my-title {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+}
+
+.notifications-left .view-settings {
+    color: #0073b1;
+    font-weight: 600;
+}
+
+.notifications-left .view-settings:hover {
+    color: #0073b1;
+    text-decoration: underline;
+}
+
+.notifications-left .gray-bg {
+    background-color: #F9FAFB;
+    border-radius: 0 0 10px 10px;
+}
+
+.notifications-left .white-bg {
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.notifications-left .white-bg {
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.notifications-right, .notifications-right a {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.notifications-right img {
+    width: 90%;
+    padding: 10px 0;
+}
+
+.notifications-section-card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.notifications-right-section-card {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.notifications-section-card-center {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0 0 10px 10px;
+    margin: 10px 0;
+}
+
+.notifications-center {
+    font-size: 14px;
+    color: rgba(0,0,0,0.6);
+}
+
+.notifications-center a {
+    color: rgba(0,0,0,0.6);
+}
+
+.notifications-center .new-notifications {
+    background-color: rgba(168, 212, 255, 0.2);
+    border-radius: 10px 10px 0 0;
+}
+
+.notifications-center .space {
+    width: 10px;
+}
+
+.notifications-center .profile-round {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+.notifications-center .badge-link {
+    width: 120px;
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 10px 15px;
+    border: 2px solid #0073b1; 
+    color: #0073b1; 
+}
+
+.notifications-center .badge-link:hover {
+    background-color: #a8d4ff;
+}
+
+.notifications-center .fa-ellipsis-h {
+    font-size: 20px;
+    color: rgba(0,0,0,0.5);
+}

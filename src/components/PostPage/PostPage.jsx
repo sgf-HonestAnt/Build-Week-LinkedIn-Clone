@@ -5,11 +5,15 @@ import SinglePost from "../SinglePost/SinglePost"
 import MyProfileCard from "../FeedPage/leftSidebar/MyProfileCard"
 import { useState } from "react"
 import { useEffect } from "react"
-import { getPostById } from "../assets/fetch"
+import { getPostById, getProfileById } from "../assets/fetch"
 
 const PostPage = props => {
   const postId = props.match.params.postId
   const [post, setPost] = useState(null)
+  const [userData, setUserData] = useState({})
+
+  const [wasUpdated, setWasUpdated] = useState(false)
+  const id = post ? post.user : "me"
 
   const [wasUpdated, setWasUpdated] = useState(false)
   const id = post ? post.user : "me"
@@ -18,6 +22,9 @@ const PostPage = props => {
     getPostById(postId, setPost)
     setWasUpdated(false)
   }, [postId, wasUpdated])
+  useEffect(() => {
+    if (post) getProfileById(post.user, setUserData)
+  }, [post])
 
   const handleUpdate = () => {
     setWasUpdated(true)
@@ -26,12 +33,11 @@ const PostPage = props => {
   return (
     <Row>
       <Col xs={4} md={3} className="mt-2 px-1">
-        <div className="section-card p-0">
-          <MyProfileCard id={id} />
-        </div>
+
+        <div className="section-card p-0">{id && <MyProfileCard id={id} />}</div>
       </Col>
       <Col xs={8} md={5} className="mt-2">
-        {post && <SinglePost postInfo={post} onUpdate={handleUpdate} />}
+        {post && <SinglePost postInfo={post} userData={userData} onUpdate={handleUpdate} />}
       </Col>
       <Col className="d-none d-md-block mt-2 px-1" md={4}>
         <div className="section-card p-3">

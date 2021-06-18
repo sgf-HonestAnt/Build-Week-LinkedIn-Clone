@@ -9,7 +9,7 @@ const UserPostSection = ({ posts, onUpdate }) => {
         .slice(posts.length - 20)
         .reverse()
         .map(post => {
-          return <SinglePost key={post._id} postInfo={post} onUpdate={onUpdate} />
+          return <SinglePost key={post._id} postInfo={post} userData={post.user} onUpdate={onUpdate} />
         })}
     </section>
   )
