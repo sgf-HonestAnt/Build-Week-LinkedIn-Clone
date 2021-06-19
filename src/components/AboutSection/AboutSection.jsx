@@ -38,6 +38,8 @@ const AboutSection = ({ profileData, onUpdate, isMe }) => {
       </div>
       <div>
         <p>{profileData.bio}</p>
+        {/* LinkedIn allows approx. 738 characters, can we truncate? */}
+
         {/* <p>
           {seeMore ? profileData.bio : `${profileData.bio.substring(0, 200)}...`}
           <button variant="link" className="btn-link" onClick={() => setSeeMore(!seeMore)}>

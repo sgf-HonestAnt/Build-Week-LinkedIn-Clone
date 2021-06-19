@@ -2,55 +2,74 @@
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 10px;
+  color: rgba(0,0,0,0.9);
+  font-size: 16px;
 }
 
 .hero-section .card-img,
 .hero-section .card-img-top {
-  min-height: 28vh;
+  height: 20vh;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  padding: 0;
 }
 
 .hero-section .p-relative {
   position: relative;
 }
 
-.hero-section .p-relative .fa-pen-square {
-  /* is edit cover photo ever going to be implemented? */
+/* .hero-section .p-relative .fa-pen-square {
   position: absolute;
   top: 20px;
   right: 20px;
   color: white;
-  font-size: xx-large;
-}
+} */
 
 .hero-section .profile-img-container {
   background-position: center center;
   background-size: cover;
   position: absolute;
-  top: 10vh;
+  top: 4vh;
   left: 3%;
-  height: 175px;
-  width: 175px;
+  height: 170px;
+  width: 170px;
   overflow: hidden;
   border-radius: 50%;
-  border: 4px solid white;
+  border: 2px solid white;
+}
+
+.hero-section .spacer, .hero-section .spacer-on-me {
+  height: 7vh;
 }
 
 .hero-section .hero-section-columns {
   display: flex;
 }
 
+.hero-section .profile-name {
+  color: rgba(0,0,0,0.9);
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.hero-section .area {
+  color: rgba(0,0,0,0,6);
+  font-size: 14px;
+}
+
 .hero-section .btn-link {
+  color: #0073b1;
   padding: 0;
-  color: #007bff;
-  font-weight: 700;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
   text-align: left;
+  line-height: 1;
 }
 
 .hero-section .btn-link:hover,
 .footer .btn-link:focus {
-  color: #007bff;
+  color: #0073b1;
 }
 
 .hero-section .badge {
@@ -59,22 +78,44 @@
   font-size: medium;
 }
 
+.hero-section .badge-primary {
+  background-color: #0073b1; 
+}
+
+.hero-section .badge-primary:hover {
+  background-color: rgb(0,65,130);
+}
+
 .hero-section .badge-light {
   background-color: rgba(0, 0, 0, 0);
-  color: gray;
+  color: rgba(0,0,0,0.6);
   border: 1px solid gray;
 }
 
-.hero-section .fas {
+.hero-section .badge-light:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid gray;
+}
+
+.hero-section .fas-fa-pencil {
   float: right;
 }
 
 .hero-section .work-history {
-  font-weight: 700;
+  color: rgba(0,0,0,0,9);
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .hero-section .work-history img {
-  max-width: 50px;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.modal-title {
+  color: rgba(0,0,0,0.9);
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .contact-modal .fa-linkedin, .contact-modal .fa-envelope {
@@ -83,4 +124,33 @@
 
 .contact-modal a {
   display: block;
+}
+
+.hero-section-input-form-container {
+  color: green;
+}
+
+.hero-section-input-form {
+  border: 0;
+  font-size: 14px;
+}
+
+.hero-section-input-button {
+  margin: 0 10px;
+  padding: 0 10px;
+}
+
+#hero-submit {
+  background-color: #0073b1; 
+  border-radius: 160px;
+  width: 90px;
+  /* height: 30px; */
+  padding: 7px 15px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#hero-submit:hover {
+  background-color: rgb(0,65,130);
 }

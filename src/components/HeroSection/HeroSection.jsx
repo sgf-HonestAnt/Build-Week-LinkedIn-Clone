@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Card, Button, Badge, Modal, Form } from "react-bootstrap"
-import Logo from "../assets/LinkedIn-Logos/LI-Logo.png"
 import { editProfile } from "../assets/fetch"
-
+import UploadImage from "../assets/UploadImage"
 import "./HeroSection.css"
 
 const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
+  const [pictureFile, setPictureFile] = useState(null)
+
   const [profileSection, setProfileSection] = useState({})
-  // const [experiencesOnHero, setExperiencesOnHero] = useState({})
+  const [myExp, setMyExp] = useState({})
 
   useEffect(() => {
     setProfileSection({
       ...profileData,
     })
-    // setExperiencesOnHero(experiences)
-  }, [profileData])
+    setMyExp({
+      experiences,
+    })
+  }, [profileData, experiences])
 
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -30,7 +33,9 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
   }
 
   const handleSubmit = () => {
-    editProfile(profileSection)
+    const formData = new FormData()
+    formData.append("profile", pictureFile)
+    editProfile(profileSection, formData)
   }
 
   return (
@@ -44,54 +49,74 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
         <div className="profile-img-container" style={{ backgroundImage: `url("${profileData.image}")` }}></div>
       </div>
 
-      {isMe && (
-        <div className="d-flex p-3" style={{ flexDirection: "row-reverse" }}>
+      {isMe ? (
+        <div className="d-flex px-3 spacer-on-me" style={{ flexDirection: "row-reverse" }}>
           <button className="editBtn" onClick={handleShow}>
             <i className="fas fa-pencil-alt"></i>
           </button>
         </div>
+      ) : (
+        <div className="spacer">{}</div>
       )}
-      <div className="hero-section-columns pt-4">
+      <div className="hero-section-columns">
         <div className="mr-5">
-          <Card.Body>
-            <Card.Title className="mb-0 profile-name">
+          <Card.Body className="pt-0 pb-2 px-3">
+            <Card.Title className="profile-name">
               {profileData.name} {profileData.surname}
             </Card.Title>
             <Card.Text>
               {profileData.title}
               <br />
-              {profileData.area} •{" "}
-              <Button variant="link" onClick={handleShowContactMe}>
+              <span className="area">{profileData.area} • </span>
+              <Button className="p-0" variant="link" onClick={handleShowContactMe}>
                 Contact info
               </Button>
               <br />
               <Button variant="link">500+ connections</Button>
             </Card.Text>
             <Card.Text>
-              <Badge pill variant="primary">
-                Open to
-              </Badge>
-              <Badge pill variant="light">
-                Add section
-              </Badge>
-              <Badge pill variant="light">
-                More
-              </Badge>
+              {isMe ? (
+                <>
+                  <Badge pill variant="primary">
+                    Open to
+                  </Badge>
+                  <Badge pill variant="light">
+                    Add section
+                  </Badge>
+                  <Badge pill variant="light">
+                    More
+                  </Badge>
+                </>
+              ) : (
+                <>
+                  <Badge pill variant="primary">
+                    Connect
+                  </Badge>
+
+                  <Badge pill variant="light">
+                    <i className="fas fa-lock"></i> Message
+                  </Badge>
+
+                  <Badge pill variant="light">
+                    More
+                  </Badge>
+                </>
+              )}
             </Card.Text>
           </Card.Body>
         </div>
 
         <div>
-          {/* This div requires a fetch of OUR experiences and should return most recent two. */}
           <div className="card-body work-history">
-            <div className="mb-2">
-              <img src={Logo} alt="..." />
-              Company 1
-            </div>
-            <div className="mb-2">
-              <img src={Logo} alt="..." />
-              Company 2
-            </div>
+            {myExp ? (
+              experiences.slice(-2).map(x => (
+                <div key={x._id} className="mb-2">
+                  <img src={x.image} alt="..." /> {x.company}
+                </div>
+              ))
+            ) : (
+              <></>
+            )}
           </div>
 
           {/* Contact me modal */}
@@ -107,18 +132,24 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                 <i className="fab fa-linkedin mr-3 p-1"></i>
                 <div>
                   Your Profile
-                  <Link to="/profile/:id">
-                    {" "}
-                    {/* <--- FIX */}
-                    linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
-                  </Link>
+                  {isMe ? (
+                    <Link to={`/profile/me`}>
+                      {" "}
+                      linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
+                    </Link>
+                  ) : (
+                    <Link to={`/profile/${profileData._id}`}>
+                      {" "}
+                      linkedin.com/in/{profileData.name}-{profileData.surname}-{profileData._id}
+                    </Link>
+                  )}
                 </div>
               </div>
               <div className="d-flex justify-content-start">
                 <i className="far fa-envelope mr-3 p-1"></i>
                 <div>
                   Email
-                  <a href="google.com">{profileData.email}</a>
+                  <Link to={`/profile/${profileData._id}`}>{profileData.email}</Link>
                 </div>
               </div>
             </Modal.Body>
@@ -127,7 +158,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
           {/* Edit intro modal */}
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Edit intro</Modal.Title>
+              <Modal.Title className="modal-title">Edit intro</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form
@@ -135,7 +166,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                 onSubmit={e => {
                   e.preventDefault()
                   handleSubmit()
-                  onUpdate()
+                  setTimeout(() => onUpdate(), 2000)
                   handleClose()
                 }}
               >
@@ -163,22 +194,42 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                   </Form.Row>
                 </Form.Group>
 
+                {profileSection?.image && <img src={profileSection.image} alt="post" className="img-fluid" />}
+
                 <Form.Group>
-                  <Form.Label>Profile image</Form.Label>
-                  <Form.Control type="text" value={profileSection.image} onChange={e => getProfileSectionData("image", e)} />
+                  <UploadImage image={profileSection.image} />
+                  <Form.Control id="file-input" type="file" onChange={e => setPictureFile(e.target.files[0])} className="d-none" />
+                  {/* <Form.Label>Profile image</Form.Label>
+                  <Form.Control type="file" onChange={e => setPictureFile(e.target.files[0])} /> */}
                   {/* This should be border-bottom only, with a pencil icon */}
+                  {/* <div className="hero-section-input-form-container">
+
+                    <form
+                      className="mb-1"
+                      onSubmit={e => {
+                        submitImage(e)
+                      }}
+                    >
+                      <input type="file" className="hero-section-input-form" onChange={e => setSelectedFile(e.target.files[0])} />
+                      <Button type="submit" variant="success" className="hero-section-input-button py-0 text-center">submit</Button>
+                    </form>
+                  </div> */}
                 </Form.Group>
 
                 <Form.Group>
                   <Form.Label>Contact info</Form.Label>
-                  <Form.Control type="text" value={profileSection.email} onChange={e => getProfileSectionData("email", e)} />
+                  <Form.Control
+                    id="contact-info"
+                    type="text"
+                    value={profileSection.email}
+                    onChange={e => getProfileSectionData("email", e)}
+                  />
                   {/* This should be border-bottom only, with a pencil icon */}
                 </Form.Group>
               </Form>
-              <Button variant="primary" type="submit" form="profile-form">
+              <Button variant="primary" type="submit" id="hero-submit" form="profile-form">
                 Save
               </Button>
-              {/* This will have an onclick of edit my profile with some of the former details */}
             </Modal.Body>
           </Modal>
         </div>

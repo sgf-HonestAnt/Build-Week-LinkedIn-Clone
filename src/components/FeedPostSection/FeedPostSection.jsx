@@ -1,46 +1,32 @@
-import { getProfileById, addPost } from "../assets/fetch"
-
+import { getProfileById } from "../assets/fetch"
+import PostModal from "../PostModal/PostModal"
 import { useEffect, useState } from "react"
-import { Form } from "react-bootstrap"
 
 import "./FeedPostSection.css"
 
 const FeedPostSection = ({ onUpdate }) => {
   const [myProfile, setMyProfile] = useState({})
 
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
   useEffect(() => {
     getProfileById("me", setMyProfile)
   }, [])
 
-  const [data, setData] = useState({
-    text: "",
-  })
-
-  const getData = e => {
-    setData({ text: e.currentTarget.value })
-  }
-
   return (
     <section className="feedpost-section">
-      <div className="d-flex justify-content-between">
+      <div className="d-flex">
         <div className="profile-img-container mr-2" style={{ backgroundImage: `url(${myProfile.image})` }}></div>
         {/* "https://i1.sndcdn.com/avatars-000583246488-dhm5la-t500x500.jpg" */}
-        <Form
-          className="w-100"
-          onSubmit={e => {
-            e.preventDefault()
-            addPost(data)
-            setData({ text: "" })
-            onUpdate()
-          }}
-        >
-          <Form.Group>
-            <Form.Control type="text" className="post-form" placeholder="Start a post" value={data.text} onChange={e => getData(e)} />
-            {/* <Button variant="primary" type="submit">
-                        Save
-                    </Button> */}
-          </Form.Group>
-        </Form>
+
+        <div className="feedpost-section">
+          <button onClick={handleShow} className="post-form">
+            Start a post
+          </button>
+        </div>
+        <PostModal show={show} onHide={handleClose} onUpdate={onUpdate} />
       </div>
       <div className="d-flex justify-content-between feedpost-icons">
         <div>

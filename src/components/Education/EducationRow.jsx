@@ -6,11 +6,18 @@ import "./education.css"
 
 const EducationRow = ({ isMe }) => {
   const [show, setShow] = useState(false)
+  const image = "https://media-exp3.licdn.com/dms/image/C4D0BAQFFQIjyDsOK0w/company-logo_200_200/0/1593351903670?e=1632355200&v=beta&t=01RObunrVhJxBy0F7ekd6oGjw551Tn4tOQCol9x7WzA"
+  const [details, setDetails] = useState({
+    institute: "Strive School",
+    course: "Full Stack Web Development",
+    location: "Berlin, Germany",
+    years: "2008-2009",
+  })
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   return (
-    <div className="education-page">
+    <div className="education-page px-1">
       <div className="d-flex justify-content-between">
         <h5 className="education-title">Education</h5>
         {isMe && (
@@ -19,52 +26,9 @@ const EducationRow = ({ isMe }) => {
           </button>
         )}
       </div>
-      <SingleEducation isMe={isMe} />
-      <EducationModal show={show} onHide={handleClose} />
+      <SingleEducation isMe={isMe} image={image} institute={details.institute} course={details.course} location={details.location} years={details.years} />
+      <EducationModal show={show} onHide={handleClose} image="https://media-exp3.licdn.com/dms/image/C4D0BAQFFQIjyDsOK0w/company-logo_200_200/0/1593351903670?e=1632355200&v=beta&t=01RObunrVhJxBy0F7ekd6oGjw551Tn4tOQCol9x7WzA" />
     </div>
-    /* <Row>
-        <Col md={10}>
-          <h5 className="profile-title">Education</h5>
-        </Col>
-        <Col md={2} className="text-right">
-          <button className="text-muted">
-            <i className="fas fa-plus"></i>
-          </button>
-        </Col>
-      </Row>
-
-      <Row className="education-row">
-        <Col md={2}>
-          <SingleEducation image="https://via.placeholder.com/150" />
-        </Col>
-        <Col md={8} className="pt-5">
-          <Education school="Lorem ipsum dolor sit amet consectetur " degree="Masters" year="2010-2015" />
-          <Description courses="Some courses you took" />
-          <Description courses="Some courses you took" />
-          <Description courses="Some courses you took" />
-          <Description courses="Some courses you took" />
-          <hr className="mt-3 pl-5"></hr>
-        </Col>
-        <Col md={2} className="mt-5 text-right">
-          <button className="text-muted">
-            <i className="fas fa-pencil-alt"></i>
-          </button>
-        </Col>
-      </Row>
-      <Row className="education-row">
-        <Col md={2}>
-          <SingleEducation image="https://via.placeholder.com/150" />
-        </Col>
-        <Col md={8} className="pt-5">
-          <Education school="Lorem ipsum dolor sit amet consectetur " degree="Masters" year="2010-2015" />
-          <Description courses="Some courses you took" />
-          <Description courses="Some courses you took" />
-          <Description courses="Some courses you took" />
-          <Description courses="Some courses you took" />
-          <hr className="mt-3"></hr>
-        </Col>
-      </Row>
-    </div> */
   )
 }
 export default EducationRow

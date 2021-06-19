@@ -1,17 +1,34 @@
 import React from "react"
+import { Alert } from "react-bootstrap"
 import "./singlepost.css"
 import { useState } from "react"
+import EditPostModal from "./EditPostModal"
 
-const SinglePost = ({ postInfo }) => {
+const SinglePost = ({ postInfo, onUpdate, userData }) => {
   const [readMore, setReadMore] = useState(false)
+  const [wasDeleted, setWasDeleted] = useState(false)
+
+  // Modal stuff
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const currentDate = new Date()
   const timestamp = currentDate.getMinutes()
+  const handleDelete = () => setWasDeleted(true)
+
+  if (wasDeleted)
+    return (
+      <Alert variant="info" className="my-3">
+        Deleting... Stay with me...
+      </Alert>
+    )
+
   return (
     <>
       <div className="section-card p-3">
         <div className="d-flex mb-2 single-post">
-          <img src={postInfo?.user?.image || "https://via.placeholder.com/150"} alt="" className="user-picture" />
+          <img src={userData?.image || "https://via.placeholder.com/150"} alt="" className="user-picture" />
           <div className="ml-3">
             <p>{postInfo.username}</p>
             <span className="text">
@@ -28,15 +45,18 @@ const SinglePost = ({ postInfo }) => {
               </div>
             </span>
           </div>
+          {userData?._id === "60c70adc291930001560ab93" && <i className="fas fa-ellipsis-h ml-auto" onClick={handleShow}></i>}
         </div>
         <div className="post">
           <div>
-            {readMore ? postInfo.text : `${postInfo.text.substring(0, 200)}...`}
-            <div className="read-more-div">
-              <button className="read-more" onClick={() => setReadMore(!readMore)}>
-                {readMore ? "show less" : "  read more"}
-              </button>
-            </div>
+            {!readMore && postInfo.text.length > 200 ? `${postInfo.text.substring(0, 200)}...` : postInfo.text}
+            {postInfo.text.length > 200 && (
+              <div className="read-more-div">
+                <button className="read-more" onClick={() => setReadMore(!readMore)}>
+                  {readMore ? "show less" : "  read more"}
+                </button>
+              </div>
+            )}
           </div>
           {postInfo.image && <img className="w-100" src={postInfo.image} alt="post" />}
           <hr />
@@ -56,6 +76,7 @@ const SinglePost = ({ postInfo }) => {
           </div>
         </div>
       </div>
+      <EditPostModal show={show} onHide={handleClose} postInfo={postInfo} onUpdate={onUpdate} onDelete={handleDelete} />
     </>
   )
 }

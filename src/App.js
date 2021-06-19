@@ -8,6 +8,7 @@ import ProfilePage from "./components/ProfilePage/ProfilePage"
 import Footer from "./components/Footer/Footer"
 import FeedPage from "./components/FeedPage/FeedPage"
 import PostPage from "./components/PostPage/PostPage"
+import Notifications from "./components/Notifications/Notifications"
 
 function App() {
   return (
@@ -16,15 +17,34 @@ function App() {
       <Container fluid className="pt-5 main">
         <Route exact path="/" component={FeedPage} />
 
-        <Route path="/post/:postId">
-          <PostPage />
-          <Footer />
-        </Route>
+        <Route
+          path="/post/:postId"
+          render={routeProps => (
+            <>
+              <PostPage {...routeProps} />
+              <Footer />
+            </>
+          )}
+        ></Route>
 
-        <Route path="/profile/:userId">
-          <ProfilePage />
-          <Footer />
-        </Route>
+        <Route
+          path="/profile/:userId"
+          render={routeProps => (
+            <>
+              <ProfilePage {...routeProps} />
+              <Footer />
+            </>
+          )}
+        ></Route>
+
+        <Route
+          path="/notifications"
+          render={routeProps => (
+            <>
+              <Notifications {...routeProps} />
+            </>
+          )}
+        ></Route>
       </Container>
     </div>
   )

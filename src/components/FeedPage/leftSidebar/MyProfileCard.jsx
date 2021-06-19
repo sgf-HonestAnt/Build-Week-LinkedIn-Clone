@@ -1,23 +1,23 @@
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { getProfileById } from "../../assets/fetch"
 
 import "./MyProfileCard.css"
 
-const MyProfileCard = () => {
-  const [myProfile, setMyProfile] = useState(null)
+const MyProfileCard = ({ id }) => {
+  const [profile, setProfile] = useState(null)
 
-  useEffect(() => getProfileById("me", setMyProfile), [])
+  useEffect(() => getProfileById(id, setProfile), [id])
 
   return (
-    myProfile && (
+    profile && (
       <section className="feed-my-profile">
         <div className="hero"></div>
-        <img className="avatar rounded-circle" src={myProfile.image} alt="" />
+        <img className="avatar rounded-circle" src={profile.image} alt="" />
         <h6 className="text-center my-name">
-          {myProfile.name} {myProfile.surname}
+          {profile.name} {profile.surname}
         </h6>
-        <p className="text-center my-title border-bottom pb-3">{myProfile.title}</p>
+
+        <p className="text-center my-title border-bottom pb-3">{profile.title}</p>
         <div className="d-flex flex-column px-3 views border-bottom">
           <div className="d-flex justify-content-between mt-3">
             <p>Who viewed your profile</p>

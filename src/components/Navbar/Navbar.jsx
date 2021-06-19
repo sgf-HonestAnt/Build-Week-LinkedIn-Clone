@@ -28,43 +28,43 @@ const Navbar = ({ location }) => {
           <li className={currentPath === "/" ? "active" : ""}>
             <Link to="/">
               <i className="fas fa-home"></i>
-              <span className="d-none d-sm-block">Home</span>
+              <span className="d-none d-md-block">Home</span>
             </Link>
           </li>
           <li className={currentPath === "/mynetwork" ? "active" : ""}>
             <Link to="/mynetwork">
               <i className="fas fa-user-friends"></i>
-              <span className="d-none d-sm-block">Network</span>
+              <span className="d-none d-md-block">Network</span>
             </Link>
           </li>
           <li className={currentPath === "/jobs" ? "active" : ""}>
             <Link to="/jobs">
               <i className="fas fa-briefcase"></i>
-              <span className="d-none d-sm-block">Jobs</span>
+              <span className="d-none d-md-block">Jobs</span>
             </Link>
           </li>
           <li className={currentPath === "/messaging" ? "active" : ""}>
             <Link to="/messaging">
               <i className="fas fa-comment-dots"></i>
-              <span className="d-none d-sm-block pr-1">Messaging</span>
+              <span className="d-none d-md-block pr-1">Messaging</span>
             </Link>
           </li>
           <li className={currentPath === "/notifications" ? "active" : ""}>
             <Link to="/notifications">
               <i className="fas fa-bell"></i>
-              <span className="d-none d-sm-block pl-1">Notifications</span>
+              <span className="d-none d-md-block pl-1">Notifications</span>
             </Link>
           </li>
           <li className={currentPath === "/profile/me" ? "active" : ""}>
             <Link to="/profile/me">
               <i className="fas fa-user-circle"></i>
-              <span className="d-none d-sm-block">Me</span>
+              <span className="d-none d-md-block">Me</span>
             </Link>
           </li>
           <li className={"border-left d-none d-sm-flex" + currentPath === "/work" ? " active" : ""}>
             <Link to="/work">
               <i className="fas fa-th"></i>
-              <span className="d-none d-sm-block">Work</span>
+              <span className="d-none d-md-block">Work</span>
             </Link>
           </li>
           <li id="premium" className="d-none d-lg-flex">
