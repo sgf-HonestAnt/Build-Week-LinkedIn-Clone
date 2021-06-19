@@ -1,4 +1,4 @@
-# [LIVE DEMO](brandaspt.github.io/linkedin-react)
+[LIVE DEMO](brandaspt.github.io/linkedin-react)
 
 # Getting Started with Create React App
 
