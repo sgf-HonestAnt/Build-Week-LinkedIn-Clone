@@ -1,3 +1,5 @@
+# Linked-In Clone created over the course of just 1 week with a team of 3 students. Collaborators: @samlobeng, @sgf_HonestAnt and @brandaspt
+
 # [LIVE DEMO](https://brandaspt.github.io/linkedin-react/)
 
 # Getting Started with Create React App
