@@ -2,7 +2,7 @@ const TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MGFkYzI5MTkzMDAwMTU2MGFiOTMiLCJpYXQiOjE2MjM2NTcxODAsImV4cCI6MTYyNDg2Njc4MH0.TYp6DjYVT2X0_VJ1teUGTfeILyeVVOWVkXjn42Vqj7o"
 const MY_ID = "60c70adc291930001560ab93"
 
-// Profiles functions
+// Profiles functions HELLO
 export const getProfiles = async callback => {
   try {
     const response = await fetch(`${process.env.REACT_APP_BE_URL}/profile/`, 
