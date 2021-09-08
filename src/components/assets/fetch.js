@@ -21,7 +21,7 @@ export const getProfiles = async callback => {
 
 export const getProfileById = async (id, callback) => {
   try {
-    const pageId = id === "me" ? "6135e8f233924d3f1cc264f8" : id
+    const pageId = id === "me" ? MY_ID : id
     const response = await fetch(`${process.env.REACT_APP_BE_URL}/profile/${pageId}`, 
     {
       // headers: {
