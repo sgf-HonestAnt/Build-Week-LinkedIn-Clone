@@ -1,6 +1,6 @@
 const TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MGFkYzI5MTkzMDAwMTU2MGFiOTMiLCJpYXQiOjE2MjM2NTcxODAsImV4cCI6MTYyNDg2Njc4MH0.TYp6DjYVT2X0_VJ1teUGTfeILyeVVOWVkXjn42Vqj7o"
-const MY_ID = "60c70adc291930001560ab93"
+const MY_ID = "6135e8f233924d3f1cc264f8"
 
 // Profiles functions HELLO HELLO
 export const getProfiles = async callback => {
@@ -21,13 +21,15 @@ export const getProfiles = async callback => {
 
 export const getProfileById = async (id, callback) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BE_URL}/profile/${id}`, 
+    const pageId = id === "me" ? "6135e8f233924d3f1cc264f8" : id
+    const response = await fetch(`${process.env.REACT_APP_BE_URL}/profile/${pageId}`, 
     {
       // headers: {
-      //   Authorization: `Bearer ${TOKEN}`,
-      // },
-    }
-    )
+        //   Authorization: `Bearer ${TOKEN}`,
+        // },
+      }
+      )
+    console.log(response)
     const data = await response.json()
     callback(data)
   } catch (error) {

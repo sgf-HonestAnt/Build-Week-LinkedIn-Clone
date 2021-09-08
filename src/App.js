@@ -38,7 +38,7 @@ function App() {
         ></Route>
 
         <Route
-          path="/notifications"
+          path="/notifications" 
           render={routeProps => (
             <>
               <Notifications {...routeProps} />

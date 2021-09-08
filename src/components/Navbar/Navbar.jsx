@@ -56,7 +56,7 @@ const Navbar = ({ location }) => {
             </Link>
           </li>
           <li className={currentPath === "/profile/me" ? "active" : ""}>
-            <Link to="/profile/me">
+            <Link to="/profile/me"> 
               <i className="fas fa-user-circle"></i>
               <span className="d-none d-md-block">Me</span>
             </Link>
