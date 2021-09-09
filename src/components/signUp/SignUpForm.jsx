@@ -25,11 +25,11 @@ const validate = (values) => {
     errors.email = "Invalid email address"
   }
 
-  if (!values.password) {
-    errors.password = "Required"
-  } else if (values.password.length < 8) {
-    errors.password = "Password must have at least 8 characters"
-  }
+  // if (!values.password) {
+  //   errors.password = "Required"
+  // } else if (values.password.length < 8) {
+  //   errors.password = "Password must have at least 8 characters"
+  // }
 
   if (!values.area) {
     errors.area = "Required"
@@ -66,7 +66,7 @@ const SignUpForm = (props) => {
       email: "",
       username: "",
       title: "",
-      password: "",
+      // password: "",
       bio: "",
       area: "",
     },
@@ -76,6 +76,7 @@ const SignUpForm = (props) => {
       createUser(values, " <<<<<< inside Signupform on submit")
     },
   })
+  // console.log(values)
 
   const createUser = async (values) => {
     console.log("inside create user")
@@ -143,7 +144,7 @@ const SignUpForm = (props) => {
             email: "",
             username: "",
             title: "",
-            password: "",
+            // password: "",
             bio: "",
             area: "",
           }}
@@ -208,7 +209,7 @@ const SignUpForm = (props) => {
               ) : null}
             </div>
 
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="password">
                 {" "}
                 <img src="https://image.flaticon.com/icons/png/512/958/958519.png" width="50px" height="50px" />
@@ -226,7 +227,7 @@ const SignUpForm = (props) => {
               {formik.touched.password && formik.errors.password ? (
                 <div className="fw-bold text-danger">{formik.errors.password}</div>
               ) : null}
-            </div>
+            </div> */}
             <div className="form-group">
               <label htmlFor="area">
                 {" "}
