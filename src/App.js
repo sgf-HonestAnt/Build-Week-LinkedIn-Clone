@@ -14,7 +14,10 @@ function App() {
     <div className="App">
       <BrowserRouter basename="/">
         <Switch>
-          <Route exact path="/" component={Loggin}></Route>
+          <Route 
+          exact path="/" 
+          render={(routeProps) => <Loggin {...routeProps} /> }
+          />
           <div>
             <Container fluid className="pt-5 main" style={{ minHeight: "100vh" }}>
             <Navbar />

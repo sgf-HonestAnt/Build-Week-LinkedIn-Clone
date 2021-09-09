@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { getProfilesLoggin } from "../assets/fetch.js";
 import { useEffect, useState } from "react";
 
-const Loggin = () => {
+const Loggin = ({history}) => {
   const [logginUser, setLogginUser] = useState({
     userEmail: "",
     password: "",
@@ -73,8 +73,7 @@ const Loggin = () => {
               />
             </div>
             <p className="forget-text">Forget password?</p>
-
-            <Button className="button-sign">Sign in</Button>
+            <Button className="button-sign" onClick={() => history.push("/home")}>Sign in</Button>
           </form>
         </div>
       </div>
