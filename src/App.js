@@ -9,6 +9,7 @@ import FeedPage from "./components/FeedPage/FeedPage";
 import PostPage from "./components/PostPage/PostPage";
 import Notifications from "./components/Notifications/Notifications";
 import Loggin from "./components/Loggin/Loggin";
+import { getLoggedUser, MY_ID } from "./components/assets/fetch";
 
 function App() {
   return (

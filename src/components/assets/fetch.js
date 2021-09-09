@@ -1,6 +1,6 @@
 export let MY_ID;
 
-export const getLoggedUser = async () => { // (4) THIS MUST FIRE ON EVERY REFRESH OF APP.JS!
+export const getLoggedUser = async () => { // (4) THIS MUST FIRE ON EVERY REFRESH OF APP.JS! 
   try {
     const response = await fetch(`${process.env.REACT_APP_BE_URL}/signin`);
     const data = await response.json();
@@ -13,7 +13,7 @@ export const getLoggedUser = async () => { // (4) THIS MUST FIRE ON EVERY REFRES
 
 export const postLoggedUser = async (id) => { // (3) THIS IS FIRED WHEN WE SUBMIT LOGIN FORM
   try {
-    const response = await fetch(`${process.env.REACT_APP_BE_URL}/signin`, {
+    await fetch(`${process.env.REACT_APP_BE_URL}/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
