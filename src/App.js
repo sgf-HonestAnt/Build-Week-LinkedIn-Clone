@@ -11,11 +11,12 @@ import Notifications from "./components/Notifications/Notifications";
 import Loggin from "./components/Loggin/Loggin";
 import { getLoggedUser, MY_ID } from "./components/assets/fetch";
 
+import SignUpForm from "./components/signUp/SignUpForm";
 function App() {
-  useEffect(()=>{
+  useEffect(() => {
     getLoggedUser()
     // WHEN MY_ID changes at refresh getLoggedUser and send back to MY_ID at fetch?? how
-  },[MY_ID])
+  }, [MY_ID])
   return (
     <div className="App">
       {/* <BrowserRouter basename="/"> */}
@@ -63,7 +64,7 @@ function App() {
           </div>
         </Switch>
       </BrowserRouter>
-    </div>
+    </div >
   );
 }
 
