@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Button, Badge, Modal, Form } from "react-bootstrap";
-import { editProfile } from "../assets/fetch";
+import { editProfile, getCV } from "../assets/fetch";
 import UploadImage from "../assets/UploadImage";
 import "./HeroSection.css";
 
@@ -38,6 +38,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
     editProfile(profileSection, formData);
   };
 
+  console.log(profileData)
   return (
     <div className="hero-section">
       <div className="hero-cover p-relative">
@@ -108,7 +109,9 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                   </Badge>
 
                   <Badge pill variant="light">
-                    More
+                    <a href={process.env.REACT_APP_BE_URL + "/profile/" + profileData._id + "/CV"} target="_blank">
+                        View CV
+                    </a>
                   </Badge>
                 </>
               )}
