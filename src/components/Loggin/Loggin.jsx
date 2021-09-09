@@ -1,8 +1,23 @@
 import "./Loggin.css";
 // import classes from './Loggin.module.css'
 import { Button } from "react-bootstrap";
+import { useState } from "react";
 
 const Loggin = () => {
+  const [logginUser, setLogginUser] = useState({
+    userEmail: "",
+    password: "",
+  });
+  // const [logginUserPass, setLogginUserPass] = useState("");
+
+  const logginHendlerUser = (key, value) => {
+    setLogginUser({
+      ...logginUser,
+      [key]: value,
+    });
+  };
+
+  console.log(logginUser);
   return (
     <div className="main-loggin App-loggin">
       <svg
@@ -32,6 +47,8 @@ const Loggin = () => {
                 className="input-loggin"
                 type="text"
                 placeholder="Email or Phone"
+                onChange={(e) => logginHendlerUser("userEmail", e.target.value)}
+                defaultValue={logginUser}
               />
             </div>
             <div>
@@ -39,6 +56,10 @@ const Loggin = () => {
                 className="input-loggin"
                 type="password"
                 placeholder="Password"
+                onChange={(e) => logginHendlerUser("password", e.target.value)}
+                defaultValue={logginUser}
+                // onChange={logginHendler}
+                // value={logginUser}
               />
             </div>
             <p className="forget-text">Forget password?</p>

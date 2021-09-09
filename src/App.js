@@ -14,7 +14,7 @@ import Loggin from "./components/Loggin/Loggin";
 function App() {
   return (
     <div className="App">
-      <Container fluid className="pt-5 main">
+      <Container fluid className="pt-5 main" style={{ minHeight: "100vh" }}>
         <Route exact path="/" component={FeedPage} />
         <Route exact component={Loggin} path="/loggin"></Route>
 
