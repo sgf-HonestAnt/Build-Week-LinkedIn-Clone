@@ -6,7 +6,7 @@ import { MY_ID } from "../assets/fetch"
 
 import "./AlsoViewedSection.css"
 
-const AlsoViewed = () => {
+const AlsoViewed = (props) => {
   const [profiles, setProfiles] = useState([])
 
   useEffect(() => getProfiles(setProfiles), []) // FILTER OUT PROFILE THAT ID = MY_ID
@@ -14,7 +14,7 @@ const AlsoViewed = () => {
   return (
     <section className="also-viewed-section d-flex flex-wrap">
       <p className="font-weight-bold">People also viewed</p>
-      {profiles.slice(0, 10).map(profile => (
+      {profiles.filter(users => users._id !== MY_ID).slice(0, 10).map(profile => (
         <AlsoViewedItem key={profile._id} profileInfo={profile} />
       ))}
     </section>

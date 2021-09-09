@@ -69,7 +69,7 @@ const ProfilePage = (props) => {
       </Col>
       <Col className="d-none d-md-block my-2 px-1" md={3}>
         <div className="section-card p-3">
-          <AlsoViewed />
+          <AlsoViewed props={props} />
         </div>
       </Col>
     </Row>

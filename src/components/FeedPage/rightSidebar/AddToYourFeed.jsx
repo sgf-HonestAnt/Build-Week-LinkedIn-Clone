@@ -16,7 +16,7 @@ const AddToYourFeed = () => {
       </div>
       <div>
         <p className="font-weight-bold">People also viewed</p>
-        {peopleToFollow.slice(0, 4).map(person => (
+        {peopleToFollow.filter(users => users._id !== MY_ID).slice(0, 4).map(person => (
           <SingleAdd key={person._id} person={person} />
         ))}
       </div>
