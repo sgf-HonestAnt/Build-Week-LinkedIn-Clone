@@ -12,10 +12,12 @@
   font-size: 12px;
   color: rgba(0, 0, 0, 0.6);
 }
+.single-post a, .single-post a:hover {
+  color: inherit;
+}
 .post {
   word-wrap: break-word;
 }
-
 .read-more {
   border: none;
   border-style: none;

@@ -2,6 +2,7 @@ import React from "react"
 import { Alert } from "react-bootstrap"
 import "./singlepost.css"
 import { useState } from "react"
+import { Link, withRouter } from "react-router-dom"
 import EditPostModal from "./EditPostModal"
 
 const SinglePost = ({ postInfo, onUpdate, userData }) => {
@@ -16,28 +17,40 @@ const SinglePost = ({ postInfo, onUpdate, userData }) => {
   const currentDate = new Date()
   const timestamp = currentDate.getMinutes()
   const handleDelete = () => setWasDeleted(true)
-
+  const userLink = `/profile/${postInfo.user._id}`
+  
   if (wasDeleted)
-    return (
-      <Alert variant="info" className="my-3">
+  return (
+    <Alert variant="info" className="my-3">
         Deleting... Stay with me...
       </Alert>
-    )
+  )
+  
+  const postString = postInfo.createdAt 
+  const viewString = new Date().toISOString()
+
+  const a = new Date("2021-09-08T12:59:12.846Z")
+  const b = new Date("2021-09-09T06:33:18.952Z")
+  
+  console.log("1",postString,"2",viewString)
+  console.log("a",a,"a.year",a.getFullYear(),"a.month",a.getMonth(),"a.date",a.getDate())
+  console.log("b",b,"b.year",b.getFullYear(),"b.month",b.getMonth(),"b.date",b.getDate())
+
 
   return (
     <>
       <div className="section-card p-3">
         <div className="d-flex mb-2 single-post">
-          <img src={userData?.image || "https://via.placeholder.com/150"} alt="" className="user-picture" />
+        <Link to={userLink}><img src={userData?.image || "https://via.placeholder.com/150"} alt="" className="user-picture" /></Link>
           <div className="ml-3">
-            <p>{postInfo.username}</p>
+            <p><Link to={userLink}>{postInfo.username}</Link></p>
             <span className="text">
               <p>12k followers</p>
               <div className="d-flex justify-content-start">
                 <p className="pr-1">{`${timestamp}m`}</p>
-                <p className="pr-1">Edited </p>
+                {postInfo.createdAt !== postInfo.updatedAt && <p className="pr-1">Edited</p>}
                 <p>
-                  <i className="fas fa-circle pr-1"></i>
+                  {/* <i className="fas fa-circle pr-1"></i> */}
                 </p>
                 <p>
                   <i className="fas fa-globe-europe"></i>
