@@ -1,28 +1,31 @@
 import "./Loggin.css";
 // import classes from './Loggin.module.css'
 import { Button } from "react-bootstrap";
-import { getProfilesLoggin } from "../assets/fetch.js";
+import { getProfilesLoggin, postLoggedUser } from "../assets/fetch.js";
 import { useEffect, useState } from "react";
 
-const Loggin = ({history}) => {
+const Loggin = ({ history }) => {
   const [logginUser, setLogginUser] = useState({
     userEmail: "",
     password: "",
   });
+  const [id, setId] = useState("");
   // const [logginUserPass, setLogginUserPass] = useState("");
 
   const logginHendlerUser = (key, value) => {
     setLogginUser({
       ...logginUser,
       [key]: value,
-    }); 
+    });
   };
 
-  getProfilesLoggin(logginUser);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await postLoggedUser(id);
+    history.push("/");
+  };
 
-  const submitHandler = (event) => {};
-
-  // console.log(logginUser.userEmail);
+  getProfilesLoggin(logginUser, setId);
 
   useEffect(() => {
     getProfilesLoggin();
@@ -51,14 +54,13 @@ const Loggin = ({history}) => {
         <div className="loggin-d d-flex">
           <h5 className="sign-in-header">Sing in </h5>
           <p>Stay updated on your professional world</p>
-          <form onSubmit={submitHandler}>
+          <form onSubmit={(e) => handleSubmit(e)}>
             <div>
               <input
                 className="input-loggin"
                 type="text"
                 placeholder="Email or Phone"
                 onChange={(e) => logginHendlerUser("userEmail", e.target.value)}
-                defaultValue={logginUser}
               />
             </div>
             <div>
@@ -67,13 +69,14 @@ const Loggin = ({history}) => {
                 type="password"
                 placeholder="Password"
                 onChange={(e) => logginHendlerUser("password", e.target.value)}
-                defaultValue={logginUser}
                 // onChange={logginHendler}
                 // value={logginUser}
               />
             </div>
             <p className="forget-text">Forget password?</p>
-            <Button className="button-sign" onClick={() => history.push("/home")}>Sign in</Button>
+            <Button className="button-sign" type="submit">
+              Sign in
+            </Button>
           </form>
         </div>
       </div>

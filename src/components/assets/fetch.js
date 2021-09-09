@@ -1,9 +1,37 @@
-export let MY_ID
+export let MY_ID;
 
-export const getProfilesLoggin = async (callback) => {
+export const getLoggedUser = async () => {
+  try {
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const postLoggedUser = async (id) => {
+  try {
+    const resp = await fetch(`${process.env.REACT_APP_BE_URL}/signin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ identifier: id }),
+    });
+    console.log(id);
+    if (resp.ok) {
+      const response = await fetch(`${process.env.REACT_APP_BE_URL}/signin`);
+      const data = response.json();
+      const userId = data;
+      MY_ID = userId;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getProfilesLoggin = async (user, callback) => {
   try {
     const response = await fetch(
-      `http://localhost:3001/loggin/${callback ? callback.userEmail : ""}`,
+      `${process.env.REACT_APP_BE_URL}/loggin/${user ? user.userEmail : ""}`,
       {
         // headers: {
         //   Authorization: `Bearer ${TOKEN}`,
@@ -13,8 +41,7 @@ export const getProfilesLoggin = async (callback) => {
     const data = await response.json();
     // callback(data);
     const [userData] = data;
-
-    MY_ID = userData._id;
+    callback(userData._id);
 
     // console.log(MY_ID);
   } catch (error) {

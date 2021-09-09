@@ -26,7 +26,7 @@ function App() {
               style={{ minHeight: "100vh" }}
             >
               <Navbar />
-              <Route exact path="/home" component={FeedPage} />
+              <Route exact path="/" component={FeedPage} />
               <Route
                 path="/post/:postId"
                 render={(routeProps) => (
