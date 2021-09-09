@@ -1,6 +1,6 @@
 const TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MGFkYzI5MTkzMDAwMTU2MGFiOTMiLCJpYXQiOjE2MjM2NTcxODAsImV4cCI6MTYyNDg2Njc4MH0.TYp6DjYVT2X0_VJ1teUGTfeILyeVVOWVkXjn42Vqj7o";
-let MY_ID;
+export let MY_ID = "6135e8f233924d3f1cc264f8";
 
 export const getProfilesLoggin = async (callback) => {
   try {
@@ -29,12 +29,7 @@ export const getProfilesLoggin = async (callback) => {
 export const getProfiles = async (callback) => {
   try {
     const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/",
-      {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-        },
-      }
+      "https://striveschool-api.herokuapp.com/api/profile/"
     );
     console.log(response);
     const data = await response.json();
@@ -220,7 +215,7 @@ export const addPost = async (textPayload, imgPayload = null, userId) => {
 
 export const getPosts = async (callback) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BE_URL}/posts/`, {
+    const response = await fetch(`${process.env.REACT_APP_BE_URL}/posts`, {
       // headers: {
       //   Authorization: `Bearer ${TOKEN}`,
       // },
