@@ -14,41 +14,46 @@ function App() {
     <div className="App">
       <BrowserRouter basename="/">
         <Switch>
-          <Route 
-          exact path="/" 
-          render={(routeProps) => <Loggin {...routeProps} /> }
+          <Route
+            exact
+            path="/linkedin-react"
+            render={(routeProps) => <Loggin {...routeProps} />}
           />
           <div>
-            <Container fluid className="pt-5 main" style={{ minHeight: "100vh" }}>
-            <Navbar />
-            <Route exact path="/home" component={FeedPage} />
-            <Route
-              path="/post/:postId"
-              render={(routeProps) => (
-                <>
-                  <PostPage {...routeProps} />
-                  <Footer />
-                </>
-              )}
-            ></Route>
-            <Route
-              path="/profile/:userId"
-              render={(routeProps) => (
-                <>
-                  <ProfilePage {...routeProps} />
-                  <Footer />
-                </>
-              )}
-            ></Route>
-            <Route
-              path="/notifications"
-              render={(routeProps) => (
-                <>
-                  <Notifications {...routeProps} />
-                </>
-              )}
-            ></Route>
-          </Container>
+            <Container
+              fluid
+              className="pt-5 main"
+              style={{ minHeight: "100vh" }}
+            >
+              <Navbar />
+              <Route exact path="/home" component={FeedPage} />
+              <Route
+                path="/post/:postId"
+                render={(routeProps) => (
+                  <>
+                    <PostPage {...routeProps} />
+                    <Footer />
+                  </>
+                )}
+              ></Route>
+              <Route
+                path="/profile/:userId"
+                render={(routeProps) => (
+                  <>
+                    <ProfilePage {...routeProps} />
+                    <Footer />
+                  </>
+                )}
+              ></Route>
+              <Route
+                path="/notifications"
+                render={(routeProps) => (
+                  <>
+                    <Notifications {...routeProps} />
+                  </>
+                )}
+              ></Route>
+            </Container>
           </div>
         </Switch>
       </BrowserRouter>
