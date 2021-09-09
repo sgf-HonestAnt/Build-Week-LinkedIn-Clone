@@ -1,7 +1,8 @@
 import "./Loggin.css";
 // import classes from './Loggin.module.css'
 import { Button } from "react-bootstrap";
-import { useState } from "react";
+import { getProfilesLoggin } from "../assets/fetch.js";
+import { useEffect, useState } from "react";
 
 const Loggin = () => {
   const [logginUser, setLogginUser] = useState({
@@ -17,7 +18,16 @@ const Loggin = () => {
     });
   };
 
-  console.log(logginUser);
+  getProfilesLoggin(logginUser);
+
+  const submitHandler = (event) => {};
+
+  // console.log(logginUser.userEmail);
+
+  useEffect(() => {
+    getProfilesLoggin();
+  }, [logginUser]);
+
   return (
     <div className="main-loggin App-loggin">
       <svg
@@ -41,7 +51,7 @@ const Loggin = () => {
         <div className="loggin-d d-flex">
           <h5 className="sign-in-header">Sing in </h5>
           <p>Stay updated on your professional world</p>
-          <form>
+          <form onSubmit={submitHandler}>
             <div>
               <input
                 className="input-loggin"

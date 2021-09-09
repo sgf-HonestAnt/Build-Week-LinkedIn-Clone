@@ -1,6 +1,29 @@
 const TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MGFkYzI5MTkzMDAwMTU2MGFiOTMiLCJpYXQiOjE2MjM2NTcxODAsImV4cCI6MTYyNDg2Njc4MH0.TYp6DjYVT2X0_VJ1teUGTfeILyeVVOWVkXjn42Vqj7o";
-const MY_ID = "60c70adc291930001560ab93";
+let MY_ID;
+
+export const getProfilesLoggin = async (callback) => {
+  try {
+    const response = await fetch(
+      `http://localhost:3001/loggin/${callback ? callback.userEmail : ""}`,
+      {
+        // headers: {
+        //   Authorization: `Bearer ${TOKEN}`,
+        // },
+      }
+    );
+    const data = await response.json();
+    // callback(data);
+    const [userData] = data;
+
+    MY_ID = userData._id;
+
+    // console.log(MY_ID);
+  } catch (error) {
+    console.log(error);
+  }
+  // console.log(MY_ID);
+};
 
 // Profiles functions
 export const getProfiles = async (callback) => {

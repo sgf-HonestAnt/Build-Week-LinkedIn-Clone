@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/" component={FeedPage} />
         <Route exact component={Loggin} path="/loggin"></Route>
 
-        {/* <Navbar /> */}
+        <Navbar />
         <Route
           path="/post/:postId"
           render={(routeProps) => (
