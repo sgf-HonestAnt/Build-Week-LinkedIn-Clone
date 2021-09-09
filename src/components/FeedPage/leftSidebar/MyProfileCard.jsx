@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getProfileById } from "../../assets/fetch"
+import { Link } from "react-router-dom"
 
 import "./MyProfileCard.css"
 
@@ -12,9 +13,9 @@ const MyProfileCard = ({ id }) => {
     profile && (
       <section className="feed-my-profile">
         <div className="hero"></div>
-        <img className="avatar rounded-circle" src={profile.image} alt="" />
+        <Link to="/profile/me"><img className="avatar rounded-circle" src={profile.image} alt="" /></Link>
         <h6 className="text-center my-name">
-          {profile.name} {profile.surname}
+        <Link to="/profile/me">{profile.name} {profile.surname}</Link>
         </h6>
 
         <p className="text-center my-title border-bottom pb-3">{profile.title}</p>

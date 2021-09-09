@@ -56,3 +56,9 @@
   cursor: pointer;
   background: rgba(0, 0, 0, 0.1);
 }
+.post img {
+  max-height: 25vh;
+  object-fit: cover;
+  border: 0px;
+  border-radius: 5px;
+}
