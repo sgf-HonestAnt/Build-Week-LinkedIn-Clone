@@ -37,7 +37,7 @@ export const getProfileById = async (id, callback) => {
 
 export const editProfile = async (payload, pictureFile = null) => {
   try {
-    await fetch(`${process.env.REACT_APP_BE_URL}/profile/`, {
+    await fetch(`${process.env.REACT_APP_BE_URL}/profile/${MY_ID}`, {
       method: "PUT",
       // headers: {
       //   "Content-Type": "application/json",
