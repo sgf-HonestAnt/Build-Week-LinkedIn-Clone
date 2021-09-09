@@ -15,7 +15,7 @@ const Loggin = () => {
     setLogginUser({
       ...logginUser,
       [key]: value,
-    });
+    }); 
   };
 
   getProfilesLoggin(logginUser);

@@ -26,7 +26,7 @@ const Navbar = ({ location }) => {
         </div>
         <ul className="d-flex justify-content-end align-items-center w-100 h-100">
           <li className={currentPath === "/" ? "active" : ""}>
-            <Link to="/">
+            <Link to="/home">
               <i className="fas fa-home"></i>
               <span className="d-none d-md-block">Home</span>
             </Link>
