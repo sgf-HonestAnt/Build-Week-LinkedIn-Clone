@@ -159,21 +159,25 @@ export const deleteExperience = async (experienceId) => {
 };
 
 // Posts functions
-export const addPost = async (textPayload, imgPayload = null) => {
+export const addPost = async (textPayload, imgPayload = null, userId) => {
   try {
+    const text = textPayload;
     const textResponse = await fetch(`${process.env.REACT_APP_BE_URL}/posts`, {
       method: "POST",
+      body: JSON.stringify({
+        ...text,
+        user: userId,
+      }),
       headers: {
         "Content-Type": "application/json",
         //   Authorization: `Bearer ${TOKEN}`,
       },
-      body: JSON.stringify(textPayload),
     });
     const data = await textResponse.json();
-    console.log(data);
+    const id = data._id;
     if (imgPayload) {
       const imgResponse = await fetch(
-        `${process.env.REACT_APP_BE_URL}/posts/${data._id}`,
+        `${process.env.REACT_APP_BE_URL}/posts/${id}`,
         {
           method: "POST",
           // headers: {

@@ -19,16 +19,19 @@ const PostModal = ({ show, onHide, onUpdate }) => {
   }, []);
 
   const getData = (e) => {
-    setData({ text: e.currentTarget.value });
+    setData({
+      text: e.currentTarget.value,
+    });
   };
 
   const handlePost = () => {
     let formData = null;
     if (pictureFile) {
       formData = new FormData();
-      formData.append("post", pictureFile);
+      formData.append("image", pictureFile);
     }
-    addPost(data, formData);
+
+    addPost(data, formData, myProfile._id);
   };
 
   return (
