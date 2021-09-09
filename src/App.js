@@ -17,8 +17,7 @@ function App() {
       <BrowserRouter basename="/">
         <Switch>
           <Route
-            exact
-            path="/linkedin-react"
+            exact path="/"
             render={(routeProps) => <Loggin {...routeProps} />}
           />
           <div>
@@ -28,7 +27,7 @@ function App() {
               style={{ minHeight: "100vh" }}
             >
               <Navbar />
-              <Route exact path="/" component={FeedPage} />
+              <Route exact path="/home" component={FeedPage} />
               <Route
                 path="/post/:postId"
                 render={(routeProps) => (

@@ -23,7 +23,7 @@ const Loggin = ({ history }) => {
     e.preventDefault(); // WE PREVENT DEFAULT REFRESH
     console.log(logginUser)
     await postLoggedUser(id); // WE POST THE ID TO POSTLOGGEDUSER FUNC AT FETCH.JS
-    history.push("/"); // AND THEN WE PUSH TO "/"
+    history.push("/home"); // AND THEN WE PUSH TO "/"
   };
 
   // getProfilesLoggin(logginUser, setId);
