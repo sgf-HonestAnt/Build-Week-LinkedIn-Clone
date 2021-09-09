@@ -26,7 +26,7 @@ const PostModal = ({ show, onHide, onUpdate }) => {
     let formData = null
     if (pictureFile) {
       formData = new FormData()
-      formData.append("post", pictureFile)
+      formData.append("image", pictureFile) // NOT WORKING YET.
     }
     addPost(data, formData)
   }

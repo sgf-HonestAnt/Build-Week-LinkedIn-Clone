@@ -206,11 +206,11 @@ export const editPost = async (postId, payload, imgFile = null) => {
   try {
     await fetch(`${process.env.REACT_APP_BE_URL}/posts/${postId}`, {
       method: "PUT",
-      // headers: {
-      //   "Content-Type": "application/json",
-      //   Authorization: `Bearer ${TOKEN}`,
-      // },
-      // body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify(payload),
     })
     if (imgFile) {
       const imgResponse = await fetch(`${process.env.REACT_APP_BE_URL}/posts/${postId}`, 
