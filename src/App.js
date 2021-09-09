@@ -22,6 +22,7 @@ function App() {
         <Route
           path="/post/:postId"
           render={(routeProps) => (
+
             <>
               <PostPage {...routeProps} />
               <Footer />
