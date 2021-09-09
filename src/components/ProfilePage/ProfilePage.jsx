@@ -7,12 +7,13 @@ import AboutSection from "../AboutSection/AboutSection"
 import FeaturedRow from "../Featured/FeaturedRow"
 import EducationRow from "../Education/EducationRow"
 import ExperienceRow from "../Experience/ExperienceRow"
+import { MY_ID } from "../assets/fetch"
 import { useState, useEffect } from "react"
 import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch"
 
 const ProfilePage = props => {
   const currentUserId = props.match.params.userId
-  const isMe = currentUserId === "me" // boolean
+  const isMe = currentUserId === "me" || currentUserId === MY_ID// boolean
   const [profileData, setProfileData] = useState({})
   const [experiences, setExperiences] = useState([])
   const [posts, setPosts] = useState(null)

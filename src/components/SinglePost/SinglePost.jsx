@@ -4,6 +4,7 @@ import "./singlepost.css"
 import { useState } from "react"
 import { Link, withRouter } from "react-router-dom"
 import EditPostModal from "./EditPostModal"
+import { MY_ID } from "../assets/fetch"
 
 const SinglePost = ({ postInfo, onUpdate, userData }) => {
   const [readMore, setReadMore] = useState(false)
@@ -32,10 +33,9 @@ const SinglePost = ({ postInfo, onUpdate, userData }) => {
   const a = new Date("2021-09-08T12:59:12.846Z")
   const b = new Date("2021-09-09T06:33:18.952Z")
   
-  console.log("1",postString,"2",viewString)
-  console.log("a",a,"a.year",a.getFullYear(),"a.month",a.getMonth(),"a.date",a.getDate())
-  console.log("b",b,"b.year",b.getFullYear(),"b.month",b.getMonth(),"b.date",b.getDate())
-
+  // console.log("1",postString,"2",viewString)
+  // console.log("a",a,"a.year",a.getFullYear(),"a.month",a.getMonth(),"a.date",a.getDate())
+  // console.log("b",b,"b.year",b.getFullYear(),"b.month",b.getMonth(),"b.date",b.getDate())
 
   return (
     <>
@@ -58,7 +58,7 @@ const SinglePost = ({ postInfo, onUpdate, userData }) => {
               </div>
             </span>
           </div>
-          {userData?._id === "60c70adc291930001560ab93" && <i className="fas fa-ellipsis-h ml-auto" onClick={handleShow}></i>}
+          {userData?._id === MY_ID && <i className="fas fa-ellipsis-h ml-auto" onClick={handleShow}></i>}
         </div>
         <div className="post">
           <div>

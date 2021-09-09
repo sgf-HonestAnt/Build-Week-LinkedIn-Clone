@@ -1,6 +1,5 @@
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MGFkYzI5MTkzMDAwMTU2MGFiOTMiLCJpYXQiOjE2MjM2NTcxODAsImV4cCI6MTYyNDg2Njc4MH0.TYp6DjYVT2X0_VJ1teUGTfeILyeVVOWVkXjn42Vqj7o"
-const MY_ID = "6135e8f233924d3f1cc264f8"
+// const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MGFkYzI5MTkzMDAwMTU2MGFiOTMiLCJpYXQiOjE2MjM2NTcxODAsImV4cCI6MTYyNDg2Njc4MH0.TYp6DjYVT2X0_VJ1teUGTfeILyeVVOWVkXjn42Vqj7o"
+export const MY_ID = "6135e8f233924d3f1cc264f8"
 
 // Profiles functions HELLO HELLO
 export const getProfiles = async callback => {
@@ -211,7 +210,7 @@ export const editPost = async (postId, payload, imgFile = null) => {
       //   "Content-Type": "application/json",
       //   Authorization: `Bearer ${TOKEN}`,
       // },
-      body: JSON.stringify(payload),
+      // body: JSON.stringify(payload),
     })
     if (imgFile) {
       const imgResponse = await fetch(`${process.env.REACT_APP_BE_URL}/posts/${postId}`, 

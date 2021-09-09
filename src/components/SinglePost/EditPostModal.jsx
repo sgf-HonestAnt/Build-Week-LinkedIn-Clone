@@ -16,8 +16,12 @@ const EditPostModal = ({ show, onHide, postInfo, onUpdate, onDelete, location, h
       formData = new FormData()
       formData.append("post", pictureFile)
     }
+    console.log("attempting to submit form", postInfo._id, postDetails, formData)
     type === "edit" ? editPost(postInfo._id, postDetails, formData) : deletePost(postInfo._id)
   }
+
+  console.log("postInfo ====>", postInfo)
+  console.log("postDetails ====>", postDetails)
 
   return (
     <Modal show={show} onHide={onHide}>

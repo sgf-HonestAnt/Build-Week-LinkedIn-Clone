@@ -19,7 +19,7 @@ const PostModal = ({ show, onHide, onUpdate }) => {
   }, [])
 
   const getData = e => {
-    setData({ text: e.currentTarget.value })
+    setData({ text: e.currentTarget.value }) 
   }
 
   const handlePost = () => {
