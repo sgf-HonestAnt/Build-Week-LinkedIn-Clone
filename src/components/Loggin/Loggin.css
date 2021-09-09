@@ -1,17 +1,17 @@
-.App {
-  background-color: #ffffff !important;
-  min-height: 100vh;
+.App-loggin.main-loggin {
+  /* background-color: #ffffff !important; */
+  /* min-height: 100vh; */
+  max-width: 100% !important;
 }
 
 .pt-5,
 .py-5 {
   padding-top: 2rem !important;
 }
-.main {
-  max-width: 100% !important;
 
-  /* background-attachment: fixed; */
-}
+/* .main-loggin {
+  max-width: 100% !important;
+} */
 .logo-loggin {
   margin-left: 3rem;
   margin-bottom: 20px !important;

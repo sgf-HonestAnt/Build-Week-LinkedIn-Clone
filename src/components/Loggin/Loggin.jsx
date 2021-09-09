@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 
 const Loggin = () => {
   return (
-    <>
+    <div className="main-loggin App-loggin">
       <svg
         className="logo-loggin"
         width="105"
@@ -54,7 +54,7 @@ const Loggin = () => {
           Join now
         </a>
       </div>
-    </>
+    </div>
   );
 };
 

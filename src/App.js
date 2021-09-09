@@ -16,6 +16,8 @@ function App() {
     <div className="App">
       <Container fluid className="pt-5 main">
         <Route exact path="/" component={FeedPage} />
+        <Route exact component={Loggin} path="/loggin"></Route>
+
         {/* <Navbar /> */}
         <Route
           path="/post/:postId"
@@ -42,15 +44,6 @@ function App() {
           render={(routeProps) => (
             <>
               <Notifications {...routeProps} />
-            </>
-          )}
-        ></Route>
-
-        <Route
-          path="/loggin"
-          render={(routeProps) => (
-            <>
-              <Loggin {...routeProps} />
             </>
           )}
         ></Route>
