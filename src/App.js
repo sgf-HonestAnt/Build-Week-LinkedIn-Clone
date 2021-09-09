@@ -12,13 +12,18 @@ import Loggin from "./components/Loggin/Loggin";
 import { getLoggedUser, MY_ID } from "./components/assets/fetch";
 
 function App() {
+  useEffect(()=>{
+    getLoggedUser()
+    // WHEN MY_ID changes at refresh getLoggedUser and send back to MY_ID at fetch?? how
+  },[MY_ID])
   return (
     <div className="App">
-      <BrowserRouter basename="/">
+      {/* <BrowserRouter basename="/"> */}
+      <BrowserRouter>
         <Switch>
           <Route
             exact path="/"
-            render={(routeProps) => <Loggin {...routeProps} />}
+            render={(routerProps) => <Loggin {...routerProps} />}
           />
           <div>
             <Container
@@ -29,28 +34,28 @@ function App() {
               <Navbar />
               <Route exact path="/home" component={FeedPage} />
               <Route
-                path="/post/:postId"
-                render={(routeProps) => (
+                eaxct path="/post/:postId"
+                render={(routerProps) => (
                   <>
-                    <PostPage {...routeProps} />
+                    <PostPage {...routerProps} />
                     <Footer />
                   </>
                 )}
               ></Route>
               <Route
-                path="/profile/:userId"
-                render={(routeProps) => (
+                exct path="/profile/:userId"
+                render={(routerProps) => (
                   <>
-                    <ProfilePage {...routeProps} />
+                    <ProfilePage {...routerProps} />
                     <Footer />
                   </>
                 )}
               ></Route>
               <Route
-                path="/notifications"
-                render={(routeProps) => (
+                exact path="/notifications"
+                render={(routerProps) => (
                   <>
-                    <Notifications {...routeProps} />
+                    <Notifications {...routerProps} />
                   </>
                 )}
               ></Route>
