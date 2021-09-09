@@ -1,25 +1,27 @@
-import "./App.css"
+import "./App.css";
 
-import { Container } from "react-bootstrap"
-import { Route } from "react-router-dom"
+import { Container } from "react-bootstrap";
+import { Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar/Navbar"
-import ProfilePage from "./components/ProfilePage/ProfilePage"
-import Footer from "./components/Footer/Footer"
-import FeedPage from "./components/FeedPage/FeedPage"
-import PostPage from "./components/PostPage/PostPage"
-import Notifications from "./components/Notifications/Notifications"
+import Navbar from "./components/Navbar/Navbar";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
+import Footer from "./components/Footer/Footer";
+import FeedPage from "./components/FeedPage/FeedPage";
+import PostPage from "./components/PostPage/PostPage";
+import Notifications from "./components/Notifications/Notifications";
+import Loggin from "./components/Loggin/Loggin";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Container fluid className="pt-5 main">
+      <Container fluid className="pt-5 main" style={{ minHeight: "100vh" }}>
         <Route exact path="/" component={FeedPage} />
+        <Route exact component={Loggin} path="/loggin"></Route>
 
+        <Navbar />
         <Route
           path="/post/:postId"
-          render={routeProps => (
+          render={(routeProps) => (
             <>
               <PostPage {...routeProps} />
               <Footer />
@@ -29,7 +31,7 @@ function App() {
 
         <Route
           path="/profile/:userId"
-          render={routeProps => (
+          render={(routeProps) => (
             <>
               <ProfilePage {...routeProps} />
               <Footer />
@@ -38,8 +40,8 @@ function App() {
         ></Route>
 
         <Route
-          path="/notifications" 
-          render={routeProps => (
+          path="/notifications"
+          render={(routeProps) => (
             <>
               <Notifications {...routeProps} />
             </>
@@ -47,7 +49,7 @@ function App() {
         ></Route>
       </Container>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
