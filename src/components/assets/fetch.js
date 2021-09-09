@@ -27,7 +27,6 @@ export const getProfileById = async (id, callback) => {
         // },
       }
     );
-    console.log(response);
     const data = await response.json();
     callback(data);
   } catch (error) {
@@ -35,7 +34,7 @@ export const getProfileById = async (id, callback) => {
   }
 };
 
-export const editProfile = async (payload, pictureFile = null) => {
+export const editProfile = async (id, payload, pictureFile = null) => {
   try {
     await fetch(`${process.env.REACT_APP_BE_URL}/profile/${MY_ID}`, {
       method: "PUT",
@@ -48,15 +47,16 @@ export const editProfile = async (payload, pictureFile = null) => {
     if (pictureFile) {
       const imgResponse = await fetch(
         `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/picture`,
+
         {
           method: "POST",
           // headers: {
+          //   "Content-Type": "application/json",
           //   Authorization: `Bearer ${TOKEN}`,
           // },
           body: pictureFile,
         }
       );
-      console.log(imgResponse);
     }
   } catch (error) {
     console.log(error);
@@ -133,9 +133,7 @@ export const getExperiencesById = async (id, callback) => {
       }
     );
     const data = await response.json();
-    if (data) {
-      callback(data);
-    }
+    callback(data);
   } catch (error) {
     console.log(error);
   }
