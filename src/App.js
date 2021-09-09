@@ -1,6 +1,7 @@
 import "./App.css";
 import { Container } from "react-bootstrap";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import Footer from "./components/Footer/Footer";

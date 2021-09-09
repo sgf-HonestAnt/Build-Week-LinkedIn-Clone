@@ -1,28 +1,29 @@
 export let MY_ID;
 
-export const getLoggedUser = async () => {
+export const getLoggedUser = async () => { // (4) THIS MUST FIRE ON EVERY REFRESH OF APP.JS!
   try {
+    const response = await fetch(`${process.env.REACT_APP_BE_URL}/signin`);
+    const data = await response.json();
+    console.log("getLoggedUser==>", data)
+    MY_ID = data
   } catch (err) {
     console.log(err);
   }
 };
 
-export const postLoggedUser = async (id) => {
+export const postLoggedUser = async (id) => { // (3) THIS IS FIRED WHEN WE SUBMIT LOGIN FORM
   try {
-    const resp = await fetch(`${process.env.REACT_APP_BE_URL}/signin`, {
+    const response = await fetch(`${process.env.REACT_APP_BE_URL}/signin`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ identifier: id }),
     });
-    console.log(id);
-    if (resp.ok) {
-      const response = await fetch(`${process.env.REACT_APP_BE_URL}/signin`);
-      const data = response.json();
-      const userId = data;
-      MY_ID = userId;
-    }
+    MY_ID = id
+    console.log("SUCCESSFULLY POSTED IDENTIFIER==>", id)
+    console.log("MY_ID==>", MY_ID)
+    // THIS WORKS NOW BUT ON REFRESH IT IS LOST, SO WE NEED TO PERFORM A GET AT "/SIGNIN" AT APP.JS. MY_ID WILL EQUAL TO WHATEVER ID RESULTS FROM GET SIGNIN
   } catch (error) {
     console.log(error);
   }
@@ -39,11 +40,7 @@ export const getProfilesLoggin = async (user, callback) => {
       }
     );
     const data = await response.json();
-    // callback(data);
-    const [userData] = data;
-    callback(userData._id);
-
-    // console.log(MY_ID);
+    callback(data[0]._id);
   } catch (error) {
     console.log(error);
   }

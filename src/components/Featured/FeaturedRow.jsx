@@ -31,9 +31,9 @@ export default function FeaturedRow({ isMe }) {
         </div>
       </div>
       <Row className="carousel justify-content-around">
-        <FeaturedCarousel image="https://via.placeholder.com/150" title="Samuel-Github" description="Hello hoekkajdj" />
-        <FeaturedCarousel image="https://via.placeholder.com/150" title="Samuel-Github" description="Hello hoekkajdj" />
-        <FeaturedCarousel image="https://via.placeholder.com/150" title="Samuel-Github" description="Hello hoekkajdj" />
+        <FeaturedCarousel image="https://via.placeholder.com/120" title="Samuel-Github" description="Hello hoekkajdj" />
+        <FeaturedCarousel image="https://via.placeholder.com/120" title="Samuel-Github" description="Hello hoekkajdj" />
+        <FeaturedCarousel image="https://via.placeholder.com/120" title="Samuel-Github" description="Hello hoekkajdj" />
       </Row>
     </section>
   )

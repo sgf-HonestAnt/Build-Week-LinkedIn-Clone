@@ -12,25 +12,28 @@ const Loggin = ({ history }) => {
   const [id, setId] = useState("");
   // const [logginUserPass, setLogginUserPass] = useState("");
 
-  const logginHendlerUser = (key, value) => {
+  const logginHendlerUser = (key, value) => { // STEP (1)
     setLogginUser({
       ...logginUser,
       [key]: value,
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await postLoggedUser(id);
-    history.push("/");
+  const handleSubmit = async (e) => { // STEP (3)
+    e.preventDefault(); // WE PREVENT DEFAULT REFRESH
+    console.log(logginUser)
+    await postLoggedUser(id); // WE POST THE ID TO POSTLOGGEDUSER FUNC AT FETCH.JS
+    history.push("/"); // AND THEN WE PUSH TO "/"
   };
 
-  getProfilesLoggin(logginUser, setId);
+  // getProfilesLoggin(logginUser, setId);
 
   useEffect(() => {
-    getProfilesLoggin();
+    getProfilesLoggin(logginUser, setId); 
+    // (2) EVERY TIME USEFFECT() OCCURS WE FIRE GET PROFILES LOGGIN FUNCTION FROM FETCH.JS AND CALL BACK THE ID TO SETID
   }, [logginUser]);
-
+  
+  console.log("id==>",id)
   return (
     <div className="main-loggin App-loggin">
       <svg
@@ -52,10 +55,11 @@ const Loggin = ({ history }) => {
 
       <div className="loggin-form d-flex">
         <div className="loggin-d d-flex">
-          <h5 className="sign-in-header">Sing in </h5>
+          <h5 className="sign-in-header">Sign in </h5>
           <p>Stay updated on your professional world</p>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div>
+              {/* (1) AT FORM CHANGE WE SET LOGGIN USER. EVERY TIME THIS CHANGES WE FIRE USEEFFECT() */}
               <input
                 className="input-loggin"
                 type="text"
@@ -74,7 +78,7 @@ const Loggin = ({ history }) => {
               />
             </div>
             <p className="forget-text">Forget password?</p>
-            <Button className="button-sign" type="submit">
+            <Button className="button-sign" type="submit"> {/* (3) AT SUBMIT FORM WE PERFORM HANDLESUBMIT FUNCTION */}
               Sign in
             </Button>
           </form>

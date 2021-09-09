@@ -50,9 +50,9 @@ const ProfilePage = (props) => {
             onUpdate={refresh}
           />
         </div>
-        <div className="section-card p-3">
+        {/* <div className="section-card p-3">
           <FeaturedRow isMe={isMe} />
-        </div>
+        </div> */}
         <div className="section-card p-3">
           <ActivitySection userPosts={posts} currentUserId={currentUserId} />
         </div>

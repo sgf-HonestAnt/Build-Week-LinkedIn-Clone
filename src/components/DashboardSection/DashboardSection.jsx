@@ -2,7 +2,7 @@ import { Row, Col } from 'react-bootstrap'
 
 import "./DashboardSection.css";
 
-const DashboardSection = () => {
+const DashboardSection = () => { 
     return (
         <>
         <Row className="dashboard pb-3">
