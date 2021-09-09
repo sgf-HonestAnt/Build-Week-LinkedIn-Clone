@@ -1,25 +1,25 @@
-import "./App.css"
+import "./App.css";
 
-import { Container } from "react-bootstrap"
-import { Route } from "react-router-dom"
+import { Container } from "react-bootstrap";
+import { Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar/Navbar"
-import ProfilePage from "./components/ProfilePage/ProfilePage"
-import Footer from "./components/Footer/Footer"
-import FeedPage from "./components/FeedPage/FeedPage"
-import PostPage from "./components/PostPage/PostPage"
-import Notifications from "./components/Notifications/Notifications"
+import Navbar from "./components/Navbar/Navbar";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
+import Footer from "./components/Footer/Footer";
+import FeedPage from "./components/FeedPage/FeedPage";
+import PostPage from "./components/PostPage/PostPage";
+import Notifications from "./components/Notifications/Notifications";
+import Loggin from "./components/Loggin/Loggin";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <Container fluid className="pt-5 main">
         <Route exact path="/" component={FeedPage} />
-
+        {/* <Navbar /> */}
         <Route
           path="/post/:postId"
-          render={routeProps => (
+          render={(routeProps) => (
             <>
               <PostPage {...routeProps} />
               <Footer />
@@ -29,7 +29,7 @@ function App() {
 
         <Route
           path="/profile/:userId"
-          render={routeProps => (
+          render={(routeProps) => (
             <>
               <ProfilePage {...routeProps} />
               <Footer />
@@ -39,15 +39,24 @@ function App() {
 
         <Route
           path="/notifications"
-          render={routeProps => (
+          render={(routeProps) => (
             <>
               <Notifications {...routeProps} />
             </>
           )}
         ></Route>
+
+        <Route
+          path="/loggin"
+          render={(routeProps) => (
+            <>
+              <Loggin {...routeProps} />
+            </>
+          )}
+        ></Route>
       </Container>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
