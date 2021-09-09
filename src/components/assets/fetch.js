@@ -28,10 +28,8 @@ export const getProfilesLoggin = async (callback) => {
 // Profiles functions
 export const getProfiles = async (callback) => {
   try {
-    const response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/"
-    );
-    console.log(response);
+    const response = await fetch(`${process.env.REACT_APP_BE_URL}/profile`);
+    console.log("get profiles response ->", response);
     const data = await response.json();
     callback(data);
   } catch (error) {

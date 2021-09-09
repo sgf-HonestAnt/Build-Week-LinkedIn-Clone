@@ -37,10 +37,6 @@ const EditPostModal = ({
       ? editPost(postInfo._id, postDetails, formData)
       : deletePost(postInfo._id);
   };
-
-  console.log("postInfo ====>", postInfo);
-  console.log("postDetails ====>", postDetails);
-
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
