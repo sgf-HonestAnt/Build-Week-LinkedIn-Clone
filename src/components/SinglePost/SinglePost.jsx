@@ -62,8 +62,8 @@ const SinglePost = ({ postInfo, onUpdate, userData }) => {
         </div>
         <div className="post">
           <div>
-            {!readMore && postInfo.text.length > 200 ? `${postInfo.text.substring(0, 200)}...` : postInfo.text}
-            {postInfo.text.length > 200 && (
+            {!readMore && postInfo.text.length > 140 ? `${postInfo.text.substring(0, 140)}...` : <p>{postInfo.text}</p>}
+            {postInfo.text.length > 140 && (
               <div className="read-more-div">
                 <button className="read-more" onClick={() => setReadMore(!readMore)}>
                   {readMore ? "show less" : "  read more"}
