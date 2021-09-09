@@ -3,7 +3,6 @@ import ActivitySection from "../ActivitySection/ActivitySection";
 import AlsoViewed from "../AlsoViewedSection/AlsoViewedSection";
 import HeroSection from "../HeroSection/HeroSection";
 // import DashboardSection from "../DashboardSection/DashboardSection"
-<<<<<<< Updated upstream
 import AboutSection from "../AboutSection/AboutSection";
 import FeaturedRow from "../Featured/FeaturedRow";
 import EducationRow from "../Education/EducationRow";
@@ -11,15 +10,6 @@ import ExperienceRow from "../Experience/ExperienceRow";
 import { MY_ID } from "../assets/fetch";
 import { useState, useEffect } from "react";
 import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch";
-=======
-import { useState, useEffect } from "react"
-import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch"
-import AboutSection from "../AboutSection/AboutSection"
-import FeaturedRow from "../Featured/FeaturedRow"
-import EducationRow from "../Education/EducationRow"
-import ExperienceRow from "../Experience/ExperienceRow"
-
->>>>>>> Stashed changes
 
 const ProfilePage = (props) => {
   const currentUserId = props.match.params.userId;
@@ -45,7 +35,6 @@ const ProfilePage = (props) => {
     <Row className="align-items-start">
       <Col className="mb-3 pb-1 mt-2" xs={12} md={9}>
         <div className="section-card">
-<<<<<<< Updated upstream
           <HeroSection
             profileData={profileData}
             experiences={experiences}
@@ -54,10 +43,6 @@ const ProfilePage = (props) => {
             onUpdate={refresh}
           />
         </div>
-=======
-          <HeroSection profileData={profileData} experiences={experiences} userId={currentUserId} isMe={isMe} onUpdate={refresh} />
-        </div >
->>>>>>> Stashed changes
         <div className="section-card p-3">
           <AboutSection
             profileData={profileData}
