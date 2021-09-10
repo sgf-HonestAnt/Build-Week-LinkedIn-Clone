@@ -45,6 +45,5 @@
   "devDependencies": {
     "chokidar": "^3.5.2",
     "gh-pages": "^3.2.2"
-  },
-  "homepage": "http://brandaspt.github.io/linkedin-react"
+  }
 }
