@@ -18,6 +18,8 @@ const FeedPage = (props) => {
     setWasUpdated(false);
   }, [wasUpdated]);
 
+  console.log("userId at FeedPage=>", props.id) // = userId
+
   return (
     <Row>
       <Col xs={4} md={3} className="mt-2 px-1">

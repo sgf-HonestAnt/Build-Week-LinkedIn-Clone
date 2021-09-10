@@ -5,13 +5,19 @@ import { Link } from "react-router-dom";
 import "./MyProfileCard.css";
 
 const MyProfileCard = ({ id }) => {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState();
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => getProfileById(id, setProfile), [id]);
+  useEffect(() => {
+    getProfileById(id, setProfile)
+    setLoading(false)
+  }, [id]);
 
-  console.log("aaaa");
+  console.log("userId at MyProfileCard=>", id); // = userId
+  console.log("profile at MyProfileCard=>", profile) // = results in data, but not getting profile image.
+
   return (
-    profile && (
+    !loading && profile !== undefined && (
       <section className="feed-my-profile">
         <div className="hero"></div>
         <Link to="/profile/me">

@@ -14,18 +14,20 @@ import {
   getProfileById,
   MY_ID,
 } from "./components/assets/fetch";
-
 import SignUpForm from "./components/signUp/SignUpForm";
+
 function App() {
   const [userId, setUserId] = useState("");
-
   useEffect(() => {
-    const id = window.localStorage.getItem("my_id");
-    setUserId(id);
-    console.log("=============APP", id);
-  }, []);
+    setUserId(userId || window.localStorage.getItem("my_id")); 
+    console.log("localStorage at App.js UseEffect=>", window.localStorage.getItem("my_id"))
+    console.log("userId at App.js UseEffect=>", userId);
+  }, [userId]);
 
-  // console.log("HIIIII", userId);
+  // UPON FIRING OUR APP, WE SET USER ID TO LOCAL STORAGE.
+  // WE ALSO PASS SETUSERID AS A PROP TO LOGGIN  
+  // AND SETUSERID AS A CALLBACK TO GETPROFILESLOGGIN AT LOGGIN
+  // NEXT WE PAST USERID TO OTHER COMPONENTS, USING CONSOLE.LOG TO CHECK USERID IS STILL CORRECT
 
   return (
     <div className="App">
@@ -35,7 +37,7 @@ function App() {
           <Route
             exact
             path="/"
-            render={(routerProps) => <Loggin {...routerProps} />}
+            render={(routerProps) => <Loggin {...routerProps} userId={userId} setUserId={setUserId} />} 
           />
           <div>
             <Container
@@ -47,7 +49,7 @@ function App() {
               <Route
                 exact
                 path="/home"
-                render={(props) => <FeedPage id={userId} />}
+                render={(routerProps) => <FeedPage id={userId} />}
               />
               <Route
                 eaxct

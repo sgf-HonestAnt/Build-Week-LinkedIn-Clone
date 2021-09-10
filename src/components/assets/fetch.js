@@ -1,5 +1,18 @@
 export let MY_ID;
 
+// LOGGIN PAGE FUNCTION
+export const getProfilesLoggin = async (user, callback) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BE_URL}/loggin/${user ? user.userEmail : ""}`);
+    const data = await response.json();
+    window.localStorage.setItem('my_id', data[0]._id);
+    callback(data[0]._id);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getLoggedUser = async (id) => {
   // (4) THIS MUST FIRE ON EVERY REFRESH OF APP.JS!
   try {
@@ -31,23 +44,6 @@ export const getLoggedUser = async (id) => {
   }
 }; */
 
-export const getProfilesLoggin = async (user, callback) => {
-  try {
-    const response = await fetch(
-      `${process.env.REACT_APP_BE_URL}/loggin/${user ? user.userEmail : ""}`,
-      {
-        // headers: {
-        //   Authorization: `Bearer ${TOKEN}`,
-        // },
-      }
-    );
-    const data = await response.json();
-    callback(data[0]._id);
-  } catch (error) {
-    console.log(error);
-  }
-  // console.log(MY_ID);
-};
 
 // Profiles functions
 export const getProfiles = async (callback) => {
@@ -63,20 +59,11 @@ export const getProfiles = async (callback) => {
 
 export const getProfileById = async (id, callback) => {
   try {
-    if (MY_ID) {
-      console.log("get profile by id ->", MY_ID);
-      const pageId = id === "me" ? MY_ID : id;
-      const response = await fetch(
-        `${process.env.REACT_APP_BE_URL}/profile/${pageId}`,
-        {
-          // headers: {
-          //   Authorization: `Bearer ${TOKEN}`,
-          // },
-        }
-      );
-      const data = await response.json();
-      callback(data);
-    }
+    const pageId = id;
+    const response = await fetch(
+    `${process.env.REACT_APP_BE_URL}/profile/${pageId}`);
+    const data = await response.json();
+    callback(data);
   } catch (error) {
     console.log(error);
   }

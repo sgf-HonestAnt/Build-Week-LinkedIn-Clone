@@ -4,16 +4,18 @@ import { Button } from "react-bootstrap";
 import { getProfilesLoggin /* postLoggedUser */ } from "../assets/fetch.js";
 import { useEffect, useState } from "react";
 
-const Loggin = ({ history }) => {
+const Loggin = ({ history, userId, setUserId }) => {
   const [logginUser, setLogginUser] = useState({
     userEmail: "",
     password: "",
   });
-  const [id, setId] = useState("");
-  // const [logginUserPass, setLogginUserPass] = useState("");
+  
+  useEffect(() => {
+    getProfilesLoggin(logginUser, setUserId); 
+    // sets both window local storage + UserId which is passed back up to App.js
+  }, [logginUser]);
 
   const logginHendlerUser = (key, value) => {
-    // STEP (1)
     setLogginUser({
       ...logginUser,
       [key]: value,
@@ -21,32 +23,12 @@ const Loggin = ({ history }) => {
   };
 
   const handleSubmit = async (e) => {
-    // STEP (3)
-    e.preventDefault(); // WE PREVENT DEFAULT REFRESH
+    e.preventDefault(); 
     console.log(logginUser);
-    /* await postLoggedUser(id); // WE POST THE ID TO POSTLOGGEDUSER FUNC AT FETCH.JS */
-    history.push("/home"); // AND THEN WE PUSH TO "/"
+    history.push("/home");
   };
 
-  // useEffect(() => {
-  //   const idSave = window.localStorage.getItem("my_id");
-  //   // postLoggedUser(  idSave);
-
-  //   setId(idSave);
-  // }, []);
-
-  // getProfilesLoggin(logginUser, setId);
-
-  useEffect(() => {
-    getProfilesLoggin(logginUser, setId);
-    // (2) EVERY TIME USEFFECT() OCCURS WE FIRE GET PROFILES LOGGIN FUNCTION FROM FETCH.JS AND CALL BACK THE ID TO SETID
-  }, [logginUser]);
-
-  useEffect(() => {
-    window.localStorage.setItem("my_id", JSON.stringify(id));
-  });
-
-  console.log("id==>", id);
+  console.log("userId at Loggin=>", userId)
   return (
     <div className="main-loggin App-loggin">
       <svg
