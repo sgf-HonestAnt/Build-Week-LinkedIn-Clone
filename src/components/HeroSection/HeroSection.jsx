@@ -86,7 +86,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
               <Button variant="link">500+ connections</Button>
             </Card.Text>
             <Card.Text>
-              {isMe ? (
+              {/* {isMe ? (
                 <>
                   <Badge pill variant="primary">
                     Open to
@@ -97,14 +97,18 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                   <Badge pill variant="light">
                     More
                   </Badge>
-                  <Button className="btn-download " variant="light">
-                    download cv
-                  </Button>
-                  <Button className="btn-download " variant="light">
-                    download csv
-                  </Button>
+                  <Badge pill variant="light">
+                    <a href={process.env.REACT_APP_BE_URL + "/profile/" + profileData._id + "/CV"} target="_blank">
+                      View CV
+                    </a>
+                  </Badge>
+                  <a href={process.env.REACT_APP_BE_URL + "/profile/" + profileData._id + "/experiences/CSV"} target="_blank">
+                    <Button className="btn-download " variant="light">
+                      download csv
+                    </Button>
+                  </a>
                 </>
-              ) : (
+              ) : ( */}
                 <>
                   <Badge pill variant="primary">
                     Connect
@@ -119,8 +123,14 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                       View CV
                     </a>
                   </Badge>
+
+                  <a href={process.env.REACT_APP_BE_URL + "/profile/" + profileData._id + "/experiences/CSV"} target="_blank">
+                    <Button className="btn-download " variant="light">
+                      download csv
+                    </Button>
+                  </a>
                 </>
-              )}
+              {/* )} */}
             </Card.Text>
           </Card.Body>
         </div>
