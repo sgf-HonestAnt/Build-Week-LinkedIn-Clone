@@ -63,7 +63,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
           </button>
         </div>
       ) : (
-        <div className="spacer">{}</div>
+        <div className="spacer">{ }</div>
       )}
       <div className="hero-section-columns">
         <div className="mr-5">
@@ -97,6 +97,12 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
                   <Badge pill variant="light">
                     More
                   </Badge>
+                  <Button className="btn-download " variant="light">
+                    download cv
+                  </Button>
+                  <Button className="btn-download " variant="light">
+                    download csv
+                  </Button>
                 </>
               ) : (
                 <>
@@ -110,7 +116,7 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
 
                   <Badge pill variant="light">
                     <a href={process.env.REACT_APP_BE_URL + "/profile/" + profileData._id + "/CV"} target="_blank">
-                        View CV
+                      View CV
                     </a>
                   </Badge>
                 </>
