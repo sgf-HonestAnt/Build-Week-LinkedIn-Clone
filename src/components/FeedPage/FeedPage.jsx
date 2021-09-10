@@ -9,7 +9,7 @@ import UserPostSection from "../SinglePost/UserPostSection";
 import MyProfileCard from "./leftSidebar/MyProfileCard";
 import CommunityCard from "./leftSidebar/CommunityCard";
 
-const FeedPage = (props) => { 
+const FeedPage = (props) => {
   const [posts, setPosts] = useState([]);
   const [wasUpdated, setWasUpdated] = useState(false);
 
@@ -19,7 +19,7 @@ const FeedPage = (props) => {
   }, [wasUpdated]);
 
   return (
-    <Row>
+    <Row className="mt-1">
       <Col xs={4} md={3} className="mt-2 px-1">
         <div className="section-card p-0">
           <MyProfileCard id={props.id} />
@@ -37,7 +37,7 @@ const FeedPage = (props) => {
       </Col>
       <Col className="d-none d-md-block mt-2 px-1" md={4}>
         <div className="section-card p-3">
-          <AddToYourFeed id={props.id} /> 
+          <AddToYourFeed id={props.id} />
         </div>
         <div className="section-card p-3">
           <MostViewedCourses />
