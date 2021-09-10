@@ -9,9 +9,9 @@ const Loggin = ({ history, userId, setUserId }) => {
     userEmail: "",
     password: "",
   });
-  
+
   useEffect(() => {
-    getProfilesLoggin(logginUser, setUserId); 
+    getProfilesLoggin(logginUser, setUserId);
     // sets both window local storage + UserId which is passed back up to App.js
   }, [logginUser]);
 
@@ -23,7 +23,7 @@ const Loggin = ({ history, userId, setUserId }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     history.push("/home");
   };
 
@@ -46,45 +46,50 @@ const Loggin = ({ history, userId, setUserId }) => {
         ></path>
       </svg>
 
-      <div className="loggin-form d-flex">
-        <div className="loggin-d d-flex">
-          <h5 className="sign-in-header">Sign in </h5>
-          <p>Stay updated on your professional world</p>
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div>
-              {/* (1) AT FORM CHANGE WE SET LOGGIN USER. EVERY TIME THIS CHANGES WE FIRE USEEFFECT() */}
-              <input
-                className="input-loggin"
-                type="text"
-                placeholder="Email or Phone"
-                onChange={(e) => logginHendlerUser("userEmail", e.target.value)}
-              />
-            </div>
-            <div>
-              <input
-                className="input-loggin"
-                type="password"
-                placeholder="Password"
-                onChange={(e) => logginHendlerUser("password", e.target.value)}
-                // onChange={logginHendler}
-                // value={logginUser}
-              />
-            </div>
-            <p className="forget-text">Forget password?</p>
-            <Button className="button-sign" type="submit">
-              {" "}
-              {/* (3) AT SUBMIT FORM WE PERFORM HANDLESUBMIT FUNCTION */}
-              Sign in
-            </Button>
-          </form>
+      <div className="main-cont-loggin">
+        <div className="loggin-form d-flex">
+          <div className="loggin-d d-flex">
+            <h5 className="sign-in-header">Sign in </h5>
+            <p>Stay updated on your professional world</p>
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <div>
+                {/* (1) AT FORM CHANGE WE SET LOGGIN USER. EVERY TIME THIS CHANGES WE FIRE USEEFFECT() */}
+                <input
+                  className="input-loggin"
+                  type="text"
+                  placeholder="Email or Phone"
+                  onChange={(e) =>
+                    logginHendlerUser("userEmail", e.target.value)
+                  }
+                />
+              </div>
+              <div>
+                <input
+                  className="input-loggin"
+                  type="password"
+                  placeholder="Password"
+                  onChange={(e) =>
+                    logginHendlerUser("password", e.target.value)
+                  }
+                  // onChange={logginHendler}
+                  // value={logginUser}
+                />
+              </div>
+              <p className="forget-text">Forget password?</p>
+              <Button className="button-sign" type="submit">
+                {" "}
+                {/* (3) AT SUBMIT FORM WE PERFORM HANDLESUBMIT FUNCTION */}
+                Sign in
+              </Button>
+            </form>
+          </div>
         </div>
-      </div>
-
-      <div className="new-to-linkedin">
-        <span style={{ marginRight: "10px" }}>New to LinkedIn?</span>
-        <a style={{ color: "#0073b1", fontWeight: "600" }} href="/signup">
-          Join now
-        </a>
+        <div className="new-to-linkedin">
+          <span style={{ marginRight: "10px" }}>New to LinkedIn?</span>
+          <a style={{ color: "#0073b1", fontWeight: "600" }} href="/signup">
+            Join now
+          </a>
+        </div>
       </div>
     </div>
   );

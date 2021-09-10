@@ -1,9 +1,12 @@
-.App-loggin.main-loggin {
+div.App-loggin.main-loggin {
   /* background-color: #ffffff !important; */
   /* min-height: 100vh; */
   width: 100%;
-  height: 100%;
-  max-width: 100% !important;
+  height: 100vh;
+  max-width: 100vw !important;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .pt-5,
@@ -17,6 +20,9 @@
 .logo-loggin {
   margin-left: 3rem;
   margin-bottom: 20px !important;
+  position: absolute;
+  top: 1rem;
+  left: 3rem;
 }
 
 .loggin-form {
@@ -30,6 +36,12 @@
   background-color: #ffffff !important;
   /* background-color: beige; */
   /* box-shadow: 50px !important #888888; */
+}
+
+div.main-cont-loggin {
+  height: fit-content;
+  position: absolute;
+  top: 0;
 }
 
 .loggin-d {
