@@ -22,7 +22,7 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     loadProfilePage()
-  }, [isRefreshed, isLoading, currentUserId]);
+  }, [isRefreshed, isLoading, props.id, currentUserId]);
   
   const loadProfilePage = async() => {
     await getProfileById(currentUserId, setProfileData, isMe);

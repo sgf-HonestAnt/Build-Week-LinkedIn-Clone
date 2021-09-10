@@ -13,6 +13,7 @@ import Signup from "./components/signUp/signUp";
 
 function App() {
   const [userId, setUserId] = useState("");
+  const [refresh, setRefresh] = useState(false)
   useEffect(() => {
     setUserId(userId || window.localStorage.getItem("my_id")); 
     console.log("localstorage",window.localStorage.getItem("my_id"))
@@ -32,7 +33,7 @@ function App() {
           <Route
             exact
             path="/"
-            render={(routerProps) => <Loggin {...routerProps} userId={userId} setUserId={setUserId} />} 
+            render={(routerProps) => <Loggin {...routerProps} userId={userId} setUserId={setUserId} setRefresh={setRefresh} />} 
             // THIS IS WORKING ON REFRESH NOW, SO WE NEED TO PASS SAME PROPS TO FEEDPAGE ETC!
           />
           <Route
