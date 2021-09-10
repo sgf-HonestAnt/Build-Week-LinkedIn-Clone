@@ -38,6 +38,7 @@ function App() {
             exact
             path="/"
             render={(routerProps) => <Loggin {...routerProps} userId={userId} setUserId={setUserId} />} 
+            // THIS IS WORKING ON REFRESH NOW, SO WE NEED TO PASS SAME PROPS TO FEEDPAGE ETC!
           />
           <div>
             <Container
