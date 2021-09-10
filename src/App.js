@@ -15,6 +15,7 @@ import {
   MY_ID,
 } from "./components/assets/fetch";
 
+import SignUpForm from "./components/signUp/SignUpForm";
 function App() {
   const [userId, setUserId] = useState("");
 
