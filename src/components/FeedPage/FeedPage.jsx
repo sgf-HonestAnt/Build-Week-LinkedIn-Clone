@@ -19,7 +19,7 @@ const FeedPage = (props) => {
   }, [wasUpdated]);
 
   return (
-    <Row className="mt-1">
+    <Row className="mt-2">
       <Col xs={4} md={3} className="mt-2 px-1">
         <div className="section-card p-0">
           <MyProfileCard id={props.id} />
