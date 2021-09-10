@@ -8,7 +8,12 @@ import FeaturedRow from "../Featured/FeaturedRow";
 import EducationRow from "../Education/EducationRow";
 import ExperienceRow from "../Experience/ExperienceRow";
 import { useState, useEffect } from "react";
-import { getExperiencesById, getEducationById, getPosts, getProfileById } from "../assets/fetch";
+import {
+  getExperiencesById,
+  getEducationById,
+  getPosts,
+  getProfileById,
+} from "../assets/fetch";
 
 const ProfilePage = (props) => {
   const currentUserId = props.match.params.userId;
@@ -17,77 +22,82 @@ const ProfilePage = (props) => {
   const [experiences, setExperiences] = useState([]);
   const [education, setEducation] = useState([]);
   const [posts, setPosts] = useState(null);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const [isRefreshed, setIsRefreshed] = useState(false);
 
   useEffect(() => {
-    loadProfilePage()
+    loadProfilePage();
   }, [isRefreshed, isLoading, currentUserId]);
-  
-  const loadProfilePage = async() => {
+
+  const loadProfilePage = async () => {
     await getProfileById(currentUserId, setProfileData, isMe);
     await getExperiencesById(currentUserId, setExperiences);
     await getEducationById(currentUserId, setEducation);
     await getPosts(setPosts);
     setIsRefreshed(false);
-    setIsLoading(false)
-  }
-  
+    setIsLoading(false);
+  };
+
   const refresh = () => {
     setIsRefreshed(true);
   };
-  
+
   return (
-    !isLoading &&
-    <Row className="align-items-start">
-      <Col className="mb-3 pb-1 mt-2" xs={12} md={9}>
-        <div className="section-card">
-          <HeroSection
-            profileData={profileData}
-            experiences={experiences}
-            userId={currentUserId}
-            isMe={isMe}
-            onUpdate={refresh}
-            id={props.id}
-          />
-        </div>
-        <div className="section-card p-3">
-          <AboutSection
-            profileData={profileData}
-            isMe={isMe}
-            onUpdate={refresh}
-            id={props.id}
-          />
-        </div>
-        {/* <div className="section-card p-3">
+    !isLoading && (
+      <Row className="align-items-start mt-2">
+        <Col className="mb-3 pb-1 mt-2" xs={12} md={9}>
+          <div className="section-card">
+            <HeroSection
+              profileData={profileData}
+              experiences={experiences}
+              userId={currentUserId}
+              isMe={isMe}
+              onUpdate={refresh}
+              id={props.id}
+            />
+          </div>
+          <div className="section-card p-3">
+            <AboutSection
+              profileData={profileData}
+              isMe={isMe}
+              onUpdate={refresh}
+              id={props.id}
+            />
+          </div>
+          {/* <div className="section-card p-3">
           <FeaturedRow isMe={isMe} />
         </div> */}
-        <div className="section-card p-3">
-          <ActivitySection userPosts={posts} currentUserId={currentUserId} />
-        </div>
-        <div className="section-card p-3">
-          {experiences && <ExperienceRow
-            experiencesData={experiences}
-            onUpdate={refresh}
-            isMe={isMe}
-            id={props.id}
-          />}
-        </div>
-        <div className="section-card p-3">
-          {education && <EducationRow
-            educationData={education}
-            onUpdate={refresh}
-            isMe={isMe}
-            id={props.id}
-          />}        
-        </div>
-      </Col>
-      <Col className="d-none d-md-block my-2 px-1" md={3}>
-        <div className="section-card p-3">
-          <AlsoViewed props={props} />
-        </div>
-      </Col>
-    </Row>
+          <div className="section-card p-3">
+            <ActivitySection userPosts={posts} currentUserId={currentUserId} />
+          </div>
+          <div className="section-card p-3">
+            {experiences && (
+              <ExperienceRow
+                experiencesData={experiences}
+                onUpdate={refresh}
+                isMe={isMe}
+                id={props.id}
+              />
+            )}
+          </div>
+          <div className="section-card p-3">
+            {education && (
+              <EducationRow
+                educationData={education}
+                onUpdate={refresh}
+                isMe={isMe}
+                id={props.id}
+              />
+            )}
+          </div>
+        </Col>
+        <Col className="d-none d-md-block my-2 px-1" md={3}>
+          <div className="section-card p-3">
+            <AlsoViewed props={props} />
+          </div>
+        </Col>
+      </Row>
+    )
   );
 };
 
