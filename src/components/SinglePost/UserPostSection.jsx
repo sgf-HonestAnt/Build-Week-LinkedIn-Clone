@@ -2,7 +2,7 @@ import React from "react"
 import SinglePost from "./SinglePost"
 import "./singlepost.css"
 
-const UserPostSection = ({ posts, onUpdate }) => {
+const UserPostSection = ({ id, posts, onUpdate }) => {
   return (
     <section className="user-posts-section">
       {posts

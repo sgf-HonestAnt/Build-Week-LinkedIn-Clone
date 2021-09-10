@@ -4,7 +4,6 @@ import "./singlepost.css"
 import { useState } from "react"
 import { Link, withRouter } from "react-router-dom"
 import EditPostModal from "./EditPostModal"
-import { MY_ID } from "../assets/fetch"
 
 const SinglePost = ({ postInfo, onUpdate, userData }) => {
   const [readMore, setReadMore] = useState(false)
@@ -58,7 +57,7 @@ const SinglePost = ({ postInfo, onUpdate, userData }) => {
               </div>
             </span>
           </div>
-          {userData?._id === MY_ID && <i className="fas fa-ellipsis-h ml-auto" onClick={handleShow}></i>}
+          {userData?._id === window.localStorage.getItem("my_id") && <i className="fas fa-ellipsis-h ml-auto" onClick={handleShow}></i>}
         </div>
         <div className="post">
           <div>

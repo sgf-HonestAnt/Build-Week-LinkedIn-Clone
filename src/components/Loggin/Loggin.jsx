@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { getProfilesLoggin /* postLoggedUser */ } from "../assets/fetch.js";
 import { useEffect, useState } from "react";
 
-const Loggin = ({ history, userId, setUserId }) => {
+const Loggin = ({ history, userId, setUserId, setRefresh }) => {
   const [logginUser, setLogginUser] = useState({
     userEmail: "",
     password: "",
@@ -24,6 +24,7 @@ const Loggin = ({ history, userId, setUserId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setRefresh(true);
     history.push("/home");
   };
 

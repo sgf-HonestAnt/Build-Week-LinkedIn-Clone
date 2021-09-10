@@ -15,6 +15,9 @@ const FeedPostSection = ({ onUpdate, id }) => {
     getProfileById(id, setMyProfile)
   }, [])
 
+  console.log("local Storage at FeedPostSection",window.localStorage.getItem("my_id"))
+  console.log("userId at FeedPostSection",id)
+
   return (
     <section className="feedpost-section">
       <div className="d-flex">

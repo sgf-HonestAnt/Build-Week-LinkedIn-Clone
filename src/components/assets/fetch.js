@@ -56,7 +56,7 @@ export const getProfiles = async (callback) => {
 
 export const getProfileById = async (id, callback, isMe) => {
   try {
-    const pageId = isMe ? MY_ID : id;
+    const pageId = isMe ? window.localStorage.getItem("my_id") : id;
     const response = await fetch(
     `${process.env.REACT_APP_BE_URL}/profile/${pageId}`);
     const data = await response.json();
@@ -68,7 +68,7 @@ export const getProfileById = async (id, callback, isMe) => {
 
 export const editProfile = async (payload, pictureFile = null) => {
   try {
-    await fetch(`${process.env.REACT_APP_BE_URL}/profile/${MY_ID}`, {
+    await fetch(`${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +78,7 @@ export const editProfile = async (payload, pictureFile = null) => {
     });
     if (pictureFile) {
       const imgResponse = await fetch(
-        `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/picture`,
+        `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/picture`,
 
         {
           method: "POST",
@@ -98,7 +98,7 @@ export const editProfile = async (payload, pictureFile = null) => {
 export const addExperience = async (payload) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/experiences`,
+      `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/experiences`,
       {
         method: "POST",
         headers: {
@@ -117,7 +117,7 @@ export const addExperience = async (payload) => {
 export const addEducation = async (payload) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/education`,
+      `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/education`,
       {
         method: "POST",
         headers: {
@@ -140,7 +140,7 @@ export const addEditExperience = async (
 ) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/experiences/${experienceId}`,
+      `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/experiences/${experienceId}`,
       {
         method: experienceId ? "PUT" : "POST",
         headers: {
@@ -153,7 +153,7 @@ export const addEditExperience = async (
 
     if (pictureFile) {
       const imgResponse = await fetch(
-        `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/experiences/${data._id}/picture`,
+        `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/experiences/${data._id}/picture`,
         {
           method: "POST",
           body: pictureFile,
@@ -172,7 +172,7 @@ export const addEditEducation= async (
 ) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/education/${educationId}`,
+      `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/education/${educationId}`,
       {
         method: educationId ? "PUT" : "POST",
         headers: {
@@ -185,7 +185,7 @@ export const addEditEducation= async (
 
     if (pictureFile) {
       const imgResponse = await fetch(
-        `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/education/${data._id}/picture`,
+        `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/education/${data._id}/picture`,
         {
           method: "POST",
           body: pictureFile,
@@ -198,7 +198,7 @@ export const addEditEducation= async (
 };
 
 export const getExperiencesById = async (id, callback) => {
-  const userId = id === "me" ? MY_ID : id;
+  const userId = id === "me" ? window.localStorage.getItem("my_id") : id;
   try {
     const response = await fetch(
       `${process.env.REACT_APP_BE_URL}/profile/${userId}/experiences`,
@@ -216,7 +216,7 @@ export const getExperiencesById = async (id, callback) => {
 };
 
 export const getEducationById = async (id, callback) => {
-  const userId = id === "me" ? MY_ID : id;
+  const userId = id === "me" ? window.localStorage.getItem("my_id") : id;
   try {
     const response = await fetch(
       `${process.env.REACT_APP_BE_URL}/profile/${userId}/education`,
@@ -236,7 +236,7 @@ export const getEducationById = async (id, callback) => {
 export const deleteExperience = async (experienceId) => {
   try {
     await fetch(
-      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/experiences/${experienceId}`,
+      `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/experiences/${experienceId}`,
       {
         method: "DELETE",
         // headers: {
@@ -252,7 +252,7 @@ export const deleteExperience = async (experienceId) => {
 export const deleteEducation = async (educationId) => {
   try {
     await fetch(
-      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/education/${educationId}`,
+      `${process.env.REACT_APP_BE_URL}/profile/${window.localStorage.getItem("my_id")}/education/${educationId}`,
       {
         method: "DELETE",
         // headers: {

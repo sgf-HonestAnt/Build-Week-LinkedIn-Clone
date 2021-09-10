@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react"
 import { getProfiles } from "../../assets/fetch"
 import SingleAdd from "../rightSidebar/SingleAdd"
-import { MY_ID } from "../../assets/fetch"
 import "./AddToYourFeed.css"
 
 const AddToYourFeed = ({id}) => {
   const [peopleToFollow, setpeopleToFollow] = useState([])
-  useEffect(() => getProfiles(setpeopleToFollow), []) // filter out person with id === MY_ID
+  useEffect(() => getProfiles(setpeopleToFollow), []) 
 
   return (
     <section className="add-to-feed">
