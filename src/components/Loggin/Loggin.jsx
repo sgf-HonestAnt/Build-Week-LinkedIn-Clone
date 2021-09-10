@@ -82,7 +82,7 @@ const Loggin = ({ history, userId, setUserId }) => {
 
       <div className="new-to-linkedin">
         <span style={{ marginRight: "10px" }}>New to LinkedIn?</span>
-        <a style={{ color: "#0073b1", fontWeight: "600" }} href="#">
+        <a style={{ color: "#0073b1", fontWeight: "600" }} href="/signup">
           Join now
         </a>
       </div>

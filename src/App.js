@@ -8,12 +8,15 @@ import Footer from "./components/Footer/Footer";
 import FeedPage from "./components/FeedPage/FeedPage";
 import PostPage from "./components/PostPage/PostPage";
 import Notifications from "./components/Notifications/Notifications";
-import Loggin from "./components/Loggin/Loggin";
+import Loggin from "./components/Loggin/Loggin"; 
+import Signup from "./components/signUp/signUp";
 
 function App() {
   const [userId, setUserId] = useState("");
   useEffect(() => {
     setUserId(userId || window.localStorage.getItem("my_id")); 
+    console.log("localstorage",window.localStorage.getItem("my_id"))
+    console.log("userId",userId)
   }, [userId]);
 
   // UPON FIRING OUR APP, WE SET USER ID TO LOCAL STORAGE.
@@ -31,6 +34,11 @@ function App() {
             path="/"
             render={(routerProps) => <Loggin {...routerProps} userId={userId} setUserId={setUserId} />} 
             // THIS IS WORKING ON REFRESH NOW, SO WE NEED TO PASS SAME PROPS TO FEEDPAGE ETC!
+          />
+          <Route
+            exact
+            path="/signup"
+            render={(routerProps) => <Signup {...routerProps} />} 
           />
           <div>
             <Container
