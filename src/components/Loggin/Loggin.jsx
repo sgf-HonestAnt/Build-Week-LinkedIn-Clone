@@ -1,7 +1,7 @@
 import "./Loggin.css";
 // import classes from './Loggin.module.css'
 import { Button } from "react-bootstrap";
-import { getProfilesLoggin, postLoggedUser } from "../assets/fetch.js";
+import { getProfilesLoggin /* postLoggedUser */ } from "../assets/fetch.js";
 import { useEffect, useState } from "react";
 
 const Loggin = ({ history }) => {
@@ -12,28 +12,41 @@ const Loggin = ({ history }) => {
   const [id, setId] = useState("");
   // const [logginUserPass, setLogginUserPass] = useState("");
 
-  const logginHendlerUser = (key, value) => { // STEP (1)
+  const logginHendlerUser = (key, value) => {
+    // STEP (1)
     setLogginUser({
       ...logginUser,
       [key]: value,
     });
   };
 
-  const handleSubmit = async (e) => { // STEP (3)
+  const handleSubmit = async (e) => {
+    // STEP (3)
     e.preventDefault(); // WE PREVENT DEFAULT REFRESH
-    console.log(logginUser)
-    await postLoggedUser(id); // WE POST THE ID TO POSTLOGGEDUSER FUNC AT FETCH.JS
+    console.log(logginUser);
+    /* await postLoggedUser(id); // WE POST THE ID TO POSTLOGGEDUSER FUNC AT FETCH.JS */
     history.push("/home"); // AND THEN WE PUSH TO "/"
   };
+
+  // useEffect(() => {
+  //   const idSave = window.localStorage.getItem("my_id");
+  //   // postLoggedUser(  idSave);
+
+  //   setId(idSave);
+  // }, []);
 
   // getProfilesLoggin(logginUser, setId);
 
   useEffect(() => {
-    getProfilesLoggin(logginUser, setId); 
+    getProfilesLoggin(logginUser, setId);
     // (2) EVERY TIME USEFFECT() OCCURS WE FIRE GET PROFILES LOGGIN FUNCTION FROM FETCH.JS AND CALL BACK THE ID TO SETID
   }, [logginUser]);
-  
-  console.log("id==>",id)
+
+  useEffect(() => {
+    window.localStorage.setItem("my_id", JSON.stringify(id));
+  });
+
+  console.log("id==>", id);
   return (
     <div className="main-loggin App-loggin">
       <svg
@@ -78,7 +91,9 @@ const Loggin = ({ history }) => {
               />
             </div>
             <p className="forget-text">Forget password?</p>
-            <Button className="button-sign" type="submit"> {/* (3) AT SUBMIT FORM WE PERFORM HANDLESUBMIT FUNCTION */}
+            <Button className="button-sign" type="submit">
+              {" "}
+              {/* (3) AT SUBMIT FORM WE PERFORM HANDLESUBMIT FUNCTION */}
               Sign in
             </Button>
           </form>

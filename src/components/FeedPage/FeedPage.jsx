@@ -1,28 +1,28 @@
-import { Row, Col } from "react-bootstrap"
-import { useState, useEffect } from "react"
-import { getPosts } from "../assets/fetch"
-import FeedPostSection from "../FeedPostSection/FeedPostSection"
-import AddToYourFeed from "./rightSidebar/AddToYourFeed"
-import MostViewedCourses from "./rightSidebar/MostViewedCourses"
-import FeedPageFooter from "./rightSidebar/FeedPageFooter"
-import UserPostSection from "../SinglePost/UserPostSection"
-import MyProfileCard from "./leftSidebar/MyProfileCard"
-import CommunityCard from "./leftSidebar/CommunityCard"
+import { Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { getPosts } from "../assets/fetch";
+import FeedPostSection from "../FeedPostSection/FeedPostSection";
+import AddToYourFeed from "./rightSidebar/AddToYourFeed";
+import MostViewedCourses from "./rightSidebar/MostViewedCourses";
+import FeedPageFooter from "./rightSidebar/FeedPageFooter";
+import UserPostSection from "../SinglePost/UserPostSection";
+import MyProfileCard from "./leftSidebar/MyProfileCard";
+import CommunityCard from "./leftSidebar/CommunityCard";
 
-const FeedPage = () => {
-  const [posts, setPosts] = useState([])
-  const [wasUpdated, setWasUpdated] = useState(false)
+const FeedPage = (props) => {
+  const [posts, setPosts] = useState([]);
+  const [wasUpdated, setWasUpdated] = useState(false);
 
   useEffect(() => {
-    getPosts(setPosts)
-    setWasUpdated(false)
-  }, [wasUpdated])
+    getPosts(setPosts);
+    setWasUpdated(false);
+  }, [wasUpdated]);
 
   return (
     <Row>
       <Col xs={4} md={3} className="mt-2 px-1">
         <div className="section-card p-0">
-          <MyProfileCard id="me" />
+          <MyProfileCard id={props.id} />
         </div>
         <div className="section-card p-3">
           <CommunityCard />
@@ -47,7 +47,7 @@ const FeedPage = () => {
         </div>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default FeedPage
+export default FeedPage;

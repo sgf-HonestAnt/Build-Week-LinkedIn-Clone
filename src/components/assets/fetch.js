@@ -1,17 +1,18 @@
 export let MY_ID;
 
-export const getLoggedUser = async () => { // (4) THIS MUST FIRE ON EVERY REFRESH OF APP.JS! 
+export const getLoggedUser = async (id) => {
+  // (4) THIS MUST FIRE ON EVERY REFRESH OF APP.JS!
   try {
-    const response = await fetch(`${process.env.REACT_APP_BE_URL}/signin`);
-    const data = await response.json();
-    console.log("getLoggedUser==>", data)
-    MY_ID = data
+    MY_ID = id;
+
+    console.log("HI=============", MY_ID);
   } catch (err) {
     console.log(err);
   }
 };
 
-export const postLoggedUser = async (id) => { // (3) THIS IS FIRED WHEN WE SUBMIT LOGIN FORM
+/* export const postLoggedUser = async (id) => {
+  // (3) THIS IS FIRED WHEN WE SUBMIT LOGIN FORM
   try {
     await fetch(`${process.env.REACT_APP_BE_URL}/signin`, {
       method: "POST",
@@ -20,14 +21,15 @@ export const postLoggedUser = async (id) => { // (3) THIS IS FIRED WHEN WE SUBMI
       },
       body: JSON.stringify({ identifier: id }),
     });
-    MY_ID = id
-    console.log("SUCCESSFULLY POSTED IDENTIFIER==>", id)
-    console.log("MY_ID==>", MY_ID)
+
+    MY_ID = id;
+    console.log("SUCCESSFULLY POSTED IDENTIFIER==>", id);
+    console.log("MY_ID==>", MY_ID);
     // THIS WORKS NOW BUT ON REFRESH IT IS LOST, SO WE NEED TO PERFORM A GET AT "/SIGNIN" AT APP.JS. MY_ID WILL EQUAL TO WHATEVER ID RESULTS FROM GET SIGNIN
   } catch (error) {
     console.log(error);
   }
-};
+}; */
 
 export const getProfilesLoggin = async (user, callback) => {
   try {
@@ -61,17 +63,20 @@ export const getProfiles = async (callback) => {
 
 export const getProfileById = async (id, callback) => {
   try {
-    const pageId = id === "me" ? MY_ID : id;
-    const response = await fetch(
-      `${process.env.REACT_APP_BE_URL}/profile/${pageId}`,
-      {
-        // headers: {
-        //   Authorization: `Bearer ${TOKEN}`,
-        // },
-      }
-    );
-    const data = await response.json();
-    callback(data);
+    if (MY_ID) {
+      console.log("get profile by id ->", MY_ID);
+      const pageId = id === "me" ? MY_ID : id;
+      const response = await fetch(
+        `${process.env.REACT_APP_BE_URL}/profile/${pageId}`,
+        {
+          // headers: {
+          //   Authorization: `Bearer ${TOKEN}`,
+          // },
+        }
+      );
+      const data = await response.json();
+      callback(data);
+    }
   } catch (error) {
     console.log(error);
   }

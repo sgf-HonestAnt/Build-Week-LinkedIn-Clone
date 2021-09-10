@@ -1,24 +1,31 @@
-import { useEffect, useState } from "react"
-import { getProfileById } from "../../assets/fetch"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { getProfileById } from "../../assets/fetch";
+import { Link } from "react-router-dom";
 
-import "./MyProfileCard.css"
+import "./MyProfileCard.css";
 
 const MyProfileCard = ({ id }) => {
-  const [profile, setProfile] = useState(null)
+  const [profile, setProfile] = useState(null);
 
-  useEffect(() => getProfileById(id, setProfile), [id])
+  useEffect(() => getProfileById(id, setProfile), [id]);
 
+  console.log("aaaa");
   return (
     profile && (
       <section className="feed-my-profile">
         <div className="hero"></div>
-        <Link to="/profile/me"><img className="avatar rounded-circle" src={profile.image} alt="" /></Link>
+        <Link to="/profile/me">
+          <img className="avatar rounded-circle" src={profile.image} alt="" />
+        </Link>
         <h6 className="text-center my-name">
-        <Link to="/profile/me">{profile.name} {profile.surname}</Link>
+          <Link to="/profile/me">
+            {profile.name} {profile.surname}
+          </Link>
         </h6>
 
-        <p className="text-center my-title border-bottom pb-3">{profile.title}</p>
+        <p className="text-center my-title border-bottom pb-3">
+          {profile.title}
+        </p>
         <div className="d-flex flex-column px-3 views border-bottom">
           <div className="d-flex justify-content-between mt-3">
             <p>Who viewed your profile</p>
@@ -35,7 +42,7 @@ const MyProfileCard = ({ id }) => {
         </p>
       </section>
     )
-  )
-}
+  );
+};
 
-export default MyProfileCard
+export default MyProfileCard;
