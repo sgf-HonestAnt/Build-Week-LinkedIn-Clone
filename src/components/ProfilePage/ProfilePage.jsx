@@ -37,9 +37,6 @@ const ProfilePage = (props) => {
     setIsRefreshed(true);
   };
   
-  console.log("experiences ->", experiences);
-  console.log("isme at profilepage =>", isMe)
-  console.log("education ->", education)
   return (
     !isLoading &&
     <Row className="align-items-start">

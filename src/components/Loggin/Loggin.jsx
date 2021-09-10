@@ -24,11 +24,9 @@ const Loggin = ({ history, userId, setUserId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
-    console.log(logginUser);
     history.push("/home");
   };
 
-  console.log("userId at Loggin=>", userId)
   return (
     <div className="main-loggin App-loggin">
       <svg

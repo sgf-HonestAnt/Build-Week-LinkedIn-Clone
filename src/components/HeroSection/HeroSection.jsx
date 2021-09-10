@@ -38,7 +38,6 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe, id }) => {
     editProfile(profileSection, formData);
   };
 
-  console.log(profileData)
   return (
     <div className="hero-section">
       <div className="hero-cover p-relative">

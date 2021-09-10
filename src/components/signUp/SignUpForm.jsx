@@ -72,14 +72,11 @@ const SignUpForm = (props) => {
     },
     validate,
     onSubmit: (values) => {
-      console.log("inside Submit", values)
       createUser(values, " <<<<<< inside Signupform on submit")
     },
   })
-  // console.log(values)
 
   const createUser = async (values) => {
-    console.log("inside create user")
     try {
       let response = await fetch(
         `${process.env.REACT_APP_BE_URL}/profile`,

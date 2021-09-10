@@ -9,12 +9,6 @@ import FeedPage from "./components/FeedPage/FeedPage";
 import PostPage from "./components/PostPage/PostPage";
 import Notifications from "./components/Notifications/Notifications";
 import Loggin from "./components/Loggin/Loggin";
-import {
-  getLoggedUser,
-  getProfileById,
-  MY_ID,
-} from "./components/assets/fetch";
-import SignUpForm from "./components/signUp/SignUpForm";
 
 function App() {
   const [userId, setUserId] = useState("");

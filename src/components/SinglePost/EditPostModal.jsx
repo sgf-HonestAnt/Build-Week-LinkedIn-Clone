@@ -27,12 +27,6 @@ const EditPostModal = ({
       formData = new FormData();
       formData.append("image", pictureFile);
     }
-    console.log(
-      "attempting to submit form",
-      postInfo._id,
-      postDetails,
-      formData
-    );
     type === "edit"
       ? editPost(postInfo._id, postDetails, formData)
       : deletePost(postInfo._id);

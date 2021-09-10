@@ -17,7 +17,6 @@ export const getLoggedUser = async (id) => {
   // (4) THIS MUST FIRE ON EVERY REFRESH OF APP.JS!
   try {
     MY_ID = id;
-    console.log("HI=============", MY_ID);
   } catch (err) {
     console.log(err);
   }
@@ -61,7 +60,6 @@ export const getProfileById = async (id, callback, isMe) => {
     const response = await fetch(
     `${process.env.REACT_APP_BE_URL}/profile/${pageId}`);
     const data = await response.json();
-    console.log("data at getProfileById=>", data)
     callback(data);
   } catch (error) {
     console.log(error);
@@ -161,7 +159,6 @@ export const addEditExperience = async (
           body: pictureFile,
         }
       );
-      console.log(imgResponse);
     }
   } catch (error) {
     console.log(error);
@@ -194,7 +191,6 @@ export const addEditEducation= async (
           body: pictureFile,
         }
       );
-      console.log(imgResponse);
     }
   } catch (error) {
     console.log(error);
@@ -297,7 +293,6 @@ export const addPost = async (textPayload, imgPayload = null, userId) => {
           body: imgPayload,
         }
       );
-      console.log(imgResponse);
     }
   } catch (error) {
     console.log(error);
@@ -355,7 +350,6 @@ export const editPost = async (postId, payload, imgFile = null) => {
           body: imgFile,
         }
       );
-      console.log(imgResponse);
     }
   } catch (error) {
     console.log(error);
