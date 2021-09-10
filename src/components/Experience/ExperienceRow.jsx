@@ -26,4 +26,4 @@ const ExperienceRow = ({ experiencesData, onUpdate, isMe, id }) => {
   )
 }
 
-export default ExperienceRow
+export default ExperienceRow 

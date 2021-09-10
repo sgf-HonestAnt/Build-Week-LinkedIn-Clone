@@ -1,64 +1,122 @@
+import { useEffect } from "react" 
+import { useState } from "react"
 import { Modal, Button, Form } from "react-bootstrap"
+import { addEditEducation, deleteEducation } from "../../assets/fetch"
 import UploadImage from "../../assets/UploadImage"
 
-const EducationModal = ({ show, onHide,image }) => {
+const EducationModal = ({ show, onHide, action, onUpdate, educationData, id }) => {
+  const [formInput, setFormInput] = useState({})
+  const [isEndDate, setIsEndDate] = useState(true)
+  const [pictureFile, setPictureFile] = useState(null)
+
+  const getInputData = (property, e) => {
+    setFormInput({ ...formInput, [property]: e.currentTarget.value })
+  }
+
+  const handleSubmit = () => {
+    let formData = null
+    if (pictureFile) {
+      formData = new FormData()
+      formData.append("education", pictureFile)
+    }
+    addEditEducation(educationData ? educationData._id : "", formInput, formData)
+    setFormInput({
+      institute: "",
+      course: "",
+      location: "",
+      years: "",
+      image: "",
+    })
+  }
+
+  const handleDelete = () => {
+    deleteEducation(educationData._id)
+  }
+
+  useEffect(() => {
+    setFormInput({
+      institute: educationData ? educationData.institute : "",
+      course: educationData ? educationData.course : "",
+      location: educationData ? educationData.startDate : "",
+      years: educationData ? educationData.years : "",
+      image: educationData ? educationData.image : "",
+    })
+  }, [educationData])
+
   return (
-
-    // DUMMY FORM
-
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
-        <Modal.Title>Education</Modal.Title>
+        <Modal.Title>{action === "adding" ? "Add education" : "Edit education"}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form id="education-form">
+        <Form
+          id="education-form"
+          onSubmit={e => {
+            e.preventDefault()
+            handleSubmit()
+            setTimeout(() => onUpdate(), 2000)
+            onHide()
+          }}
+        >
           <Form.Group>
-            <Form.Label>Course</Form.Label>
-            <Form.Control type="text" placeholder="Strive School" required />
+            <Form.Label>Institute</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="..."
+              required
+              value={formInput.institue}
+              onChange={e => getInputData("institute", e)}
+            />
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Institute</Form.Label>
-            <Form.Control type="text" placeholder="Full Stack Web Development" required />
+            <Form.Label>Course</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="..."
+              required
+              value={formInput.course}
+              onChange={e => getInputData("course", e)}
+            />
           </Form.Group>
 
           <Form.Group>
             <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="Berlin, Germany" required />
+            <Form.Control type="text" placeholder="..." required value={formInput.location} onChange={e => getInputData("location", e)} />
           </Form.Group>
 
-          <div className="d-flex">
-            <Form.Group>
-              <Form.Label>Start Date</Form.Label>
-              <Form.Control type="month" required />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>End Date</Form.Label>
-              <Form.Control type="month" />
-            </Form.Group>
-          </div>
-
           <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} required />
+            <Form.Label>Years</Form.Label>
+            <Form.Control as="textarea" rows={3} required value={formInput.years} onChange={e => getInputData("years", e)} />
           </Form.Group>
 
-          {/* This seems to be happening because the modals are not in the same folder as their home components. useState not passing image to the modal */}
-          <img src="https://media-exp3.licdn.com/dms/image/C4D0BAQFFQIjyDsOK0w/company-logo_200_200/0/1593351903670?e=1632355200&v=beta&t=01RObunrVhJxBy0F7ekd6oGjw551Tn4tOQCol9x7WzA" alt="post" className="img-fluid" />
+          {formInput?.image && <img src={formInput.image} alt="post" className="img-fluid" />}
 
           <Form.Group>
-            <UploadImage image={image} />{/* replaces Form.Label */}
-            <Form.Control id="file-input" type="text" placeholder="https://myImage.png" className="d-none" />
+          <UploadImage image={formInput.image} />{/* replaces Form.Label */}
+            <Form.Control id="file-input" type="file" onChange={e => setPictureFile(e.target.files[0])} className="d-none" />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="primary" type="submit" form="experience-form">
+        {action === "editing" && (
+          <Button
+            variant="danger"
+            onClick={() => {
+              handleDelete()
+              onUpdate()
+              onHide()
+            }}
+          >
+            Delete
+          </Button>
+        )}
+        <Button variant="primary" type="submit" form="education-form">
           Save
         </Button>
       </Modal.Footer>
     </Modal>
   )
 }
+
 export default EducationModal

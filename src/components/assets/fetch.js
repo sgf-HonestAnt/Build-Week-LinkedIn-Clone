@@ -97,7 +97,6 @@ export const editProfile = async (payload, pictureFile = null) => {
   }
 };
 
-// Experiences functions
 export const addExperience = async (payload) => {
   try {
     const response = await fetch(
@@ -106,7 +105,25 @@ export const addExperience = async (payload) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const addEducation = async (payload) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/education`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       }
@@ -130,7 +147,6 @@ export const addEditExperience = async (
         method: experienceId ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${TOKEN}`,
         },
         body: JSON.stringify(payload),
       }
@@ -142,9 +158,39 @@ export const addEditExperience = async (
         `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/experiences/${data._id}/picture`,
         {
           method: "POST",
-          // headers: {
-          //   Authorization: `Bearer ${TOKEN}`,
-          // },
+          body: pictureFile,
+        }
+      );
+      console.log(imgResponse);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const addEditEducation= async (
+  educationId = "",
+  payload,
+  pictureFile = null
+) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/education/${educationId}`,
+      {
+        method: educationId ? "PUT" : "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+    const data = await response.json();
+
+    if (pictureFile) {
+      const imgResponse = await fetch(
+        `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/education/${data._id}/picture`,
+        {
+          method: "POST",
           body: pictureFile,
         }
       );
@@ -173,10 +219,44 @@ export const getExperiencesById = async (id, callback) => {
   }
 };
 
+export const getEducationById = async (id, callback) => {
+  const userId = id === "me" ? MY_ID : id;
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BE_URL}/profile/${userId}/education`,
+      {
+        // headers: {
+        //   Authorization: `Bearer ${TOKEN}`,
+        // },
+      }
+    );
+    const data = await response.json();
+    callback(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteExperience = async (experienceId) => {
   try {
     await fetch(
       `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/experiences/${experienceId}`,
+      {
+        method: "DELETE",
+        // headers: {
+        //   Authorization: `Bearer ${TOKEN}`,
+        // },
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteEducation = async (educationId) => {
+  try {
+    await fetch(
+      `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/education/${educationId}`,
       {
         method: "DELETE",
         // headers: {

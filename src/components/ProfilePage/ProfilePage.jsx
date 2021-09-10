@@ -8,30 +8,40 @@ import FeaturedRow from "../Featured/FeaturedRow";
 import EducationRow from "../Education/EducationRow";
 import ExperienceRow from "../Experience/ExperienceRow";
 import { useState, useEffect } from "react";
-import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch";
+import { getExperiencesById, getEducationById, getPosts, getProfileById } from "../assets/fetch";
 
 const ProfilePage = (props) => {
   const currentUserId = props.match.params.userId;
   const isMe = props.match.params.userId === "me"; // boolean
   const [profileData, setProfileData] = useState({});
   const [experiences, setExperiences] = useState([]);
+  const [education, setEducation] = useState([]);
   const [posts, setPosts] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
   const [isRefreshed, setIsRefreshed] = useState(false);
 
   useEffect(() => {
-    getProfileById(currentUserId, setProfileData, isMe);
-    getExperiencesById(currentUserId, setExperiences);
-    getPosts(setPosts);
+    loadProfilePage()
+  }, [isRefreshed, isLoading, currentUserId]);
+  
+  const loadProfilePage = async() => {
+    await getProfileById(currentUserId, setProfileData, isMe);
+    await getExperiencesById(currentUserId, setExperiences);
+    await getEducationById(currentUserId, setEducation);
+    await getPosts(setPosts);
     setIsRefreshed(false);
-    console.log("experiences ->", experiences);
-    console.log("isme at profilepage =>", isMe)
-  }, [isRefreshed, currentUserId]);
-
+    setIsLoading(false)
+  }
+  
   const refresh = () => {
     setIsRefreshed(true);
   };
-
+  
+  console.log("experiences ->", experiences);
+  console.log("isme at profilepage =>", isMe)
+  console.log("education ->", education)
   return (
+    !isLoading &&
     <Row className="align-items-start">
       <Col className="mb-3 pb-1 mt-2" xs={12} md={9}>
         <div className="section-card">
@@ -59,15 +69,20 @@ const ProfilePage = (props) => {
           <ActivitySection userPosts={posts} currentUserId={currentUserId} />
         </div>
         <div className="section-card p-3">
-          <ExperienceRow
+          {experiences && <ExperienceRow
             experiencesData={experiences}
             onUpdate={refresh}
             isMe={isMe}
             id={props.id}
-          />
+          />}
         </div>
         <div className="section-card p-3">
-          <EducationRow isMe={isMe} />
+          {education && <EducationRow
+            educationData={education}
+            onUpdate={refresh}
+            isMe={isMe}
+            id={props.id}
+          />}        
         </div>
       </Col>
       <Col className="d-none d-md-block my-2 px-1" md={3}>
