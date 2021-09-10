@@ -1,4 +1,4 @@
-export let MY_ID;
+export let MY_ID= localStorage.getItem("my_id");
 
 // LOGGIN PAGE FUNCTION
 export const getProfilesLoggin = async (user, callback) => {
@@ -105,10 +105,10 @@ export const addExperience = async (payload) => {
       `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/experiences`,
       {
         method: "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        //   Authorization: `Bearer ${TOKEN}`,
-        // },
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${TOKEN}`,
+        },
         body: JSON.stringify(payload),
       }
     );
@@ -129,10 +129,10 @@ export const addEditExperience = async (
       `${process.env.REACT_APP_BE_URL}/profile/${MY_ID}/experiences/${experienceId}`,
       {
         method: experienceId ? "PUT" : "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        //   Authorization: `Bearer ${TOKEN}`,
-        // },
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${TOKEN}`,
+        },
         body: JSON.stringify(payload),
       }
     );

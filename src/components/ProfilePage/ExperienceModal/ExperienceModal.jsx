@@ -4,7 +4,7 @@ import { Modal, Button, Form } from "react-bootstrap"
 import { addEditExperience, deleteExperience } from "../../assets/fetch"
 import UploadImage from "../../assets/UploadImage"
 
-const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData }) => {
+const ExperienceModal = ({ show, onHide, action, onUpdate, experienceData, id }) => {
   const [formInput, setFormInput] = useState({})
   const [isEndDate, setIsEndDate] = useState(true)
   const [pictureFile, setPictureFile] = useState(null)

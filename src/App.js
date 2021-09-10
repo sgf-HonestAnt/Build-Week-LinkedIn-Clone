@@ -67,7 +67,7 @@ function App() {
                 path="/profile/:userId"
                 render={(routerProps) => (
                   <>
-                    <ProfilePage {...routerProps} />
+                    <ProfilePage {...routerProps} id={userId} />
                     <Footer />
                   </>
                 )}

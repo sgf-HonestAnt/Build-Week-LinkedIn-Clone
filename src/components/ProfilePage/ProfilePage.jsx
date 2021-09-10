@@ -13,7 +13,7 @@ import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch";
 
 const ProfilePage = (props) => {
   const currentUserId = props.match.params.userId;
-  const isMe = currentUserId === "me" || currentUserId === MY_ID; // boolean
+  const isMe = currentUserId === "me" || currentUserId === props.id; // boolean
   const [profileData, setProfileData] = useState({});
   const [experiences, setExperiences] = useState([]);
   const [posts, setPosts] = useState(null);
@@ -61,6 +61,7 @@ const ProfilePage = (props) => {
             experiencesData={experiences}
             onUpdate={refresh}
             isMe={isMe}
+            id={props.id}
           />
         </div>
         <div className="section-card p-3">
