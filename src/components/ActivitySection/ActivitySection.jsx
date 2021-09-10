@@ -1,11 +1,10 @@
 import ActivityItem from "./ActivityItem";
-import { MY_ID } from "../assets/fetch";
 
 import "./ActivitySection.css";
 
 const ActivitySection = ({ userPosts, currentUserId }) => {
   const filterArray = () => {
-    const userId = currentUserId === "me" ? MY_ID : currentUserId;
+    const userId = currentUserId === "me" ? window.localStorage.getItem("my_id") : currentUserId;
     const filteredArr = userPosts?.filter((post) => post?.user?._id === userId);
     return filteredArr
       .map((post) => <ActivityItem key={post._id} post={post} />)

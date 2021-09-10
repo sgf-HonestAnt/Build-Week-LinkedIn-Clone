@@ -22,12 +22,12 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     loadProfilePage()
-  }, [isRefreshed, isLoading, props.id, currentUserId]);
+  }, [isRefreshed, isLoading, props.id]);
   
   const loadProfilePage = async() => {
     await getProfileById(currentUserId, setProfileData, isMe);
     await getExperiencesById(currentUserId, setExperiences);
-    await getEducationById(currentUserId, setEducation);
+    await getEducationById(currentUserId, setEducation); 
     await getPosts(setPosts);
     setIsRefreshed(false);
     setIsLoading(false)

@@ -15,10 +15,10 @@ function App() {
   const [userId, setUserId] = useState("");
   const [refresh, setRefresh] = useState(false)
   useEffect(() => {
-    setUserId(userId || window.localStorage.getItem("my_id")); 
+    setUserId(window.localStorage.getItem("my_id") || userId); 
     console.log("localstorage",window.localStorage.getItem("my_id"))
     console.log("userId",userId)
-  }, [userId]);
+  }, [userId, refresh]);
 
   // UPON FIRING OUR APP, WE SET USER ID TO LOCAL STORAGE.
   // WE ALSO PASS SETUSERID AS A PROP TO LOGGIN  
