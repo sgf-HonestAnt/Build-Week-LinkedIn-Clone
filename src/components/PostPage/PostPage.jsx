@@ -7,7 +7,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { getPostById, getProfileById } from "../assets/fetch"
 
-const PostPage = props => {
+const PostPage = props => { 
   const postId = props.match.params.postId
   const [post, setPost] = useState(null)
   const [userData, setUserData] = useState({})
@@ -30,7 +30,7 @@ const PostPage = props => {
   return (
     <Row>
       <Col xs={4} md={3} className="mt-2 px-1">
-        <div className="section-card p-0">{id && <MyProfileCard id={id} />}</div>
+        <div className="section-card p-0">{id && <MyProfileCard id={props.id} />}</div>
       </Col>
       <Col xs={8} md={5} className="mt-2">
         {post && <SinglePost postInfo={post} userData={userData} onUpdate={handleUpdate} />}

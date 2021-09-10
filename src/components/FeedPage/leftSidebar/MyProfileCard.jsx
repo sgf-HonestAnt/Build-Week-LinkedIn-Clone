@@ -13,9 +13,6 @@ const MyProfileCard = ({ id }) => {
     setLoading(false)
   }, [id]);
 
-  console.log("userId at MyProfileCard=>", id); // = userId
-  console.log("profile at MyProfileCard=>", profile) // = results in data, but not getting profile image.
-
   return (
     !loading && profile !== undefined && (
       <section className="feed-my-profile">

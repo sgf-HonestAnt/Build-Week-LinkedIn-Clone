@@ -4,7 +4,7 @@ import SingleAdd from "../rightSidebar/SingleAdd"
 import { MY_ID } from "../../assets/fetch"
 import "./AddToYourFeed.css"
 
-const AddToYourFeed = () => {
+const AddToYourFeed = ({id}) => {
   const [peopleToFollow, setpeopleToFollow] = useState([])
   useEffect(() => getProfiles(setpeopleToFollow), []) // filter out person with id === MY_ID
 
@@ -16,7 +16,7 @@ const AddToYourFeed = () => {
       </div>
       <div>
         <p className="font-weight-bold">People also viewed</p>
-        {peopleToFollow.filter(users => users._id !== MY_ID).slice(0, 4).map(person => (
+        {peopleToFollow.filter(users => users._id !== id).slice(0, 4).map(person => (
           <SingleAdd key={person._id} person={person} />
         ))}
       </div>

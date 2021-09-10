@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 import "./FeedPostSection.css"
 
-const FeedPostSection = ({ onUpdate }) => {
+const FeedPostSection = ({ onUpdate, id }) => {
   const [myProfile, setMyProfile] = useState({})
 
   const [show, setShow] = useState(false)
@@ -12,7 +12,7 @@ const FeedPostSection = ({ onUpdate }) => {
   const handleShow = () => setShow(true)
 
   useEffect(() => {
-    getProfileById("me", setMyProfile)
+    getProfileById(id, setMyProfile)
   }, [])
 
   return (
@@ -26,7 +26,7 @@ const FeedPostSection = ({ onUpdate }) => {
             Start a post
           </button>
         </div>
-        <PostModal show={show} onHide={handleClose} onUpdate={onUpdate} />
+        <PostModal show={show} onHide={handleClose} onUpdate={onUpdate} id={id} />
       </div>
       <div className="d-flex justify-content-between feedpost-icons">
         <div>

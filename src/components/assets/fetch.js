@@ -1,4 +1,4 @@
-export let MY_ID= localStorage.getItem("my_id");
+export let MY_ID = localStorage.getItem("my_id");
 
 // LOGGIN PAGE FUNCTION
 export const getProfilesLoggin = async (user, callback) => {
@@ -17,7 +17,6 @@ export const getLoggedUser = async (id) => {
   // (4) THIS MUST FIRE ON EVERY REFRESH OF APP.JS!
   try {
     MY_ID = id;
-
     console.log("HI=============", MY_ID);
   } catch (err) {
     console.log(err);
@@ -49,7 +48,6 @@ export const getLoggedUser = async (id) => {
 export const getProfiles = async (callback) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_BE_URL}/profile`);
-    console.log("get profiles response ->", response);
     const data = await response.json();
     callback(data);
   } catch (error) {
@@ -57,12 +55,13 @@ export const getProfiles = async (callback) => {
   }
 };
 
-export const getProfileById = async (id, callback) => {
+export const getProfileById = async (id, callback, isMe) => {
   try {
-    const pageId = id;
+    const pageId = isMe ? MY_ID : id;
     const response = await fetch(
     `${process.env.REACT_APP_BE_URL}/profile/${pageId}`);
     const data = await response.json();
+    console.log("data at getProfileById=>", data)
     callback(data);
   } catch (error) {
     console.log(error);

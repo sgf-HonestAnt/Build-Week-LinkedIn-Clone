@@ -3,7 +3,7 @@ import { Button, Modal, Form } from "react-bootstrap"
 import { editProfile } from "../assets/fetch"
 import "./AboutSection.css"
 
-const AboutSection = ({ profileData, onUpdate, isMe }) => {
+const AboutSection = ({ profileData, onUpdate, isMe, id }) => {
   const [aboutSection, setAboutSection] = useState({})
 
   useEffect(() => {

@@ -7,24 +7,24 @@ import AboutSection from "../AboutSection/AboutSection";
 import FeaturedRow from "../Featured/FeaturedRow";
 import EducationRow from "../Education/EducationRow";
 import ExperienceRow from "../Experience/ExperienceRow";
-import { MY_ID } from "../assets/fetch";
 import { useState, useEffect } from "react";
 import { getExperiencesById, getPosts, getProfileById } from "../assets/fetch";
 
 const ProfilePage = (props) => {
   const currentUserId = props.match.params.userId;
-  const isMe = currentUserId === "me" || currentUserId === props.id; // boolean
+  const isMe = props.match.params.userId === "me"; // boolean
   const [profileData, setProfileData] = useState({});
   const [experiences, setExperiences] = useState([]);
   const [posts, setPosts] = useState(null);
   const [isRefreshed, setIsRefreshed] = useState(false);
 
   useEffect(() => {
-    getProfileById(currentUserId, setProfileData);
+    getProfileById(currentUserId, setProfileData, isMe);
     getExperiencesById(currentUserId, setExperiences);
     getPosts(setPosts);
     setIsRefreshed(false);
     console.log("experiences ->", experiences);
+    console.log("isme at profilepage =>", isMe)
   }, [isRefreshed, currentUserId]);
 
   const refresh = () => {
@@ -41,6 +41,7 @@ const ProfilePage = (props) => {
             userId={currentUserId}
             isMe={isMe}
             onUpdate={refresh}
+            id={props.id}
           />
         </div>
         <div className="section-card p-3">
@@ -48,6 +49,7 @@ const ProfilePage = (props) => {
             profileData={profileData}
             isMe={isMe}
             onUpdate={refresh}
+            id={props.id}
           />
         </div>
         {/* <div className="section-card p-3">

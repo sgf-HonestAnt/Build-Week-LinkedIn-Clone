@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import "./PostModal.css";
 import UploadImage from "../assets/UploadImage";
 
-const PostModal = ({ show, onHide, onUpdate }) => {
+const PostModal = ({ show, onHide, onUpdate, id }) => {
   const [myProfile, setMyProfile] = useState({});
   const [pictureFile, setPictureFile] = useState(null);
 
@@ -15,7 +15,7 @@ const PostModal = ({ show, onHide, onUpdate }) => {
   });
 
   useEffect(() => {
-    getProfileById("me", setMyProfile);
+    getProfileById(id, setMyProfile);
   }, []);
 
   const getData = (e) => {

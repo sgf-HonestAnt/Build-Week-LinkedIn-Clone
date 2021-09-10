@@ -20,8 +20,6 @@ function App() {
   const [userId, setUserId] = useState("");
   useEffect(() => {
     setUserId(userId || window.localStorage.getItem("my_id")); 
-    console.log("localStorage at App.js UseEffect=>", window.localStorage.getItem("my_id"))
-    console.log("userId at App.js UseEffect=>", userId);
   }, [userId]);
 
   // UPON FIRING OUR APP, WE SET USER ID TO LOCAL STORAGE.
@@ -57,7 +55,7 @@ function App() {
                 path="/post/:postId"
                 render={(routerProps) => (
                   <>
-                    <PostPage {...routerProps} />
+                    <PostPage {...routerProps} id={userId} />
                     <Footer />
                   </>
                 )}

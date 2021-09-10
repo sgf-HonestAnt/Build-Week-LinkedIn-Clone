@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Button, Badge, Modal, Form } from "react-bootstrap";
-import { editProfile, getCV } from "../assets/fetch";
+import { editProfile } from "../assets/fetch";
 import UploadImage from "../assets/UploadImage";
 import "./HeroSection.css";
 
-const HeroSection = ({ profileData, experiences, onUpdate, isMe }) => {
+const HeroSection = ({ profileData, experiences, onUpdate, isMe, id }) => {
   const [pictureFile, setPictureFile] = useState(null);
 
   const [profileSection, setProfileSection] = useState({});
