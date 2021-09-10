@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, Button, Badge, Modal, Form } from "react-bootstrap";
+import { Card, Button, Badge, Modal, Form, Row, Col } from "react-bootstrap";
 import { editProfile } from "../assets/fetch";
 import UploadImage from "../assets/UploadImage";
 import "./HeroSection.css";
@@ -62,10 +62,10 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe, id }) => {
           </button>
         </div>
       ) : (
-        <div className="spacer">{ }</div>
+        <div className="spacer">{}</div>
       )}
-      <div className="hero-section-columns">
-        <div className="mr-5">
+      <Row className="hero-section-columns">
+        <Col xs={6} className="pr-5 mt-5">
           <Card.Body className="pt-0 pb-2 px-3">
             <Card.Title className="profile-name">
               {profileData.name} {profileData.surname}
@@ -108,33 +108,13 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe, id }) => {
                   </a>
                 </>
               ) : ( */}
-                <>
-                  <Badge pill variant="primary">
-                    Connect
-                  </Badge>
 
-                  <Badge pill variant="light">
-                    <i className="fas fa-lock"></i> Message
-                  </Badge>
-
-                  <Badge pill variant="light">
-                    <a href={process.env.REACT_APP_BE_URL + "/profile/" + profileData._id + "/CV"} target="_blank">
-                      View CV
-                    </a>
-                  </Badge>
-
-                  <a href={process.env.REACT_APP_BE_URL + "/profile/" + profileData._id + "/experiences/CSV"} target="_blank">
-                    <Button className="btn-download " variant="light">
-                      download csv
-                    </Button>
-                  </a>
-                </>
               {/* )} */}
             </Card.Text>
           </Card.Body>
-        </div>
+        </Col>
 
-        <div>
+        <Col xs={6}>
           <div className="card-body work-history">
             {myExp ? (
               experiences.slice(-2).map((x) => (
@@ -297,8 +277,47 @@ const HeroSection = ({ profileData, experiences, onUpdate, isMe, id }) => {
               </Button>
             </Modal.Body>
           </Modal>
-        </div>
-      </div>
+        </Col>
+      </Row>
+      <Row className="pl-4 pb-1">
+        <>
+          <Badge pill variant="primary">
+            Connect
+          </Badge>
+
+          <Badge pill variant="light">
+            <i className="fas fa-lock"></i> Message
+          </Badge>
+
+          <Badge pill variant="light">
+            <a
+              href={
+                process.env.REACT_APP_BE_URL +
+                "/profile/" +
+                profileData._id +
+                "/CV"
+              }
+              target="_blank"
+            >
+              View CV
+            </a>
+          </Badge>
+
+          <a
+            href={
+              process.env.REACT_APP_BE_URL +
+              "/profile/" +
+              profileData._id +
+              "/experiences/CSV"
+            }
+            target="_blank"
+          >
+            <Button className="badge badge-pill badge-light" variant="light">
+              download csv
+            </Button>
+          </a>
+        </>
+      </Row>
     </div>
   );
 };
