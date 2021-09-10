@@ -1,14 +1,14 @@
-import { useState } from "react"
-import { Container } from "react-bootstrap"
-import { Link, withRouter } from "react-router-dom"
+import { useState } from "react";
+import { Container } from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
 
-import "./Navbar.css"
+import "./Navbar.css";
 
 const Navbar = ({ location }) => {
-  const [searchQuery, setSearchQuery] = useState("")
-  const currentPath = location.pathname
+  const [searchQuery, setSearchQuery] = useState("");
+  const currentPath = location.pathname;
   return (
-    <nav className="fixed-top top-navbar d-flex border-bottom">
+    <nav className="fixed-top top-navbar d-flex border-bottom justify-content-center">
       <Container fluid="md" className="d-flex align-items-center">
         <Link to="/">
           <i className="fab fa-linkedin mr-2"></i>
@@ -21,7 +21,9 @@ const Navbar = ({ location }) => {
             type="text"
             placeholder="Search"
             value={searchQuery}
-            onChange={e => setSearchQuery(e.currentTarget.value.toLowerCase())}
+            onChange={(e) =>
+              setSearchQuery(e.currentTarget.value.toLowerCase())
+            }
           ></input>
         </div>
         <ul className="d-flex justify-content-end align-items-center w-100 h-100">
@@ -56,26 +58,36 @@ const Navbar = ({ location }) => {
             </Link>
           </li>
           <li className={currentPath === "/profile/me" ? "active" : ""}>
-            <Link to="/profile/me"> 
+            <Link to="/profile/me">
               <i className="fas fa-user-circle"></i>
               <span className="d-none d-md-block">Me</span>
             </Link>
           </li>
-          <li className={"border-left d-none d-sm-flex" + currentPath === "/work" ? " active" : ""}>
+          <li
+            className={
+              "border-left d-none d-sm-flex" + currentPath === "/work"
+                ? " active"
+                : ""
+            }
+          >
             <Link to="/work">
               <i className="fas fa-th"></i>
               <span className="d-none d-md-block">Work</span>
             </Link>
           </li>
           <li id="premium" className="d-none d-lg-flex">
-            <a href="https://www.linkedin.com/premium/products/" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.linkedin.com/premium/products/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <span className="text-center">Try Premium Free for 1 month</span>
             </a>
           </li>
         </ul>
       </Container>
     </nav>
-  )
-}
+  );
+};
 
-export default withRouter(Navbar)
+export default withRouter(Navbar);
